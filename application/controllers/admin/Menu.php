@@ -84,7 +84,8 @@ class Menu extends CI_Controller
         'menu_id' => $this->input->post('menu_id'),
         'url' => $this->input->post('url'),
         'icon' => $this->input->post('icon'),
-        'is_active' => $this->input->post('is_active')
+        'is_active' => $this->input->post('is_active'),
+        'menu_order' => $this->input->post('menu_order')
       ];
       $this->mMenu->createSub($data);
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -102,7 +103,8 @@ class Menu extends CI_Controller
       'menu_id' => $this->input->post('menu_id'),
       'url' => $this->input->post('url'),
       'icon' => $this->input->post('icon'),
-      'is_active' => $this->input->post('is_active')
+      'is_active' => $this->input->post('is_active'),
+      'menu_order' => $this->input->post('menu_order')
     );
 
     $this->mMenu->editSub($data);

@@ -164,7 +164,7 @@ class Profile_gereja extends CI_Controller
     $this->load->view('templates/wrapper', $data);
   }
 
-  // Delete profile z CF
+  // Delete profile
   public function delete_profile($id)
   {
     $data = array('profile_id' => $id);

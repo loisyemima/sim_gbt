@@ -43,6 +43,7 @@
                        <th scope="col">Url</th>
                        <th scope="col">Icon</th>
                        <th scope="col">Active</th>
+                       <th scope="col">Menu Order</th>
                        <th scope="col">Action</th>
                      </tr>
                    </thead>
@@ -56,6 +57,7 @@
                          <td><?= $sm['url'] ?></td>
                          <td><?= $sm['icon'] ?></td>
                          <td><?= $sm['is_active'] ?></td>
+                         <td><?= $sm['menu_order'] ?></td>
                          <td>
                            <a href="" class="badge badge-pill badge-success" data-toggle="modal" data-target="#editSubMenuModal<?php echo $sm['id']; ?>">edit</a>
                            <a href="" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#deleteSubMenuModal<?php echo $sm['id']; ?>">delete</a>
@@ -112,6 +114,9 @@
                  <label class="custom-control-label" for="is_active">Active?</label>
                </div>
              </div>
+             <div class="form-group">
+               <input type="text" class="form-control" id="menu_order" name="menu_order" placeholder="Menu Order">
+             </div>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -156,6 +161,9 @@
                    <input type="checkbox" class="custom-control-input" value="1" id="is_active" name="is_active" checked>
                    <label class="custom-control-label" for="is_active">Active?</label>
                  </div>
+               </div>
+               <div class="form-group">
+                 <input type="text" class="form-control" id="menu_order" name="menu_order" placeholder="Menu Order" value="<?php echo $smn['menu_order'] ?>">
                </div>
              </div>
              <div class="modal-footer">

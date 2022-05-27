@@ -48,7 +48,8 @@
                </div>
                <div class="form-group">
                  <label>Text</label>
-                 <input type="text" class="form-control" placeholder="Enter ..." name="description" id="description" value="<?php echo $profile['description'] ?>">
+                 <textarea placeholder="Enter ..." name="description" id="summernote" value="<?php echo $profile['description'] ?>">
+                    </textarea>
                </div>
                <button type="submit" class="btn btn-primary">Submit</button>
                <button type="reset" class="btn btn-secondary">Reset</button>

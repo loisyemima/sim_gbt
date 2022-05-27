@@ -58,4 +58,14 @@ class Pelayan_model extends CI_Model
     $this->db->where('pelayan_id', $data['pelayan_id']);
     $this->db->delete('pelayan', $data);
   }
+
+  public function getPengurus()
+  {
+    $this->db->select('*');
+    $this->db->from('pelayan');
+    $this->db->join('member', 'member.member_id = pelayan.name', 'LEFT');
+    $this->db->order_by('pelayan_id', 'ASC');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
 }

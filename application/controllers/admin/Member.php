@@ -52,9 +52,17 @@ class Member extends CI_Controller
         );
         $this->load->view('templates/wrapper', $data);
       } else {
-        $upload_data        = array('uploads' => $this->upload->data());
+        $upload_data        = array(
+          'uploads' => $this->upload->data(),
+          'prod_image1' => $this->upload->data(),
+          'prod_image2' => $this->upload->data(),
+          'prod_image3' => $this->upload->data()
+        );
         $config['image_library']  = 'gd2';
-        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $source_image   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $source_image1   = './assets/img/profile/member/' . $upload_data['prod_image1']['file_name'];
+        $source_image2  = './assets/img/profile/member/' . $upload_data['prod_image2']['file_name'];
+        $source_image3   = './assets/img/profile/member/' . $upload_data['prod_image3']['file_name'];
         $config['create_thumb']   = TRUE;
         $config['quality']       = "100%";
         $config['maintain_ratio']   = FALSE;
@@ -68,12 +76,15 @@ class Member extends CI_Controller
 
         $data = array(
           'fullname' => $this->input->post('fullname'),
-          'images'      => $upload_data['uploads']['file_name'],
+          'images'      => $source_image,
           'place' => $this->input->post('place'),
           'birth' => $this->input->post('birth'),
           'age' => $this->input->post('age'),
           'status' => $this->input->post('status'),
           'username' => $this->input->post('username'),
+          'image1'      => $source_image1,
+          'image2'      => $source_image2,
+          'image3'      => $source_image3,
         );
 
         $this->mMember->createMember($data);
@@ -93,9 +104,6 @@ class Member extends CI_Controller
     );
     $this->load->view('templates/wrapper', $data);
   }
-
-
-
 
   public function edit_member($id)
   {
@@ -310,4 +318,243 @@ class Member extends CI_Controller
         Delete Member Succsess!</div>');
     redirect(base_url('admin/member'));
   }
+
+  public function create_img($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img = $this->mMember->detailImg($id);
+
+    $v = $this->form_validation;
+    $v->set_rules('image_name', 'Image Name', 'required');
+
+    if ($v->run()) {
+      $config['upload_path']     = './assets/img/profile/member/';
+      $config['allowed_types']   = 'gif|jpg|png|pdf';
+      $config['max_size']      = '1000'; // KB			
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('image')) {
+
+        $data = array(
+          'title'    => 'Create Anggota',
+          'user'  => $user,
+          'member' => $member,
+          'img' => $img,
+          'isi'    => 'admin/member/img_bap'
+        );
+        $this->load->view('templates/wrapper', $data);
+      } else {
+        $upload_data        = array('uploads' => $this->upload->data());
+        $config['image_library']  = 'gd2';
+        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $config['create_thumb']   = TRUE;
+        $config['quality']       = "100%";
+        $config['maintain_ratio']   = FALSE;
+        $config['width']       = 360; // Pixel
+        $config['height']       = 200; // Pixel
+        $config['x_axis']       = 0;
+        $config['y_axis']       = 0;
+        $config['thumb_marker']   = '';
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+
+        $data = array(
+          'member' => $id,
+          'image_name' => $this->input->post('image_name'),
+          'image1'      => $upload_data['uploads']['file_name'],
+        );
+        $this->mMember->createImg($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New Member Added!</div>');
+        redirect('admin/member');
+      }
+    }
+
+    $data = array(
+      'title'    => 'Create Anggota',
+      'user'  => $user,
+      'member' => $member,
+      'img' => $img,
+      'isi'    => 'admin/member/img_bap'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function create_anak($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img = $this->mMember->detailAnak($id);
+
+    $v = $this->form_validation;
+    $v->set_rules('nama_image', 'nama_image', 'required');
+
+    if ($v->run()) {
+      $config['upload_path']     = './assets/img/profile/member/';
+      $config['allowed_types']   = 'gif|jpg|png|pdf';
+      $config['max_size']      = '1000'; // KB			
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('image')) {
+
+        $data = array(
+          'title'    => 'Create Anggota',
+          'user'  => $user,
+          'member' => $member,
+          'img' => $img,
+          'isi'    => 'admin/member/img_bap'
+        );
+        $this->load->view('templates/wrapper', $data);
+      } else {
+        $upload_data        = array('uploads' => $this->upload->data());
+        $config['image_library']  = 'gd2';
+        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $config['create_thumb']   = TRUE;
+        $config['quality']       = "100%";
+        $config['maintain_ratio']   = FALSE;
+        $config['width']       = 360; // Pixel
+        $config['height']       = 200; // Pixel
+        $config['x_axis']       = 0;
+        $config['y_axis']       = 0;
+        $config['thumb_marker']   = '';
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+
+        $data = array(
+          'member2' => $id,
+          'nama_image' => $this->input->post('nama_image'),
+          'image2'      => $upload_data['uploads']['file_name'],
+        );
+        $this->mMember->createAnak($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New Member Added!</div>');
+        redirect('admin/member');
+      }
+    }
+
+    $data = array(
+      'title'    => 'Create Anggota',
+      'user'  => $user,
+      'member' => $member,
+      'img' => $img,
+      'isi'    => 'admin/member/img_bap'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function create_per($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img = $this->mMember->detailPer($id);
+
+    $v = $this->form_validation;
+    $v->set_rules('nama_image3', 'nama_image', 'required');
+
+    if ($v->run()) {
+      $config['upload_path']     = './assets/img/profile/member/';
+      $config['allowed_types']   = 'gif|jpg|png|pdf';
+      $config['max_size']      = '1000'; // KB			
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('image')) {
+
+        $data = array(
+          'title'    => 'Create Anggota',
+          'user'  => $user,
+          'member' => $member,
+          'img' => $img,
+          'isi'    => 'admin/member/img_bap'
+        );
+        $this->load->view('templates/wrapper', $data);
+      } else {
+        $upload_data        = array('uploads' => $this->upload->data());
+        $config['image_library']  = 'gd2';
+        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $config['create_thumb']   = TRUE;
+        $config['quality']       = "100%";
+        $config['maintain_ratio']   = FALSE;
+        $config['width']       = 360; // Pixel
+        $config['height']       = 200; // Pixel
+        $config['x_axis']       = 0;
+        $config['y_axis']       = 0;
+        $config['thumb_marker']   = '';
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+
+        $data = array(
+          'member3' => $id,
+          'nama_image3' => $this->input->post('nama_image3'),
+          'image3'      => $upload_data['uploads']['file_name'],
+        );
+        $this->mMember->createPer($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New Member Added!</div>');
+        redirect('admin/member');
+      }
+    }
+
+    $data = array(
+      'title'    => 'Create Anggota',
+      'user'  => $user,
+      'member' => $member,
+      'img' => $img,
+      'isi'    => 'admin/member/img_bap'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function detail_member($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->getMember();
+    $member1 = $this->mMember->detailMember($id);
+    $username = $this->mMember->username();
+    $age = $this->mAge->getAge();
+    $img = $this->mMember->detailImg($id);
+
+    $data = array(
+      'title'    => 'Daftar Anggota Jemaat',
+      'user'  => $user,
+      'member1'    => $member1,
+      'member'    => $member,
+      'username'    => $username,
+      'age'    => $age,
+      'img'    => $img,
+      'isi'    => 'admin/member/detail'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  /*public function filter()
+  {
+    $data['data'] = $this->db->get('member')->result();
+    $this->load->view("admin/member/filter", $data, false); // ini view menampilkan hasil pencarian
+  }
+
+  public function load_member()
+  {
+    $status = $_GET['status'];
+    if ($status == 0) {
+      $data = $this->db->get('member')->result();
+    } else {
+      $data = $this->db->get_where('member', ['status' => $status])->result();
+    }
+    if (!empty($data)) {
+      $i = 1;
+      foreach ($data as $m) : ?>
+        <tr>
+          <td><?= $i++ ?></td>
+          <td><?= $m->fullname ?></td>
+          <td><?= $m->place ?></td>
+          <td><?= $m->birth ?></td>
+          <td><?= $m->status ?></td>
+        </tr>
+      <?php endforeach; ?> <?php
+                          } else {
+                            ?>
+      <tr>
+        <td align="center">Tidak Ada Data</td>
+      </tr>
+<?php
+                          }
+                        }*/
 }

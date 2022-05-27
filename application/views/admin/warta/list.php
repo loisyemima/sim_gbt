@@ -31,12 +31,29 @@
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>Image</th>
+                      <th>Date</th>
                       <th>Description</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-
+                    <?php $i = 1; ?>
+                    <?php foreach ($warta as $w) : ?>
+                      <tr>
+                        <th scope="row"><?= $i; ?></th>
+                        <td>
+                          <img src="<?php echo base_url('assets/img/upload/' . $w['image']); ?>" width="200px">
+                        </td>
+                        <td><?= $w['date'] ?></td>
+                        <td><?= $w['description'] ?></td>
+                        <td>
+                          <a href="<?= base_url('admin/warta/edit_warta/' . $w['warta_id']); ?>" class="badge badge-pill badge-success">edit</a>
+                          <a href="<?= base_url('admin/warta/delete_warta/' . $w['warta_id']); ?>" class="badge badge-pill badge-danger">delete</a>
+                        </td>
+                      </tr>
+                      <?php $i++; ?>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>

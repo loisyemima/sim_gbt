@@ -139,5 +139,8 @@ $autoload['model'] = array(
   'Admin_model' => 'mAdmin',
   'Profile_model' => 'mProfile',
   'Age_model' => 'mAge',
+  'Pendaftaran_model' => 'mPendaftaran',
+  'Warta_model' => 'mWarta',
+  'Gallery_model' => 'mGallery',
   'Pelayan_model' => 'mPelayan'
 );

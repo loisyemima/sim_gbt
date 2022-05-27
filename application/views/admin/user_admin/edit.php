@@ -36,11 +36,11 @@
                  <div class="card-body">
                    <div class="form-group">
                      <label>Name</label>
-                     <input class="form-control" id="name" name="name" value="<?php echo $user2['name'] ?>">
+                     <input class="form-control" id="name" name="name" value="<?php echo $user['name'] ?>">
                    </div>
                    <div class="form-group">
                      <label>Username</label>
-                     <input class="form-control" id="username" name="username" value="<?php echo $user2['username'] ?>">
+                     <input class="form-control" id="username" name="username" value="<?php echo $user['username'] ?>">
                    </div>
                    <div class="form-group">
                      <label>Email</label>
