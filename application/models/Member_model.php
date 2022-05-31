@@ -78,6 +78,14 @@ class Member_model extends CI_Model
     return $this->db->get("member");
   }
 
+  public function get_all_data()
+  {
+    $this->db->select('*');
+    $this->db->from('member');
+    $this->db->join('img_baptis', 'img_baptis.member = member.member_id', 'left');
+    return $this->db->get()->result();
+  }
+
   public function createImg($data)
   {
     $this->db->insert('img_baptis', $data);
@@ -88,9 +96,18 @@ class Member_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('img_baptis');
+    $this->db->where('member', $id);
+    return $this->db->get()->result();
+  }
+
+  public function detailImg2($id)
+  {
+    $this->db->select('*');
+    $this->db->from('img_baptis');
     $this->db->where('bap_id', $id);
     return $this->db->get()->result();
   }
+
 
   public function createAnak($data)
   {

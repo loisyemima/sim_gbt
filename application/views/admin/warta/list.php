@@ -31,9 +31,9 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Image</th>
-                      <th>Date</th>
-                      <th>Description</th>
+                      <th>Gambar</th>
+                      <th>Tanggal</th>
+                      <th>Deskripsi</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -48,8 +48,8 @@
                         <td><?= $w['date'] ?></td>
                         <td><?= $w['description'] ?></td>
                         <td>
-                          <a href="<?= base_url('admin/warta/edit_warta/' . $w['warta_id']); ?>" class="badge badge-pill badge-success">edit</a>
-                          <a href="<?= base_url('admin/warta/delete_warta/' . $w['warta_id']); ?>" class="badge badge-pill badge-danger">delete</a>
+                          <a href="<?= base_url('admin/warta/edit_warta/' . $w['warta_id']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="<?= base_url('admin/warta/delete_warta/' . $w['warta_id']); ?>" class="btn btn-danger btn-primary btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                       <?php $i++; ?>

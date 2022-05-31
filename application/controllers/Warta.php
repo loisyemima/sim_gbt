@@ -15,4 +15,19 @@ class Warta extends CI_Controller
     );
     $this->load->view('front/templates/wrapper', $data);
   }
+
+  public function surat()
+  {
+    $site      = $this->mConfig->list_config();
+
+
+    $data = array(
+      'title'    => 'Surat Edaran',
+      'site'    => $site,
+      'isi'    => 'front/hasil'
+
+    );
+
+    $this->load->view('front/templates/wrapper', $data);
+  }
 }

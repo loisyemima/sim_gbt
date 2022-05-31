@@ -31,7 +31,7 @@ class Gallery extends CI_Controller
     $event = $this->mGallery->getEvent();
 
     $v = $this->form_validation;
-    $v->set_rules('image_name', 'Image Name', 'required');
+    $v->set_rules('nama_gambar', 'Nama Gambar', 'required');
 
     if ($v->run()) {
 
@@ -64,10 +64,10 @@ class Gallery extends CI_Controller
 
         $i = $this->input;
         $data = array(
-          'image'      => $upload_data['uploads']['file_name'],
-          'image_name'  => $i->post('image_name'),
-          'title'  => $i->post('title'),
-          'event'  => $i->post('event'),
+          'gambar'      => $upload_data['uploads']['file_name'],
+          'nama_gambar'  => $i->post('nama_gambar'),
+          'judul'  => $i->post('judul'),
+          'kegiatan'  => $i->post('kegiatan'),
           'date'      => date('Y-m-d'),
         );
         $this->mGallery->createGallery($data);
@@ -93,7 +93,7 @@ class Gallery extends CI_Controller
 
     // Validation
     $v = $this->form_validation;
-    $v->set_rules('image_name', 'Image Name', 'required');
+    $v->set_rules('nama_gambar', 'Nama Gambar', 'required');
 
     if ($v->run()) {
       if (!empty($_FILES['image']['name'])) {
@@ -138,10 +138,10 @@ class Gallery extends CI_Controller
           $data = array(
 
             'gallery_id'    => $gallery['gallery_id'],
-            'image'      => $upload_data['uploads']['file_name'],
-            'image_name'  => $i->post('image_name'),
-            'title'  => $i->post('title'),
-            'event'  => $i->post('event'),
+            'gambar'      => $upload_data['uploads']['file_name'],
+            'nama_gambar'  => $i->post('nama_gambar'),
+            'judul'  => $i->post('judul'),
+            'kegiatan'  => $i->post('kegiatan'),
             'date'      => date('Y-m-d'),
           );
 
@@ -154,9 +154,9 @@ class Gallery extends CI_Controller
         $i = $this->input;
         $data = array(
           'gallery_id'    => $gallery['gallery_id'],
-          'image_name'  => $i->post('image_name'),
-          'title'  => $i->post('title'),
-          'event'  => $i->post('event'),
+          'nama_gambar'  => $i->post('nama_gambar'),
+          'judul'  => $i->post('judul'),
+          'kegiatan'  => $i->post('kegiatan'),
           'date'      => date('Y-m-d'),
         );
 

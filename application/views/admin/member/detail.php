@@ -15,11 +15,11 @@
        <div class="container-fluid">
 
          <div class="row">
-           <div class="col-md-8">
+           <div class="col-md-6">
              <!-- general form elements -->
              <div class="card card-primary">
                <div class="card-header">
-                 <h3 class="card-title"></h3>
+                 <h3 class="card-title">Data Diri</h3>
                </div>
                <?php if (validation_errors()) : ?>
                  <div class="alert alert-danger" role="alert">
@@ -71,20 +71,42 @@
                      </select>
                    </div>
                  </div>
-                 <!-- /.card-body -->
-                 <div class="row">
-                   <?php foreach ($member1 as $i) { ?>
-                     <div class="col-sm-3">
-                       <div class="form-group">
-                         <img value="<?php echo $i['member_id'] ?>" <?= $i['member_id'] == $img['member'] ?> src="<?= base_url('assets/img/profile/member/' . $img['image1']) ?>" id="foto_load" width="250px" height="200px">
-                       </div>
-
-                     </div>
-                   <?php } ?>
-                 </div>
                  <div class="card-footer">
                    <button type="submit" class="btn btn-primary">Submit</button>
                    <button type="reset" class="btn btn-secondary">Reset</button>
+                 </div>
+               </form>
+             </div>
+             <!-- /.card -->
+           </div>
+
+           <div class="col-md-6">
+             <!-- general form elements -->
+             <div class="card card-info">
+               <div class="card-header">
+                 <h3 class="card-title">Dokumen</h3>
+               </div>
+               <?php if (validation_errors()) : ?>
+                 <div class="alert alert-danger" role="alert">
+                   <?= validation_errors(); ?>
+                 </div>
+               <?php endif; ?>
+
+               <?= $this->session->flashdata('message'); ?>
+               <!-- /.card-header -->
+               <!-- form start -->
+               <form role="form" method="post" enctype="multipart/form-data">
+                 <div class="card-body">
+                   <?php foreach ($img as $key => $value) { ?>
+                     <div class="col-lg-6">
+                       <div class="form-group">
+                         <label for="">Sertifikat Baptis</label>
+                         <img src="<?= base_url('assets/img/profile/member/' . $value->image1) ?>" id="foto_load" width="250px" height="300px">
+                       </div>
+                       <a href="<?= base_url('admin/member/print_image/' . $value->member) ?>" class="btn btn-info btn-xs btn-block">
+                         <i class="fas fa-print"></i> Print </a>
+                     </div>
+                   <?php } ?>
                  </div>
                </form>
              </div>

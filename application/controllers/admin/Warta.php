@@ -171,4 +171,35 @@ class Warta extends CI_Controller
         Delete warta Succsess!</div>');
     redirect(base_url('admin/warta'));
   }
+
+  public function surat()
+
+  {
+    $site = $this->mConfig->list_config();
+    $user = $this->mAdmin->getData();
+
+    $this->form_validation->set_rules('penanganan', 'Hasil Penanganan Pengaduan', 'required');
+
+    if ($this->form_validation->run() === FALSE) {
+
+      $data = array(
+        'title'  => 'Surat Edaran',
+        'site'  => $site,
+        'user'  => $user,
+        'isi'  => 'admin/warta/hasil'
+      );
+
+      $this->load->view('templates/wrapper', $data);
+    } else {
+
+      $i = $this->input;
+      $data = array(
+        'config_id'  => $i->post('config_id'),
+        'penanganan' => $i->post('penanganan'),
+      );
+      $this->mConfig->edit_config($data);
+      $this->session->set_flashdata('sukses', 'Configuration has updated');
+      redirect(base_url('admin/warta/surat'));
+    }
+  }
 }

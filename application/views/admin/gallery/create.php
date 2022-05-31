@@ -38,7 +38,7 @@
                <form role="form" action="<?= base_url('admin/gallery/create_gallery'); ?>" method="post" enctype="multipart/form-data">
                  <div class="card-body">
                    <div class="form-group">
-                     <label for="exampleInputFile">File input</label>
+                     <label for="exampleInputFile">Gambar</label>
                      <div class="input-group">
                        <div class="custom-file">
                          <input type="file" class="custom-file-input" name="image" id="exampleInputFile">
@@ -47,17 +47,17 @@
                      </div>
                    </div>
                    <div class="form-group">
-                     <label>Image Name</label>
-                     <input class="form-control" id="image_name" name="image_name">
+                     <label>Nama Gambar</label>
+                     <input class="form-control" id="nama_gambar" name="nama_gambar">
                    </div>
                    <div class="form-group">
-                     <label>Title</label>
-                     <input class="form-control" id="title" name="title">
+                     <label>Judul</label>
+                     <input class="form-control" id="judul" name="judul">
                    </div>
                    <div class="form-group">
-                     <label>Event</label>
-                     <select name="event" id="event" class="form-control">
-                       <option value="">Select Event</option>
+                     <label>Kegiatan</label>
+                     <select name="kegiatan" id="kegiatan" class="form-control">
+                       <option value="">Pilih Kegiatan</option>
                        <?php foreach ($event as $e) : ?>
                          <option value="<?= $e['event_id'] ?>"><?= $e['name'] ?></option>
                        <?php endforeach; ?>

@@ -45,10 +45,10 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Place Of Birth</th>
-                        <th>Date Of Birth</th>
-                        <th>Age</th>
+                        <th>Nama</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Golongan</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>

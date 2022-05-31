@@ -36,7 +36,7 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">name</th>
+                      <th scope="col">nama</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -47,8 +47,8 @@
                         <th scope="row"><?= $i; ?></th>
                         <td><?= $a['name'] ?></td>
                         <td>
-                          <a href="" class="badge badge-pill badge-success" data-toggle="modal" data-target="#editAgeModal<?php echo $a['age_id']; ?>">edit</a>
-                          <a href="" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#deleteAgeModal<?php echo $a['age_id']; ?>">delete</a>
+                          <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editAgeModal<?php echo $a['age_id']; ?>"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="" class="btn btn-danger btn-primary btn-sm" data-toggle="modal" data-target="#deleteAgeModal<?php echo $a['age_id']; ?>"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                       <?php $i++; ?>

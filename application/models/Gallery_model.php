@@ -8,18 +8,52 @@ class Gallery_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('gallery');
-    $this->db->join('event', 'event.event_id = gallery.event', 'LEFT');
+    $this->db->join('event', 'event.event_id = gallery.kegiatan', 'LEFT');
     $this->db->order_by('gallery_id', 'ASC');
     $query = $this->db->get();
     return $query->result_array();
   }
+  public function getGallery1()
+  {
+    $this->db->select('*');
+    $this->db->from('gallery');
+    $this->db->join('event', 'event.event_id = gallery.kegiatan', 'LEFT');
+    $this->db->where(array('kegiatan' => '1'));
+    $this->db->order_by('gallery_id', 'ASC');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function getGallery2()
+  {
+    $this->db->select('*');
+    $this->db->from('gallery');
+    $this->db->join('event', 'event.event_id = gallery.kegiatan', 'LEFT');
+    $this->db->where(array('kegiatan' => '2'));
+    $this->db->order_by('gallery_id', 'ASC');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function getGallery3()
+  {
+    $this->db->select('*');
+    $this->db->from('gallery');
+    $this->db->join('event', 'event.event_id = gallery.kegiatan', 'LEFT');
+    $this->db->where(array('kegiatan' => '3'));
+    $this->db->order_by('gallery_id', 'ASC');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+
 
   public function createGallery($data)
   {
     $this->db->insert('gallery', $data);
   }
 
-  // Detail gallery
+  // Detail gallery 
   public function detailGallery($gallery_id)
   {
     $this->db->select('*');

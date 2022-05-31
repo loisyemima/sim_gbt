@@ -31,10 +31,10 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Full Name</th>
+                      <th>Nama</th>
                       <th>Username</th>
                       <th>Email</th>
-                      <th>image</th>
+                      <th>Gambar</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -50,8 +50,8 @@
                           <img src="<?php echo base_url('assets/img/profile/' . $u['image']); ?>" width="150px" height="150px">
                         </td>
                         <td>
-                          <a href="<?= base_url('admin/user/edit_user/' . $u['id']); ?>" class="badge badge-pill badge-success">edit</a>
-                          <a href="<?= base_url('admin/user/delete_user/' . $u['id']); ?>" class="badge badge-pill badge-danger">delete</a>
+                          <a href="<?= base_url('admin/user/edit_user/' . $u['id']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="<?= base_url('admin/user/delete_user/' . $u['id']); ?>" class="btn btn-danger btn-primary btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                       <?php $i++; ?>

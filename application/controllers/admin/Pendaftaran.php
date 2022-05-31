@@ -38,6 +38,33 @@ class Pendaftaran extends CI_Controller
           Verifikasi success!</div>');
     redirect('admin/pendaftaran/baptis');
   }
+
+  public function edit_baptis2($id)
+  {
+    $data = array(
+      'baptis_id' => $id,
+      'kode' => $this->input->post('kode'),
+      'keterangan' => $this->input->post('keterangan'),
+      'hari_tanggal' => $this->input->post('hari_tanggal'),
+      'tempat' => $this->input->post('tempat'),
+      'dilayani' => $this->input->post('dilayani'),
+    );
+
+    $this->mPendaftaran->editBaptis($data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+          Edit success!</div>');
+    redirect('admin/pendaftaran/baptis');
+  }
+
+  public function delete_baptis($id)
+  {
+    $data = array('baptis_id' => $id);
+    $this->mPendaftaran->deleteBaptis($data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+    Delete success!</div>');
+    redirect('admin/pendaftaran/baptis');
+  }
+
   // Pernikahan
   public function pernikahan()
   {
@@ -67,6 +94,29 @@ class Pendaftaran extends CI_Controller
     redirect('admin/pendaftaran/pernikahan');
   }
 
+  public function edit_pernikahan2($id)
+  {
+    $data = array(
+      'pernikahan_id' => $id,
+      'kode' => $this->input->post('kode'),
+      'keterangan' => $this->input->post('keterangan'),
+    );
+
+    $this->mPendaftaran->editPernikahan($data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+          Edit success!</div>');
+    redirect('admin/pendaftaran/pernikahan');
+  }
+
+  public function delete_pernikahan($id)
+  {
+    $data = array('pernikahan_id' => $id);
+    $this->mPendaftaran->deletePernikahan($data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+    Delete success!</div>');
+    redirect('admin/pendaftaran/pernikahan');
+  }
+
   // Penyerahan Anak
   public function anak()
   {
@@ -92,6 +142,29 @@ class Pendaftaran extends CI_Controller
     $this->mPendaftaran->editAnak($data);
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
           Verifikasi success!</div>');
+    redirect('admin/pendaftaran/anak');
+  }
+
+  public function edit_anak2($id)
+  {
+    $data = array(
+      'anak_id' => $id,
+      'kode' => $this->input->post('kode'),
+      'keterangan' => $this->input->post('keterangan'),
+    );
+
+    $this->mPendaftaran->editAnak($data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+          Edit success!</div>');
+    redirect('admin/pendaftaran/anak');
+  }
+
+  public function delete_anak($id)
+  {
+    $data = array('anak_id' => $id);
+    $this->mPendaftaran->deleteAnak($data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+    Delete success!</div>');
     redirect('admin/pendaftaran/anak');
   }
 }

@@ -31,7 +31,7 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Name</th>
+                      <th>Nama</th>
                       <th>Status</th>
                       <th>Level</th>
                       <th>Action</th>
@@ -46,8 +46,8 @@
                         <td><?= $p['level'] ?></td>
                         <td><?= $p['description'] ?></td>
                         <td>
-                          <a href="<?= base_url('admin/pelayan/edit_pelayan/' . $p['pelayan_id']); ?>" class="badge badge-pill badge-success">edit</a>
-                          <a href="<?= base_url('admin/pelayan/delete_pelayan/' . $p['pelayan_id']); ?>" class="badge badge-pill badge-danger">delete</a>
+                          <a href="<?= base_url('admin/pelayan/edit_pelayan/' . $p['pelayan_id']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="<?= base_url('admin/pelayan/delete_pelayan/' . $p['pelayan_id']); ?>" class="btn btn-danger btn-primary btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                       <?php $i++; ?>

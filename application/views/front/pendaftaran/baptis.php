@@ -24,26 +24,57 @@
                     <div class="row">
                       <div class="col-6">
                         <div class="input-group input-group-static mb-4">
-                          <label>Full Name</label>
-                          <input type="text" id="name" name="name" class="form-control">
+                          <label>Nama</label>
+                          <input type="text" id="nama" name="nama" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <label>Jenis Kelamin</label>
+                        <div class="row">
+                          <div class="col-6 text-start">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault1" value="perempuan" checked>
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                Perempuan
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="jenis_kelamin" value="laki-laki" id="flexRadioDefault2">
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                Laki-laki
+                              </label>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="input-group input-group-static mb-4">
                           <label>Tempat Lahir</label>
-                          <input type="text" id="place" name="place" class="form-control">
+                          <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="input-group input-group-static mb-4">
                           <label>Tanggal Lahir</label>
-                          <input type="date" id="birth" name="birth" class="form-control">
+                          <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="input-group input-group-static mb-4">
                           <label>No Telp</label>
-                          <input type="text" id="number" name="number" class="form-control">
+                          <input type="text" id="nomor" name="nomor" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="input-group input-group-static mb-4">
+                          <label>Nama Ayah</label>
+                          <input type="text" id="nama_ayah" name="nama_ayah" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="input-group input-group-static mb-4">
+                          <label>Nama Ibuk</label>
+                          <input type="text" id="nama_ibuk" name="nama_ibuk" class="form-control">
                         </div>
                       </div>
                       <div class="row">

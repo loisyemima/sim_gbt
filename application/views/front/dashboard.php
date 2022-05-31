@@ -51,8 +51,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-start mb-5 mt-5">
-          <h3 class="text-white z-index-1 position-relative">The Executive Team</h3>
-          <p class="text-white opacity-8 mb-0">There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill.</p>
+          <h3 class="text-white z-index-1 position-relative">Pengurus</h3>
+          <p class="text-white opacity-8 mb-0">Gereja Bethel Tabernakel Siliragung</p>
         </div>
       </div>
       <div class="row mt-4">

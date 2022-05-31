@@ -49,6 +49,9 @@
                       <a href="<?= base_url('warta') ?>" class="dropdown-item border-radius-md">
                         <span>Warta</span>
                       </a>
+                      <a href="<?= base_url('warta/surat') ?>" class="dropdown-item border-radius-md">
+                        <span>Surat Edaran</span>
+                      </a>
                     </div>
 
                   </div>

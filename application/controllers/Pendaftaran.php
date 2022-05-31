@@ -16,9 +16,9 @@ class Pendaftaran extends CI_Controller
 
   public function baptis()
   {
-    $this->form_validation->set_rules('name', 'Name', 'required');
-    $this->form_validation->set_rules('birth', 'Tanggal Lahir', 'required');
-    $this->form_validation->set_rules('number', 'Telepon', 'required');
+    $this->form_validation->set_rules('nama', 'Nama', 'required');
+    $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+    $this->form_validation->set_rules('nomor', 'Telepon', 'required');
 
     if ($this->form_validation->run() == false) {
       $data = array(
@@ -28,11 +28,13 @@ class Pendaftaran extends CI_Controller
       $this->load->view('front/templates/wrapper', $data);
     } else {
       $data = [
-        'name' => $this->input->post('name'),
-        'place' => $this->input->post('place'),
-        'birth' => $this->input->post('birth'),
-        'number' => $this->input->post('number'),
-        'date' => date('Y-m-d'),
+        'nama' => $this->input->post('nama'),
+        'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+        'tempat_lahir' => $this->input->post('tempat_lahir'),
+        'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+        'nomor' => $this->input->post('nomor'),
+        'nama_ayah' => $this->input->post('nama_ayah'),
+        'nama_ibuk' => $this->input->post('nama_ibuk'),
         'status' => 1
       ];
       $this->mPendaftaran->createBaptis($data);

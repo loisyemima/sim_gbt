@@ -22,6 +22,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="<?= base_url('assets/front/') ?>assets/css/material-kit.css?v=3.0.2" rel="stylesheet" />
+
+  <!-- Template Main CSS File -->
+
+  <link href="<?= base_url('assets/front/') ?>assets/css/sim.css" rel="stylesheet">
+
 </head>
 
 <body class="index-page bg-gray-200">

@@ -13,11 +13,13 @@ class Member extends CI_Controller
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->getMember();
+    $img = $this->mMember->get_all_data();
 
     $data = array(
       'title'    => 'Daftar Anggota Jemaat',
       'user'  => $user,
       'member'    => $member,
+      'img'    => $img,
       'isi'    => 'admin/member/list'
     );
     $this->load->view('templates/wrapper', $data);
@@ -347,16 +349,11 @@ class Member extends CI_Controller
         $upload_data        = array('uploads' => $this->upload->data());
         $config['image_library']  = 'gd2';
         $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
-        $config['create_thumb']   = TRUE;
         $config['quality']       = "100%";
         $config['maintain_ratio']   = FALSE;
-        $config['width']       = 360; // Pixel
-        $config['height']       = 200; // Pixel
         $config['x_axis']       = 0;
         $config['y_axis']       = 0;
         $config['thumb_marker']   = '';
-        $this->load->library('image_lib', $config);
-        $this->image_lib->resize();
 
         $data = array(
           'member' => $id,
@@ -522,6 +519,20 @@ class Member extends CI_Controller
       'isi'    => 'admin/member/detail'
     );
     $this->load->view('templates/wrapper', $data);
+  }
+
+  public function print_image($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img = $this->mMember->detailImg($id);
+
+    $data = array(
+      'user'  => $user,
+      'member'    => $member,
+      'img'    => $img,
+    );
+    $this->load->view('admin/member/print', $data, false);
   }
 
   /*public function filter()

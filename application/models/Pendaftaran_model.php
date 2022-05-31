@@ -51,6 +51,12 @@ class Pendaftaran_model extends CI_Model
     $this->db->update('baptis', $data);
   }
 
+  public function deleteBaptis($data)
+  {
+    $this->db->where('baptis_id', $data['baptis_id']);
+    $this->db->delete('baptis', $data);
+  }
+
   // Pernikahan
   public function getPernikahan()
   {
@@ -92,6 +98,12 @@ class Pendaftaran_model extends CI_Model
     $this->db->update('pernikahan', $data);
   }
 
+  public function deletePernikahan($data)
+  {
+    $this->db->where('pernikahan_id', $data['pernikahan_id']);
+    $this->db->delete('pernikahan', $data);
+  }
+
   // Penyerahan Anak
   public function getAnak()
   {
@@ -111,5 +123,11 @@ class Pendaftaran_model extends CI_Model
   {
     $this->db->where('anak_id', $data['anak_id']);
     $this->db->update('anak', $data);
+  }
+
+  public function deleteAnak($data)
+  {
+    $this->db->where('anak_id', $data['anak_id']);
+    $this->db->delete('anak', $data);
   }
 }

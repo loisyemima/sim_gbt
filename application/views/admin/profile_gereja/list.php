@@ -31,8 +31,8 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Image</th>
-                      <th>Description</th>
+                      <th>Gambar</th>
+                      <th>Deskripsi</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -46,8 +46,8 @@
                         </td>
                         <td><?= $p['description'] ?></td>
                         <td>
-                          <a href="<?= base_url('admin/profile_gereja/edit_profile/' . $p['profile_id']); ?>" class="badge badge-pill badge-success">edit</a>
-                          <a href="<?= base_url('admin/profile_gereja/delete_profile/' . $p['profile_id']); ?>" class="badge badge-pill badge-danger">delete</a>
+                          <a href="<?= base_url('admin/profile_gereja/edit_profile/' . $p['profile_id']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="<?= base_url('admin/profile_gereja/delete_profile/' . $p['profile_id']); ?>" class="btn btn-danger btn-primary btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                       <?php $i++; ?>
