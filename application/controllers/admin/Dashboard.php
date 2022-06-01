@@ -11,15 +11,22 @@ class Dashboard extends CI_Controller
 
   public function index()
   {
-    $data['title'] = 'Dashboard';
-    $data['user'] = $this->db->get_where('user', ['email' =>
-    $this->session->userdata('email')])->row_array();
+    $user = $this->mAdmin->getData();
+    $total = $this->mAdmin->total();
+    $anak = $this->mAdmin->totalAnak();
+    $pemuda = $this->mAdmin->totalPemuda();
+    $dewasa = $this->mAdmin->totalDewasa();
 
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar', $data);
-    $this->load->view('templates/topbar', $data);
-    $this->load->view('admin/index', $data);
-    $this->load->view('templates/footer');
+    $data = array(
+      'title'    => 'Dashboard',
+      'user'  => $user,
+      'total'  => $total,
+      'anak'  => $anak,
+      'pemuda'  => $pemuda,
+      'dewasa'  => $dewasa,
+      'isi'    => 'admin/index'
+    );
+    $this->load->view('templates/wrapper', $data);
   }
 
 

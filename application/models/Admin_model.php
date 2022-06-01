@@ -22,4 +22,38 @@ class Admin_model extends CI_Model
     $query = $this->db->get();
     return $query->result_array();
   }
+
+  public function total()
+  {
+    $this->db->select('*');
+    $this->db->from('member');
+    $this->db->where(array('status' => 'Member'));
+    return $this->db->get()->num_rows();
+  }
+  public function totalAnak()
+  {
+    $this->db->select('*');
+    $this->db->from('member');
+    $this->db->where(array('status' => 'Member'));
+    $this->db->where(array('age' => '1'));
+    return $this->db->get()->num_rows();
+  }
+
+  public function totalPemuda()
+  {
+    $this->db->select('*');
+    $this->db->from('member');
+    $this->db->where(array('status' => 'Member'));
+    $this->db->where(array('age' => '2'));
+    return $this->db->get()->num_rows();
+  }
+
+  public function totalDewasa()
+  {
+    $this->db->select('*');
+    $this->db->from('member');
+    $this->db->where(array('status' => 'Member'));
+    $this->db->where(array('age' => '3'));
+    return $this->db->get()->num_rows();
+  }
 }

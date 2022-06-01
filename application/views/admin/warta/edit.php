@@ -23,32 +23,41 @@
        <div class="container-fluid">
 
          <div class="row">
-           <div class="col-lg-6">
-             <?php if (validation_errors()) : ?>
-               <div class="alert alert-danger" role="alert">
-                 <?= validation_errors(); ?>
+           <div class="col-md-8">
+             <div class="card card-primary">
+               <div class="card-header">
+                 <h3 class="card-title">Edit Profile Gereja</h3>
                </div>
-             <?php endif; ?>
+               <?php if (validation_errors()) : ?>
+                 <div class="alert alert-danger" role="alert">
+                   <?= validation_errors(); ?>
+                 </div>
+               <?php endif; ?>
 
-             <?= $this->session->flashdata('message'); ?>
+               <?= $this->session->flashdata('message'); ?>
 
-             <form role="form" action="<?= base_url('admin/warta/edit_warta/' . $warta['warta_id']); ?>" method="post" enctype="multipart/form-data">
-               <div class="form-group">
-                 <label for="exampleInputFile">File input</label>
-                 <div class="input-group">
-                   <div class="custom-file">
-                     <input type="file" class="custom-file-input" name="image" id="exampleInputFile">
-                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+               <form role="form" action="<?= base_url('admin/warta/edit_warta/' . $warta['warta_id']); ?>" method="post" enctype="multipart/form-data">
+                 <div class="card-body">
+                   <div class="form-group">
+                     <label for="exampleInputFile">File input</label>
+                     <div class="input-group">
+                       <div class="custom-file">
+                         <input type="file" class="custom-file-input" name="image" id="exampleInputFile">
+                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label>Text</label>
+                     <textarea type="text" class="form-control" name="description" id="summernote"><?php echo $warta['description'] ?></textarea>
                    </div>
                  </div>
-               </div>
-               <div class="form-group">
-                 <label>Text</label>
-                 <input type="text" class="form-control" placeholder="Enter ..." name="description" id="description" value="<?php echo $warta['description'] ?>">
-               </div>
-               <button type="submit" class="btn btn-primary">Submit</button>
-               <button type="reset" class="btn btn-secondary">Reset</button>
-             </form>
+                 <div class="card-footer">
+                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="reset" class="btn btn-secondary">Reset</button>
+                 </div>
+               </form>
+             </div>
            </div>
          </div>
        </div><!-- /.container-fluid -->
