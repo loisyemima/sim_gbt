@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 09:49 AM
+-- Generation Time: Jun 05, 2022 at 05:07 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -50,23 +50,30 @@ INSERT INTO `age_level` (`age_id`, `name`) VALUES
 
 CREATE TABLE `anak` (
   `anak_id` int(11) NOT NULL,
-  `nama_wali` varchar(250) NOT NULL,
   `nama_anak` varchar(250) NOT NULL,
-  `place` varchar(250) NOT NULL,
-  `birth` varchar(250) NOT NULL,
-  `number` varchar(50) NOT NULL,
+  `jenis_kelamin` varchar(250) NOT NULL,
+  `tempattgl_lahir` varchar(250) NOT NULL,
+  `nama_ayah` varchar(250) NOT NULL,
+  `nama_ibu` varchar(250) NOT NULL,
+  `nomor` varchar(250) NOT NULL,
   `date` date NOT NULL,
   `status` int(11) NOT NULL,
   `keterangan` varchar(250) NOT NULL,
-  `kode` varchar(250) NOT NULL
+  `kode` varchar(250) NOT NULL,
+  `tgl_penyerahan` varchar(250) NOT NULL,
+  `tempat` varchar(250) NOT NULL,
+  `dilayani` varchar(250) NOT NULL,
+  `tempattgl_ttd` varchar(250) NOT NULL,
+  `nama_ttd` varchar(250) NOT NULL,
+  `nik` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `anak`
 --
 
-INSERT INTO `anak` (`anak_id`, `nama_wali`, `nama_anak`, `place`, `birth`, `number`, `date`, `status`, `keterangan`, `kode`) VALUES
-(1, 'yusak', 'yemima ruth', 'banyuwangi', '2022-05-18', '08747483647', '2022-05-18', 2, '', '');
+INSERT INTO `anak` (`anak_id`, `nama_anak`, `jenis_kelamin`, `tempattgl_lahir`, `nama_ayah`, `nama_ibu`, `nomor`, `date`, `status`, `keterangan`, `kode`, `tgl_penyerahan`, `tempat`, `dilayani`, `tempattgl_ttd`, `nama_ttd`, `nik`) VALUES
+(1, 'yemima ruth', '', '0', '', '', '08747483647', '2022-05-18', 2, '', '', '0', '0', '0', '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -78,8 +85,7 @@ CREATE TABLE `baptis` (
   `baptis_id` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `jenis_kelamin` varchar(250) NOT NULL,
-  `tempat_lahir` varchar(100) NOT NULL,
-  `tanggal_lahir` varchar(100) NOT NULL,
+  `tempattgl_lahir` varchar(100) NOT NULL,
   `nomor` varchar(50) NOT NULL,
   `nama_ayah` varchar(250) NOT NULL,
   `nama_ibuk` varchar(250) NOT NULL,
@@ -88,17 +94,20 @@ CREATE TABLE `baptis` (
   `kode` varchar(250) NOT NULL,
   `hari_tanggal` varchar(250) NOT NULL,
   `tempat` varchar(250) NOT NULL,
-  `dilayani` varchar(250) NOT NULL
+  `dilayani` varchar(250) NOT NULL,
+  `tgl_ttd` int(11) NOT NULL,
+  `nama_gembala` int(11) NOT NULL,
+  `NIK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `baptis`
 --
 
-INSERT INTO `baptis` (`baptis_id`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `nomor`, `nama_ayah`, `nama_ibuk`, `status`, `keterangan`, `kode`, `hari_tanggal`, `tempat`, `dilayani`) VALUES
-(1, 'abigail philipus', '', 'surabaya', '2001-02-18', '089547483647', '', '', 2, 'Diterima', 'E3561', '', '', ''),
-(2, 'kelly gine', 'perempuan', 'Banyuwangi', '2005-02-10', '087234551672', 'Suhardi', 'Alfiah', 2, 'Diterima', '091/SBA-GBT/X/X11', 'Senin, 23 Juli 2021', 'Siliragung', 'Pdt. Adiel Stefanus'),
-(5, 'yemima', '', 'jember', '2022-05-28', '086656565655', '', '', 2, '', '', '', '', '');
+INSERT INTO `baptis` (`baptis_id`, `nama`, `jenis_kelamin`, `tempattgl_lahir`, `nomor`, `nama_ayah`, `nama_ibuk`, `status`, `keterangan`, `kode`, `hari_tanggal`, `tempat`, `dilayani`, `tgl_ttd`, `nama_gembala`, `NIK`) VALUES
+(1, 'abigail philipus', '', 'surabaya', '089547483647', '', '', 2, 'Diterima', 'E3561', '', '', '', 0, 0, 0),
+(2, 'kelly gine', 'perempuan', 'Banyuwangi', '087234551672', 'Suhardi', 'Alfiah', 2, 'Diterima', '091/SBA-GBT/X/MMX1', 'Senin, 23 Juli 2021', 'Siliragung', 'Pdt. Adiel Stefanus', 0, 0, 0),
+(5, 'yemima', '', 'jember', '086656565655', '', '', 2, '', '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -108,15 +117,16 @@ INSERT INTO `baptis` (`baptis_id`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tan
 
 CREATE TABLE `config` (
   `config_id` int(11) NOT NULL,
-  `penanganan` varchar(250) NOT NULL
+  `penanganan` varchar(250) NOT NULL,
+  `lokasi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `config`
 --
 
-INSERT INTO `config` (`config_id`, `penanganan`) VALUES
-(1, 'https://drive.google.com/file/d/1A6M5dV2UYbtuEGUYUEOhPKVVaFxWbIqS/preview');
+INSERT INTO `config` (`config_id`, `penanganan`, `lokasi`) VALUES
+(1, 'https://drive.google.com/file/d/1A6M5dV2UYbtuEGUYUEOhPKVVaFxWbIqS/preview', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.4132834882266!2d114.10721761416352!3d-8.556197589127493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd407da6bf99953%3A0x305a0189e37d716d!2sGBT%20%22%20ICC%20%22%20SILIRAGUNG!5e0!3m2!1sid!2sid!4v1654416667696!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
 
 -- --------------------------------------------------------
 
@@ -289,24 +299,32 @@ INSERT INTO `pelayan` (`pelayan_id`, `name`, `level`, `description`) VALUES
 
 CREATE TABLE `pernikahan` (
   `pernikahan_id` int(11) NOT NULL,
-  `name_male` varchar(250) NOT NULL,
-  `name_female` varchar(250) NOT NULL,
+  `nama_laki` varchar(250) NOT NULL,
+  `lahir_laki` varchar(250) NOT NULL,
+  `name_perempuan` varchar(250) NOT NULL,
+  `lahir_perempuan` varchar(250) NOT NULL,
   `domisili` varchar(250) NOT NULL,
-  `number` varchar(50) NOT NULL,
+  `nomor` varchar(50) NOT NULL,
   `baptis` varchar(100) NOT NULL,
   `date` date NOT NULL,
   `status` int(11) NOT NULL,
   `keterangan` varchar(250) NOT NULL,
-  `kode` varchar(250) NOT NULL
+  `kode` varchar(250) NOT NULL,
+  `tgl_pernikahan` varchar(250) NOT NULL,
+  `tempat` varchar(250) NOT NULL,
+  `dilayani` varchar(250) NOT NULL,
+  `tempattgl_ttd` varchar(250) NOT NULL,
+  `nama_ttd` varchar(250) NOT NULL,
+  `nik` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pernikahan`
 --
 
-INSERT INTO `pernikahan` (`pernikahan_id`, `name_male`, `name_female`, `domisili`, `number`, `baptis`, `date`, `status`, `keterangan`, `kode`) VALUES
-(1, 'philipus', 'ruth', 'banyuwangi', '082147483647', 'Sudah Baptis', '2022-05-18', 2, '', ''),
-(2, 'ishak', 'abigail', 'Banyuwangi', '081245662445', 'Sudah Baptis', '2022-05-24', 1, '', '');
+INSERT INTO `pernikahan` (`pernikahan_id`, `nama_laki`, `lahir_laki`, `name_perempuan`, `lahir_perempuan`, `domisili`, `nomor`, `baptis`, `date`, `status`, `keterangan`, `kode`, `tgl_pernikahan`, `tempat`, `dilayani`, `tempattgl_ttd`, `nama_ttd`, `nik`) VALUES
+(1, 'philipus', '0', 'ruth', '0', 'banyuwangi', '082147483647', 'Sudah Baptis', '2022-05-18', 2, '', '', '0', '0', '0', '0', '0', '0'),
+(2, 'ishak', '0', 'abigail', '0', 'Banyuwangi', '081245662445', 'Sudah Baptis', '2022-05-24', 1, '', '', '0', '0', '0', '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -316,9 +334,10 @@ INSERT INTO `pernikahan` (`pernikahan_id`, `name_male`, `name_female`, `domisili
 
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
-  `image` varchar(250) NOT NULL,
-  `image_name` varchar(250) NOT NULL,
-  `description` text NOT NULL,
+  `gambar` varchar(250) NOT NULL,
+  `nama_gambar` varchar(250) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `keterangan` varchar(250) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -326,8 +345,8 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`profile_id`, `image`, `image_name`, `description`, `date`) VALUES
-(3, 'o_1aggnnhv8b6jee8oaf108j1k9na2.jpg', 'abcde', '<ol><li>iwjwpdj</li><li>xedniefn</li><li>jsken</li></ol>', '2022-05-18');
+INSERT INTO `profile` (`profile_id`, `gambar`, `nama_gambar`, `deskripsi`, `keterangan`, `date`) VALUES
+(3, 'images_(1).jpg', 'abcde', '<p><span style=\"font-size: 24px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><font color=\"#083139\"><b>VISI-MISI</b></font></span><br></p><p><font color=\"#0000ff\"><span style=\"font-size: 24px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><br></span></font></p><p><font color=\"#0000ff\"><span style=\"font-size: 24px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><b>SEJARAH</b></span></font></p><p><span style=\"font-size: 1rem; font-family: \" times=\"\" new=\"\" roman\";\"=\"\">Gereja Bethel Tabernakel Kristus Ajaib Siliragung merupakan salah satu gereja yang Berada di Kecamatan Siliragung Banyuwangi . Gereja ini dirintis pada tahin 1976 oleh Bapak Timotius Sukat Narko dan ibu Lea Sumari. Seiring bertambahnya Tahun pertumbuhan jemaat juga semakin bertambah.&nbsp;</span></p>                                                                                                                        ', 'Profil', '2022-06-02');
 
 -- --------------------------------------------------------
 
@@ -382,7 +401,6 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (8, 1, 3),
 (9, 1, 5),
 (10, 1, 6),
-(11, 2, 6),
 (12, 1, 7);
 
 -- --------------------------------------------------------
@@ -404,7 +422,6 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
 (2, 'User'),
 (3, 'control'),
-(5, 'support'),
 (6, 'Gallery'),
 (7, 'Pendaftaran');
 
@@ -458,13 +475,14 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (9, 1, 'Profile Gereja', 'admin/profile_gereja', 'fas fa-fw fa-place-of-worship', 1, 'A07'),
 (13, 1, 'Warta', 'admin/warta', 'fas fa-fw fa-bullhorn', 1, 'A08'),
 (14, 2, 'Data User', 'user/profile/data', 'fas fa-fw fa-file-alt', 1, 'U03'),
-(16, 5, 'Age Level', 'admin/age', 'fas fa-fw fa-people-arrows', 1, 'S01'),
+(16, 3, 'Age Level', 'admin/age', 'fas fa-fw fa-people-arrows', 1, 'C04'),
 (17, 6, 'Gallery', 'admin/gallery', 'fas fa-fw fa-images', 1, 'G01'),
 (18, 6, 'Event', 'admin/gallery/event', 'fas fa-fw fa-calendar-check', 1, 'G02'),
 (19, 7, 'Pendaftaran Baptis', 'admin/pendaftaran/baptis', 'fas fa-fw fa-pray', 1, 'P01'),
 (20, 7, 'Pendaftaran Pernikahan', 'admin/pendaftaran/pernikahan', 'fas fa-fw fa-user-friends', 1, 'P02'),
 (21, 7, 'Pendaftaran Penyerahan Anak', 'admin/pendaftaran/anak', 'fas fa-fw fa-baby', 1, 'P03'),
-(22, 1, 'Surat Edaran', 'admin/warta/surat', 'fas fa-fw fa-envelope-open-text', 1, 'A09');
+(22, 1, 'Surat Edaran', 'admin/warta/surat', 'fas fa-fw fa-envelope-open-text', 1, 'A09'),
+(23, 3, 'Lokasi', 'admin/setting/lokasi', 'fas fa-fw fa-map-marked-alt', 1, 'C05');
 
 -- --------------------------------------------------------
 
@@ -484,7 +502,7 @@ CREATE TABLE `warta` (
 --
 
 INSERT INTO `warta` (`warta_id`, `image`, `date`, `description`) VALUES
-(1, 'background1.jpg', '2022-05-25', 'jadwal ibadah gereja gbt kristus ajaib siliragung');
+(1, 'background1.jpg', '2022-06-02', '<table class=\"table table-bordered\" style=\"background-color: rgb(255, 255, 255); color: rgb(33, 37, 41); font-size: 1rem;\"><tbody><tr><td><p style=\"line-height: 1;\"><span style=\"font-size: 18px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><b>Ibadah Raya Minggu</b></span></p><p style=\"line-height: 1;\"><span style=\"font-size: 18px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><font color=\"#000000\">&nbsp; &nbsp; <span style=\"font-size: 18px;\">Setiap Hari Minggu Pukul 07.00</span></font></span></p><p style=\"line-height: 1;\"><span style=\"font-size: 18px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><font color=\"#000000\">&nbsp; &nbsp; Tempat di Gereja</font></span></p></td></tr><tr><td><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-size: 18px;\"><b>Ibadah Sekolah Minggu</b></span></p><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-family: \">&nbsp; &nbsp; <span style=\"font-size: 18px;\">Setiap Hati Minggu Pukul 08.00</span></span></p><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-size: 18px;\">&nbsp; &nbsp; Tempat di Gereja</span></p></td></tr><tr><td><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-size: 18px;\"><b>Ibadah Tengah Minggu</b></span></p><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-family: \">&nbsp; &nbsp; <span style=\"font-size: 18px;\">Setiap Kamis Pukul 18.00</span></span></p><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-size: 18px;\">&nbsp; &nbsp; Tempat di Gereja</span></p></td></tr><tr><td><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-size: 18px;\"><b>Ibadah Pemuda Remaja</b></span></p><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-family: \">&nbsp; &nbsp; <span style=\"font-size: 18px;\">Setiap Sabtu Pukul 18.00</span></span></p><p style=\"line-height: 1;\"><span times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" 18px;\"=\"\" style=\"font-size: 18px;\">&nbsp; &nbsp; Tempat di Gereja</span></p></td></tr></tbody></table><p style=\"text-align: left; line-height: 1;\"><span style=\"font-size: 18px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><br></span></p><p style=\"text-align: left; line-height: 1;\"><br></p><p style=\"text-align: left; line-height: 1;\"><span style=\"font-size: 18px; font-family: \" times=\"\" new=\"\" roman\";\"=\"\"><font color=\"#000000\" style=\"\"><br></font></span></p><p style=\"text-align: left;\"><br></p><p style=\"text-align: left;\"><span style=\"font-size: 18px;\"><br></span></p>');
 
 --
 -- Indexes for dumped tables
@@ -714,7 +732,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `warta`
