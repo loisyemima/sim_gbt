@@ -61,6 +61,9 @@
                             <a href="<?= base_url('admin/pendaftaran/delete_pernikahan/' . $p['pernikahan_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
                               <i class="fa fa-trash"></i>
                             </a>
+                            <a href="<?= base_url('admin/pendaftaran/print_pernikahan/' . $p['pernikahan_id']); ?>" class="btn btn-info btn-sm" data-target="_blank">
+                              <i class="fas fa-upload"></i>
+                            </a>
                           <?php endif; ?>
                         </td>
                       </tr>

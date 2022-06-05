@@ -29,6 +29,12 @@ class Dashboard extends CI_Controller
     $this->load->view('templates/wrapper', $data);
   }
 
+  public function index2()
+  {
+    $this->load->view('admin/index2');
+  }
+
+
 
   public function role()
   {

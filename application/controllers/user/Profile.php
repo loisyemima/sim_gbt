@@ -60,13 +60,37 @@ class Profile extends CI_Controller
   public function data()
   {
     $user = $this->mAdmin->getData();
-    $data = $this->mProfile->getData();
+    $data = $this->mUser->getData();
 
     $data = array(
       'title'    => 'Data User',
       'user'  => $user,
       'data'  => $data,
       'isi'    => 'user/data'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function detail_data($id)
+  {
+    $user = $this->mAdmin->getData();
+    $data = $this->mUser->getData();
+    $member = $this->mMember->getMember();
+    $member1 = $this->mMember->detailMember($id);
+    $username = $this->mMember->username();
+    $age = $this->mAge->getAge();
+    $img = $this->mMember->detailImg($id);
+
+    $data = array(
+      'title'    => 'Daftar Anggota Jemaat',
+      'user'  => $user,
+      'data' => $data,
+      'member1'    => $member1,
+      'member'    => $member,
+      'username'    => $username,
+      'age'    => $age,
+      'img'    => $img,
+      'isi'    => 'user/detail'
     );
     $this->load->view('templates/wrapper', $data);
   }

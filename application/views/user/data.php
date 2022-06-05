@@ -28,17 +28,27 @@
                 <table class="table table-bordered table-hover" id="dataTable">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>username</th>
-                      <th>image</th>
-                      <th>dokumen</th>
+                      <th>Nama</th>
+                      <th>Tempat Lahir</th>
+                      <th>Tanggal Lahir</th>
+                      <th>Golongan</th>
+                      <th>Status</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($data as $d) : ?>
                       <tr>
-                        <td><?= $d['name'] ?></td>
                         <td><?= $d['fullname'] ?></td>
+                        <td><?= $d['place'] ?></td>
+                        <td><?= $d['birth'] ?></td>
+                        <td><?= $d['name'] ?></td>
+                        <td><?= $d['status'] ?></td>
+                        <td>
+                          <a href="<?= base_url('user/profile/detail_data/' . $d['member_id']); ?>" class="btn btn-success btn-sm">
+                            <i class="fa fa-eye"></i>
+                          </a>
+                        </td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

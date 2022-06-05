@@ -47,12 +47,16 @@
                      </div>
                    </div>
                    <div class="form-group">
-                     <label>Image Name</label>
-                     <input class="form-control" id="image_name" name="image_name">
+                     <label>Nama Gambar</label>
+                     <input class="form-control" id="nama_gambar" name="nama_gambar">
+                   </div>
+                   <div class="form-group">
+                     <label>Keterangan</label>
+                     <input class="form-control" id="keterangan" name="keterangan">
                    </div>
                    <div class="form-group">
                      <label>Text</label>
-                     <textarea placeholder="Enter ..." name="description" id="summernote">
+                     <textarea placeholder="Enter ..." name="deskripsi" id="summernote">
                     </textarea>
                    </div>
                  </div>

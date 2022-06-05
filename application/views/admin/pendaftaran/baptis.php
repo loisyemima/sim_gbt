@@ -60,6 +60,9 @@
                             <a href="<?= base_url('admin/pendaftaran/delete_baptis/' . $b['baptis_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
                               <i class="fa fa-trash"></i>
                             </a>
+                            <a href="<?= base_url('admin/pendaftaran/print_baptis/' . $b['baptis_id']); ?>" target="_blank" class="btn btn-info btn-sm">
+                              <i class="fas fa-upload"></i>
+                            </a>
                           <?php endif; ?>
                         </td>
                       </tr>

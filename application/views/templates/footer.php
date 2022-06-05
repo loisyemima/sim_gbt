@@ -89,15 +89,9 @@
 <script src="<?= base_url('assets/admin/') ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url('assets/admin/') ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-<!-- FLOT CHARTS -->
-<script src="<?= base_url('assets/admin/') ?>plugins/flot/jquery.flot.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?= base_url('assets/admin/') ?>plugins/flot/plugins/jquery.flot.pie.js"></script>
 <!-- bs-custom-file-input -->
 <script src="<?= base_url('assets/admin/') ?>plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
-<!-- Summernote -->
-<script src="<?= base_url('assets/admin/') ?>plugins/summernote/summernote-bs4.min.js"></script>
 <!-- ajax rmenu role access -->
 <script>
   $('.form-check-input').on('click', function() {
@@ -272,6 +266,7 @@
       "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": true,
@@ -281,67 +276,8 @@
       "autoWidth": false,
       "responsive": true,
     });
+
   });
-</script>
-
-<script>
-  $(function() {
-    /*
-     * DONUT CHART
-     * -----------
-     */
-
-    var donutData = [{
-        label: 'Series2',
-        data: 30,
-        color: '#3c8dbc'
-      },
-      {
-        label: 'Series3',
-        data: 20,
-        color: '#0073b7'
-      },
-      {
-        label: 'Series4',
-        data: 50,
-        color: '#00c0ef'
-      }
-    ]
-    $.plot('#donut-chart', donutData, {
-      series: {
-        pie: {
-          show: true,
-          radius: 1,
-          innerRadius: 0.5,
-          label: {
-            show: true,
-            radius: 2 / 3,
-            formatter: labelFormatter,
-            threshold: 0.1
-          }
-
-        }
-      },
-      legend: {
-        show: false
-      }
-    })
-    /*
-     * END DONUT CHART
-     */
-
-  })
-
-  /*
-   * Custom Label formatter
-   * ----------------------
-   */
-  function labelFormatter(label, series) {
-    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">' +
-      label +
-      '<br>' +
-      Math.round(series.percent) + '%</div>'
-  }
 </script>
 
 <script>
@@ -360,7 +296,7 @@
         ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
         ['fontname', ['fontname']],
         ['fontsize', ['fontsize']],
-        ['color', ['color']],
+        ['forecolor', ['forecolor']],
         ['para', ['ol', 'ul', 'paragraph', 'height']],
         ['table', ['table']],
         ['insert', ['link']],
@@ -368,6 +304,48 @@
       ]
     });
   })
+</script>
+<!--<script type="text/javascript">
+  $(document).ready(function() {
+    $('#tabelData').DataTable();
+
+    function filterData() {
+      $('#tabelData').DataTable().search(
+        $('.status').val()
+      ).draw();
+    }
+    $('.status').on('change', function() {
+      filterData();
+    });
+  });
+</script>-->
+<script>
+  $(document).ready(function() {
+    $('#tabelData').DataTable({
+      initComplete: function() {
+        this.api()
+          .columns()
+          .every(function() {
+            var column = this;
+            var select = $('<select><option value=""></option></select>')
+              .appendTo($(column.footer()).empty())
+              .on('change', function() {
+                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                column.search(val ? '^' + val + '$' : '', true, false).draw();
+              });
+
+            column
+              .data()
+              .unique()
+              .sort()
+              .each(function(d, j) {
+                select.append('<option value="' + d + '">' + d + '</option>');
+              });
+          });
+      },
+    });
+  });
 </script>
 </body>
 

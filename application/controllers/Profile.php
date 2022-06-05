@@ -3,12 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Profile extends CI_Controller
 {
-
   public function index()
   {
-    $this->load->view('front/templates/header');
-    $this->load->view('front/templates/navbar');
-    $this->load->view('front/profile');
-    $this->load->view('front/templates/footer');
+    $profile = $this->mProfile->getProfile2();
+
+    $data = array(
+      'title'    => 'Dashboard',
+      'profile' => $profile,
+      'isi'    => 'front/profile'
+    );
+    $this->load->view('front/templates/wrapper', $data);
   }
 }

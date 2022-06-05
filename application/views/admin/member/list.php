@@ -31,7 +31,7 @@
                   <table class="table">
                     <tr>
                       <td>
-                        <select name="" id="status" class="form-control">
+                        <select name="" id="" class="form-control status">
                           <option>Semua</option>
                           <option value="Member">Member</option>
                           <option value="Non Member">Non Member</option>
@@ -41,7 +41,7 @@
                   </table>
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-bordered table-hover" id="example1">
+                  <table class="table table-bordered table-hover" id="tabelData">
                     <thead>
                       <tr>
                         <th>#</th>

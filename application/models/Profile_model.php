@@ -13,6 +13,16 @@ class Profile_model extends CI_Model
     return $query->result_array();
   }
 
+  public function getProfile2()
+  {
+    $this->db->select('*');
+    $this->db->from('profile');
+    $this->db->order_by('profile_id', 'ASC');
+    $this->db->where(array('keterangan' => 'Profil'));
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
   public function createProfile($data)
   {
     $this->db->insert('profile', $data);
@@ -41,17 +51,5 @@ class Profile_model extends CI_Model
   {
     $this->db->where('profile_id', $data['profile_id']);
     $this->db->delete('profile', $data);
-  }
-
-  public function getData()
-  {
-    $id = $this->session->userdata('id');
-    $this->db->select('*');
-    $this->db->from('member');
-    $this->db->join('user', 'user.id = member.username', 'LEFT');
-    $this->db->where('id', $id);
-    $this->db->order_by('member_id', 'ASC');
-    $query = $this->db->get();
-    return $query->result_array();
   }
 }

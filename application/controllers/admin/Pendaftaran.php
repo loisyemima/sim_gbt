@@ -56,6 +56,17 @@ class Pendaftaran extends CI_Controller
     redirect('admin/pendaftaran/baptis');
   }
 
+  public function print_baptis($id)
+  {
+    $user = $this->mAdmin->getData();
+
+    $data = array(
+      'title'    => 'Print Baptis',
+      'user'  => $user,
+    );
+    $this->load->view('admin/pendaftaran/print_baptis', $data);
+  }
+
   public function delete_baptis($id)
   {
     $data = array('baptis_id' => $id);
@@ -117,6 +128,17 @@ class Pendaftaran extends CI_Controller
     redirect('admin/pendaftaran/pernikahan');
   }
 
+  public function print_pernikahan($id)
+  {
+    $user = $this->mAdmin->getData();
+
+    $data = array(
+      'title'    => 'Print Pernikahab',
+      'user'  => $user,
+    );
+    $this->load->view('admin/pendaftaran/print_pernikahan', $data);
+  }
+
   // Penyerahan Anak
   public function anak()
   {
@@ -157,6 +179,17 @@ class Pendaftaran extends CI_Controller
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
           Edit success!</div>');
     redirect('admin/pendaftaran/anak');
+  }
+
+  public function print_anak($id)
+  {
+    $user = $this->mAdmin->getData();
+
+    $data = array(
+      'title'    => 'Print Anak',
+      'user'  => $user,
+    );
+    $this->load->view('admin/pendaftaran/print_anak', $data);
   }
 
   public function delete_anak($id)

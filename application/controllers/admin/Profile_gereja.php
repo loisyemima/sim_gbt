@@ -29,7 +29,7 @@ class Profile_gereja extends CI_Controller
     $user = $this->mAdmin->getData();
 
     $v = $this->form_validation;
-    $v->set_rules('image_name', 'Image Name', 'required');
+    $v->set_rules('nama_gambar', 'Nama Gambar', 'required');
 
     if ($v->run()) {
 
@@ -60,9 +60,10 @@ class Profile_gereja extends CI_Controller
 
         $i = $this->input;
         $data = array(
-          'image'      => $upload_data['uploads']['file_name'],
-          'image_name'  => $i->post('image_name'),
-          'description'  => $i->post('description'),
+          'gambar'      => $upload_data['uploads']['file_name'],
+          'nama_gambar'  => $i->post('nama_gambar'),
+          'deskripsi'  => $i->post('deskripsi'),
+          'keterangan'  => $i->post('keterangan'),
           'date'      => date('Y-m-d'),
         );
         $this->mProfile->createProfile($data);
@@ -85,7 +86,7 @@ class Profile_gereja extends CI_Controller
 
     // Validation
     $v = $this->form_validation;
-    $v->set_rules('image_name', 'Image Name', 'required');
+    $v->set_rules('nama_gambar', 'Nama Gambar', 'required');
 
     if ($v->run()) {
       if (!empty($_FILES['image']['name'])) {
@@ -129,9 +130,10 @@ class Profile_gereja extends CI_Controller
           $data = array(
 
             'profile_id'    => $profile['profile_id'],
-            'image'      => $upload_data['uploads']['file_name'],
-            'image_name'  => $i->post('image_name'),
-            'description'  => $i->post('description'),
+            'gambar'      => $upload_data['uploads']['file_name'],
+            'nama_gambar'  => $i->post('nama_gambar'),
+            'deskripsi'  => $i->post('deskripsi'),
+            'keterangan'  => $i->post('keterangan'),
             'date'      => date('Y-m-d'),
           );
 
@@ -144,8 +146,9 @@ class Profile_gereja extends CI_Controller
         $i = $this->input;
         $data = array(
           'profile_id'    => $profile['profile_id'],
-          'image_name'  => $i->post('image_name'),
-          'description' => $i->post('description')
+          'nama_gambar'  => $i->post('nama_gambar'),
+          'deskripsi' => $i->post('deskripsi'),
+          'keterangan' => $i->post('keterangan')
         );
 
         $this->mProfile->editProfile($data);
