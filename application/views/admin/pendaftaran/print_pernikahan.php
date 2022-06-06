@@ -6,6 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Judson:wght@700&family=Niconne&family=Pridi&family=Salsa&family=Tai+Heritage+Pro&display=swap" rel="stylesheet">
   <title><?= $title; ?></title>
   <style>
+	
     table tr td {
       font-size: 15;
       color: #330033;
@@ -110,10 +111,11 @@
         </td>
       </tr>
     </table><br>
+		<?php foreach($pernikahan as $a) : ?>
     <table>
       <tr>
         <td width="150">Nama</td>
-        <td width="400">:..................................................................................................</td>
+        <td width="400">: <?= $a['name_male'] ?> </td>
       </tr>
       <tr>
         <td>Tempat & Tanggal lahir</td>
@@ -166,6 +168,7 @@
         <td class="kanan">..............................<br>Gembala Sidang<br><br><br>(.......................)<br>NIK </td>
       </tr>
     </table>
+		<?php endforeach; ?>
   </center>
 </body>
 

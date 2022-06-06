@@ -144,10 +144,13 @@ class Pendaftaran extends CI_Controller
   public function print_pernikahan($id)
   {
     $user = $this->mAdmin->getData();
+		$idp= $this->uri->segment(4);
+		$pernikahan = $this->db->query("SELECT * FROM pernikahan WHERE pernikahan_id='$idp'")->result_array();
 
     $data = array(
       'title'    => 'Print Pernikahab',
       'user'  => $user,
+			'pernikahan' => $pernikahan
     );
     $this->load->view('admin/pendaftaran/print_pernikahan', $data);
   }
