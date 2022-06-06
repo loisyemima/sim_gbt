@@ -166,6 +166,18 @@
                 <label for="">Dilayani oleh</label>
                 <input type="text" class="form-control" id="dilayani" name="dilayani" placeholder="" value="<?php echo $bs['dilayani'] ?>">
               </div>
+              <div class="form-group">
+                <label for="">Tempat& Tanggal TTD</label>
+                <input type="text" class="form-control" id="tgl_ttd" name="tgl_ttd" placeholder="" value="<?php echo $bs['tgl_ttd'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="">Nama Gembala</label>
+                <input type="text" class="form-control" id="nama_gembala" name="nama_gembala" placeholder="" value="<?php echo $bs['nama_gembala'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="">NIK</label>
+                <input type="text" class="form-control" id="nik" name="nik" placeholder="" value="<?php echo $bs['nik'] ?>">
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
