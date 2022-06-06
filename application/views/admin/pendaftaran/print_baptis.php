@@ -155,7 +155,10 @@
     </table><br>
     <table>
       <tr>
-        <td width="400">
+        <td>
+          <img src="<?= base_url('assets/img/logo/pasfoto.png') ?>" width="75px" alt="">
+        </td>
+        <td width="180">
           <img src="kiri" alt="">
         </td>
         <td class="kanan">..............................<br>Gembala Sidang<br><br><br><br>(.........................)<br>NIK </td>
