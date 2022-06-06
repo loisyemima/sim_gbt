@@ -56,6 +56,19 @@ class Pendaftaran extends CI_Controller
     redirect('admin/pendaftaran/baptis');
   }
 
+  public function edit_status($id)
+  {
+    $data = array(
+      'baptis_id' => $id,
+      'keterangan' => $this->input->post('keterangan'),
+    );
+
+    $this->mPendaftaran->editBaptis($data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+          Edit success!</div>');
+    redirect('admin/pendaftaran/baptis');
+  }
+
   public function print_baptis($id)
   {
     $user = $this->mAdmin->getData();

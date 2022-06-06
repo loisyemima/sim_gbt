@@ -32,7 +32,6 @@
                       <th>#</th>
                       <th>Nama</th>
                       <th>Tempat Lahir</th>
-                      <th>Tanggal Lahir</th>
                       <th>No. Telp</th>
                       <th>Status</th>
                       <th>Action</th>
@@ -44,8 +43,7 @@
                       <tr>
                         <th scope="row"><?= $i; ?></th>
                         <td><?= $b['nama'] ?></td>
-                        <td><?= $b['tempat_lahir'] ?></td>
-                        <td><?= $b['tanggal_lahir'] ?></td>
+                        <td><?= $b['tempattgl_lahir'] ?></td>
                         <td><?= $b['nomor'] ?></td>
                         <td><?= $b['keterangan'] ?></td>
                         <?php $i++; ?>
@@ -55,13 +53,15 @@
                               <input type="hidden" value="2" name="status">
                               <button type="submit" class="btn btn-warning">Verifikasi</button>
                             </form>
-                          <?php else : ?>
-                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editBaptisModal<?php echo $b['baptis_id']; ?>"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="<?= base_url('admin/pendaftaran/delete_baptis/' . $b['baptis_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
-                              <i class="fa fa-trash"></i>
-                            </a>
+                          <?php elseif ($b['keterangan'] == "Diterima" & $b['status'] == "2") : ?>
                             <a href="<?= base_url('admin/pendaftaran/print_baptis/' . $b['baptis_id']); ?>" target="_blank" class="btn btn-info btn-sm">
                               <i class="fas fa-upload"></i>
+                            </a>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editBaptisModal<?php echo $b['baptis_id']; ?>"><i class="fas fa-pencil-alt"></i></a>
+                          <?php else : ?>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editStatusModal<?php echo $b['baptis_id']; ?>"><i class="fas fa-pencil-alt"></i> status</a>
+                            <a href="<?= base_url('admin/pendaftaran/delete_baptis/' . $b['baptis_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
+                              <i class="fa fa-trash"></i>
                             </a>
                           <?php endif; ?>
                         </td>
@@ -78,6 +78,44 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <!-- Modal Edit-->
+  <?php foreach ($baptis as $bps) : ?>
+    <div class="modal fade" id="editStatusModal<?php echo $bps['baptis_id']; ?>" tabindex="-1" aria-labelledby="editStatusModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editStatusModalLabel">Edit Pendaftarn Baptis</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="<?= base_url('admin/pendaftaran/edit_status/' . $bps['baptis_id']); ?>" method="post">
+            <div class="modal-body">
+              <div class="col-sm-6">
+                <!-- radio -->
+                <div class="form-group">
+                  <label for=""> Status Penerimaan Data</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="keterangan" value="Diterima" checked>
+                    <label class="form-check-label">Diterima</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="keterangan" value="Ditolak">
+                    <label class="form-check-label">Ditolak</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">edit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
 
   <!-- Modal Edit-->
   <?php foreach ($baptis as $bs) : ?>
@@ -101,12 +139,8 @@
                 <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="" value="<?php echo $bs['jenis_kelamin'] ?>" disabled>
               </div>
               <div class="form-group">
-                <label for="">Tempat Lahir</label>
-                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="" value="<?php echo $bs['tempat_lahir'] ?>" disabled>
-              </div>
-              <div class="form-group">
-                <label for="">Tanggal Lahir</label>
-                <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="" value="<?php echo $bs['tanggal_lahir'] ?>" disabled>
+                <label for="">Tempat & Tanggal Lahir</label>
+                <input type="text" class="form-control" id="tempattgl_lahir" name="tempattgl_lahir" placeholder="" value="<?php echo $bs['tempattgl_lahir'] ?>" disabled>
               </div>
               <div class="form-group">
                 <label for="">Nama Ayah</label>
@@ -131,20 +165,6 @@
               <div class="form-group">
                 <label for="">Dilayani oleh</label>
                 <input type="text" class="form-control" id="dilayani" name="dilayani" placeholder="" value="<?php echo $bs['dilayani'] ?>">
-              </div>
-              <div class="col-sm-6">
-                <!-- radio -->
-                <div class="form-group">
-                  <label for=""> Status Penerimaan Data</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keterangan" value="Diterima" checked>
-                    <label class="form-check-label">Diterima</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keterangan" value="Ditolak">
-                    <label class="form-check-label">Ditolak</label>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="modal-footer">
