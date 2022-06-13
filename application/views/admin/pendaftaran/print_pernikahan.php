@@ -6,7 +6,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Judson:wght@700&family=Niconne&family=Pridi&family=Salsa&family=Tai+Heritage+Pro&display=swap" rel="stylesheet">
   <title><?= $title; ?></title>
   <style>
-	
     table tr td {
       font-size: 15;
       color: #330033;
@@ -70,105 +69,106 @@
         </td>
       </tr>
     </table>
-    <table>
-      <tr>
-        <td>
-          <center>
-            <font class="uu">No. _________________</font>
-          </center>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="400">
-          <hr>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="375">
-          <p class="text"><i>Demikianlah mereka bukan lagi dua, melainkan satu.
-              Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia. Matius 19:6
-            </i></p>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="400">
-          <hr>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td>
-          <center>
-            <font><b>Telah diteguhkan dan diberkati pernikahannya</b></font><br>
-          </center>
-        </td>
-      </tr>
-    </table><br>
-		<?php foreach($pernikahan as $a) : ?>
-    <table>
-      <tr>
-        <td width="150">Nama</td>
-        <td width="400">: <?= $a['name_male'] ?> </td>
-      </tr>
-      <tr>
-        <td>Tempat & Tanggal lahir</td>
-        <td>:..................................................................................................</td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td>
-          <center>
-            <font><b>dengan</b></font>
-          </center>
-        </td>
-      </tr>
-    </table><br>
-    <table>
-      <tr>
-        <td width="150">Nama</td>
-        <td width="400">:..................................................................................................</td>
-      </tr>
-      <tr>
-        <td>Tempat & Tanggal lahir</td>
-        <td>:..................................................................................................</td>
-      </tr>
-    </table>
+    <?php foreach ($pernikahan as $p) : ?>
+      <table>
+        <tr>
+          <td>
+            <center>
+              <font class="uu">No. <?= $p['kode'] ?></font>
+            </center>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td width="400">
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td width="375">
+            <p class="text"><i>Demikianlah mereka bukan lagi dua, melainkan satu.
+                Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia. Matius 19:6
+              </i></p>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td width="400">
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <center>
+              <font><b>Telah diteguhkan dan diberkati pernikahannya</b></font><br>
+            </center>
+          </td>
+        </tr>
+      </table><br>
 
-    <br>
-    <table>
-      <tr>
-        <td>Dalam Ibadah</td>
-      </tr>
-      <tr>
-        <td width="150">Hari & Tanggal</td>
-        <td width="400">:..................................................................................................</td>
-      </tr>
-      <tr>
-        <td width="">Tempat</td>
-        <td width="">:..................................................................................................</td>
-      </tr>
-      <tr>
-        <td width="">Dilayani Oleh</td>
-        <td width="">:..................................................................................................</td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="400">
-          <img src="kiri" alt="">
-        </td>
-        <td class="kanan">..............................<br>Gembala Sidang<br><br><br>(.......................)<br>NIK </td>
-      </tr>
-    </table>
-		<?php endforeach; ?>
+      <table>
+        <tr>
+          <td width="150">Nama</td>
+          <td width="400">: <?= $p['nama_laki'] ?> </td>
+        </tr>
+        <tr>
+          <td>Tempat & Tanggal lahir</td>
+          <td>: <?= $p['lahir_laki'] ?> </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <center>
+              <font><b>dengan</b></font>
+            </center>
+          </td>
+        </tr>
+      </table><br>
+      <table>
+        <tr>
+          <td width="150">Nama</td>
+          <td width="400">: <?= $p['nama_perempuan'] ?> </td>
+        </tr>
+        <tr>
+          <td>Tempat & Tanggal lahir</td>
+          <td>: <?= $p['lahir_perempuan'] ?> </td>
+        </tr>
+      </table>
+
+      <br>
+      <table>
+        <tr>
+          <td>Dalam Ibadah</td>
+        </tr>
+        <tr>
+          <td width="150">Hari & Tanggal</td>
+          <td width="400">: <?= $p['tgl_pernikahan'] ?> </td>
+        </tr>
+        <tr>
+          <td width="">Tempat</td>
+          <td width="">: <?= $p['tempat'] ?> </td>
+        </tr>
+        <tr>
+          <td width="">Dilayani Oleh</td>
+          <td width="">: <?= $p['dilayani'] ?> </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td width="400">
+            <img src="kiri" alt="">
+          </td>
+          <td class="kanan"><?= $p['tempattgl_ttd'] ?> <br>Gembala Sidang<br><br><br>( <?= $p['nama_ttd'] ?> )<br>NIK. <?= $p['nik'] ?></td>
+        </tr>
+      </table>
+    <?php endforeach; ?>
   </center>
 </body>
 

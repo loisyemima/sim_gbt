@@ -33,9 +33,16 @@ class Member extends CI_Controller
     $age = $this->mAge->getAge();
 
     $v = $this->form_validation;
-    $v->set_rules('fullname', 'Full Name', 'required');
-    $v->set_rules('birth', 'Birth', 'required');
+    $v->set_rules('nama', 'Full Name', 'required');
+    $v->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
+    $v->set_rules('username', 'Name', 'trim|required');
+    $v->set_rules('password1', 'Password', 'trim|required|min_length[6]|matches[password2]', [
+      'matches' => 'password dant match!',
+      'min_length' => 'password too short!'
+    ]);
+    $v->set_rules('password2', 'Password', 'trim|required|matches[password1]');
+
 
     if ($v->run()) {
       $config['upload_path']     = './assets/img/profile/member/';
@@ -56,15 +63,9 @@ class Member extends CI_Controller
       } else {
         $upload_data        = array(
           'uploads' => $this->upload->data(),
-          'prod_image1' => $this->upload->data(),
-          'prod_image2' => $this->upload->data(),
-          'prod_image3' => $this->upload->data()
         );
         $config['image_library']  = 'gd2';
-        $source_image   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
-        $source_image1   = './assets/img/profile/member/' . $upload_data['prod_image1']['file_name'];
-        $source_image2  = './assets/img/profile/member/' . $upload_data['prod_image2']['file_name'];
-        $source_image3   = './assets/img/profile/member/' . $upload_data['prod_image3']['file_name'];
+        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
         $config['create_thumb']   = TRUE;
         $config['quality']       = "100%";
         $config['maintain_ratio']   = FALSE;
@@ -77,16 +78,16 @@ class Member extends CI_Controller
         $this->image_lib->resize();
 
         $data = array(
-          'fullname' => $this->input->post('fullname'),
-          'images'      => $source_image,
-          'place' => $this->input->post('place'),
-          'birth' => $this->input->post('birth'),
-          'age' => $this->input->post('age'),
+          'nama' => $this->input->post('nama'),
+          'images'      => $upload_data['uploads']['file_name'],
+          'tempat' => $this->input->post('tempat'),
+          'tgl_lahir' => $this->input->post('tgl_lahir'),
+          'umur' => $this->input->post('umur'),
           'status' => $this->input->post('status'),
-          'username' => $this->input->post('username'),
-          'image1'      => $source_image1,
-          'image2'      => $source_image2,
-          'image3'      => $source_image3,
+          'username' => htmlspecialchars($this->input->post('username', true)),
+          'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+          'role_id' => 2,
+          'date' => time()
         );
 
         $this->mMember->createMember($data);
@@ -115,9 +116,16 @@ class Member extends CI_Controller
     $age = $this->mAge->getAge();
 
     $v = $this->form_validation;
-    $v->set_rules('fullname', 'Full Name', 'required');
-    $v->set_rules('birth', 'Birth', 'required');
+    $v->set_rules('nama', 'Nama', 'required');
+    $v->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
+    $v->set_rules('username', 'Username', 'trim|required');
+    $v->set_rules('password1', 'Password', 'trim|required|min_length[6]|matches[password2]', [
+      'matches' => 'password dant match!',
+      'min_length' => 'password too short!'
+    ]);
+    $v->set_rules('password2', 'Password', 'trim|required|matches[password1]');
+
 
     if ($v->run()) {
       if (!empty($_FILES['image']['name'])) {
@@ -157,13 +165,16 @@ class Member extends CI_Controller
 
           $data = [
             'member_id' => $member['member_id'],
-            'fullname' => $this->input->post('fullname'),
+            'nama' => $this->input->post('nama'),
             'images' => $upload_data['uploads']['file_name'],
-            'place' => $this->input->post('place'),
-            'birth' => $this->input->post('birth'),
-            'age' => $this->input->post('age'),
+            'tempat' => $this->input->post('tempat'),
+            'tgl_lahir' => $this->input->post('tgl_lahir'),
+            'umur' => $this->input->post('umur'),
             'status' => $this->input->post('status'),
-            'username' => $this->input->post('username'),
+            'username' => htmlspecialchars($this->input->post('username', true)),
+            'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+            'role_id' => 2,
+            'date' => time()
           ];
           $this->mMember->editMember($data);
           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -173,12 +184,15 @@ class Member extends CI_Controller
       } else {
         $data = [
           'member_id' => $member['member_id'],
-          'fullname' => $this->input->post('fullname'),
-          'place' => $this->input->post('place'),
-          'birth' => $this->input->post('birth'),
-          'age' => $this->input->post('age'),
+          'nama' => $this->input->post('nama'),
+          'tempat' => $this->input->post('tempat'),
+          'tgl_lahir' => $this->input->post('tgl_lahir'),
+          'umur' => $this->input->post('umur'),
           'status' => $this->input->post('status'),
-          'username' => $this->input->post('username'),
+          'username' => htmlspecialchars($this->input->post('username', true)),
+          'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+          'role_id' => 2,
+          'date' => time()
         ];
         $this->mMember->editMember($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -229,8 +243,8 @@ class Member extends CI_Controller
     $age = $this->mAge->getAge();
 
     $v = $this->form_validation;
-    $v->set_rules('fullname', 'Full Name', 'required');
-    $v->set_rules('birth', 'Birth', 'required');
+    $v->set_rules('nama', 'Full Name', 'required');
+    $v->set_rules('tgl_lahir', 'tgl_lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
 
     if ($v->run()) {
@@ -271,10 +285,10 @@ class Member extends CI_Controller
 
           $data = [
             'member_id' => $member['member_id'],
-            'fullname' => $this->input->post('fullname'),
+            'nama' => $this->input->post('nama'),
             'images' => $upload_data['uploads']['file_name'],
-            'place' => $this->input->post('place'),
-            'birth' => $this->input->post('birth'),
+            'tempat' => $this->input->post('tempat'),
+            'tgl_lahir' => $this->input->post('tgl_lahir'),
             'age' => $this->input->post('age'),
             'status' => $this->input->post('status'),
             'username' => $this->input->post('username'),
@@ -287,9 +301,9 @@ class Member extends CI_Controller
       } else {
         $data = [
           'member_id' => $member['member_id'],
-          'fullname' => $this->input->post('fullname'),
-          'place' => $this->input->post('place'),
-          'birth' => $this->input->post('birth'),
+          'nama' => $this->input->post('nama'),
+          'tempat' => $this->input->post('tempat'),
+          'tgl_lahir' => $this->input->post('tgl_lahir'),
           'age' => $this->input->post('age'),
           'status' => $this->input->post('status'),
           'username' => $this->input->post('username'),
@@ -332,7 +346,7 @@ class Member extends CI_Controller
 
     if ($v->run()) {
       $config['upload_path']     = './assets/img/profile/member/';
-      $config['allowed_types']   = 'gif|jpg|png|pdf';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg';
       $config['max_size']      = '1000'; // KB			
       $this->load->library('upload', $config);
       if (!$this->upload->do_upload('image')) {
@@ -554,9 +568,9 @@ class Member extends CI_Controller
       foreach ($data as $m) : ?>
         <tr>
           <td><?= $i++ ?></td>
-          <td><?= $m->fullname ?></td>
-          <td><?= $m->place ?></td>
-          <td><?= $m->birth ?></td>
+          <td><?= $m->nama ?></td>
+          <td><?= $m->tempat ?></td>
+          <td><?= $m->tgl_lahir ?></td>
           <td><?= $m->status ?></td>
         </tr>
       <?php endforeach; ?> <?php
@@ -568,4 +582,51 @@ class Member extends CI_Controller
 <?php
                           }
                         }*/
+
+  public function filtering()
+  {
+    $user = $this->mAdmin->getData();
+    $countries = $this->mMember->get_list_countries();
+
+    $opt = array('' => 'All Country');
+    foreach ($countries as $country) {
+      $opt[$country] = $country;
+    }
+
+    $data = array(
+      'title' => 'Member',
+      'user' => $user,
+      'form_country' => form_dropdown('', $opt, '', 'id="status" class="form-control"'),
+      'isi' => 'admin/member/filtering'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function ajax_list()
+  {
+    $list = $this->mMember->get_datatables();
+    $data = array();
+    $no = $_POST['start'];
+    foreach ($list as $member) {
+      $no++;
+      $row = array();
+      $row[] = $no;
+      $row[] = $member->nama;
+      $row[] = $member->tempat;
+      $row[] = $member->tgl_lahir;
+      $row[] = $member->age;
+      $row[] = $member->status;
+
+      $data[] = $row;
+    }
+
+    $output = array(
+      "draw" => $_POST['draw'],
+      "recordsTotal" => $this->mMember->count_all(),
+      "recordsFiltered" => $this->mMember->count_filtered(),
+      "data" => $data,
+    );
+    //output to json format
+    echo json_encode($output);
+  }
 }

@@ -15,7 +15,7 @@ class Gallery extends CI_Controller
     $gallery = $this->mGallery->getGallery();
 
     $data = array(
-      'title'    => 'gallery Gereja',
+      'title'    => 'Galeri',
       'user'  => $user,
       'gallery'    => $gallery,
       'isi'    => 'admin/gallery/list'
@@ -197,7 +197,7 @@ class Gallery extends CI_Controller
 
     if ($this->form_validation->run() == false) {
       $data = array(
-        'title'    => 'Event',
+        'title'    => 'Acara',
         'user'  => $user,
         'event'  => $event,
         'isi'    => 'admin/gallery/event'

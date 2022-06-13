@@ -26,7 +26,7 @@
             <div class="card">
               <div class="card-body">
                 <?= $this->session->flashdata('message'); ?>
-                <a href="<?= base_url('admin/gallery/create_gallery'); ?>" class="btn btn-primary mb-3">Add New gallery</a>
+                <a href="<?= base_url('admin/gallery/create_gallery'); ?>" class="btn btn-primary mb-3">Tambah Data</a>
                 <table class="table table-bordered table-hover" id="example2">
                   <thead>
                     <tr>

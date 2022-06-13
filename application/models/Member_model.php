@@ -8,11 +8,11 @@ class Member_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('member');
-    $this->db->join('user', 'user.id = member.username', 'LEFT');
-    $this->db->join('age_level', 'age_level.age_id = member.age', 'LEFT');
+    $this->db->join('age_level', 'age_level.age_id = member.umur', 'LEFT');
     $this->db->join('img_baptis', 'img_baptis.member = member.member_id', 'left');
     $this->db->join('img_anak', 'img_anak.member2 = member.member_id', 'left');
     $this->db->join('img_pernikahan', 'img_pernikahan.member3 = member.member_id', 'left');
+    $this->db->where('member_id !=', 1);
     $this->db->order_by('member_id', 'ASC');
     $query = $this->db->get();
     return $query->result_array();
@@ -52,8 +52,7 @@ class Member_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('member');
-    $this->db->join('user', 'user.id = member.username', 'LEFT');
-    $this->db->join('age_level', 'age_level.age_id = member.age', 'LEFT');
+    $this->db->join('age_level', 'age_level.age_id = member.umur', 'LEFT');
     $this->db->where(array('status' => 'Non Member'));
     $this->db->order_by('member_id', 'ASC');
     $query = $this->db->get();
@@ -139,8 +138,8 @@ class Member_model extends CI_Model
 
   var $table = 'member';
   var $column_order = array(null, 'Fullname', 'place', 'birth', 'age', 'status',); //set column field database for datatable orderable
-  var $column_search = array('FirstName', 'LastName', 'phone', 'address', 'city', 'country'); //set column field database for datatable searchable 
-  var $order = array('id' => 'asc'); // default order 
+  var $column_search = array('FullName', 'place', 'birth', 'age', 'status'); //set column field database for datatable searchable 
+  var $order = array('member_id' => 'asc'); // default order 
 
   private function _get_datatables_query()
   {
@@ -205,15 +204,15 @@ class Member_model extends CI_Model
 
   public function get_list_countries()
   {
-    $this->db->select('country');
+    $this->db->select('status');
     $this->db->from($this->table);
-    $this->db->order_by('country', 'asc');
+    $this->db->order_by('status', 'asc');
     $query = $this->db->get();
     $result = $query->result();
 
     $countries = array();
     foreach ($result as $row) {
-      $countries[] = $row->country;
+      $countries[] = $row->status;
     }
     return $countries;
   }

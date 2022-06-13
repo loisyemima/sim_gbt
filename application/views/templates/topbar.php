@@ -19,8 +19,8 @@
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown user-menu">
       <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-        <span class="d-none d-md-inline"><?= $user['name']; ?></span>
-        <img class="user-image img-circle elevation-3" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="User Image">
+        <span class="d-none d-md-inline"><?= $user['nama']; ?></span>
+        <img class="user-image img-circle elevation-3" src="<?= base_url('assets/img/profile/member/') . $user['images']; ?>" alt="User Image">
       </a>
       <!-- Dropdown - User Information -->
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

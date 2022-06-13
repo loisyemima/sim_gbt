@@ -15,12 +15,14 @@ class Pendaftaran extends CI_Controller
     $user = $this->mAdmin->getData();
     $baptis = $this->mPendaftaran->getBaptis();
     $status = $this->mPendaftaran->getStatus();
+    $kode = $this->mPendaftaran->kode();
 
     $data = array(
       'title'    => 'Pendaftaran Baptis',
       'user'  => $user,
       'baptis'    => $baptis,
       'status'    => $status,
+      'kode'    => $kode,
       'isi'    => 'admin/pendaftaran/baptis'
     );
     $this->load->view('templates/wrapper', $data);
@@ -72,10 +74,14 @@ class Pendaftaran extends CI_Controller
   public function print_baptis($id)
   {
     $user = $this->mAdmin->getData();
+    $idb = $this->uri->segment(4);
+    $baptis = $this->db->query("SELECT * FROM baptis WHERE baptis_id='$idb'")->result_array();
+
 
     $data = array(
       'title'    => 'Print Baptis',
       'user'  => $user,
+      'baptis'  => $baptis,
     );
     $this->load->view('admin/pendaftaran/print_baptis', $data);
   }
@@ -144,13 +150,13 @@ class Pendaftaran extends CI_Controller
   public function print_pernikahan($id)
   {
     $user = $this->mAdmin->getData();
-		$idp= $this->uri->segment(4);
-		$pernikahan = $this->db->query("SELECT * FROM pernikahan WHERE pernikahan_id='$idp'")->result_array();
+    $idp = $this->uri->segment(4);
+    $pernikahan = $this->db->query("SELECT * FROM pernikahan WHERE pernikahan_id='$idp'")->result_array();
 
     $data = array(
-      'title'    => 'Print Pernikahab',
+      'title'    => 'Print Pernikahan',
       'user'  => $user,
-			'pernikahan' => $pernikahan
+      'pernikahan' => $pernikahan
     );
     $this->load->view('admin/pendaftaran/print_pernikahan', $data);
   }
@@ -200,10 +206,14 @@ class Pendaftaran extends CI_Controller
   public function print_anak($id)
   {
     $user = $this->mAdmin->getData();
+    $user = $this->mAdmin->getData();
+    $ida = $this->uri->segment(4);
+    $anak = $this->db->query("SELECT * FROM anak WHERE anak_id='$ida'")->result_array();
 
     $data = array(
       'title'    => 'Print Anak',
       'user'  => $user,
+      'anak'  => $anak,
     );
     $this->load->view('admin/pendaftaran/print_anak', $data);
   }

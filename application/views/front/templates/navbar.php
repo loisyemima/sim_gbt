@@ -33,7 +33,7 @@
 
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
+                    <i class="material-icons opacity-6 me-2 text-md">info</i>
                     Pengumuman
                     <img src="<?= base_url('assets/front/') ?>assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
                   </a>
@@ -53,7 +53,7 @@
                   <ul class="navbar-nav navbar-nav-hover ms-auto">
                     <li class="nav-item dropdown dropdown-hover mx-2">
                       <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
+                        <i class="material-icons opacity-6 me-2 text-md">list</i>
                         Pendaftaran
                         <img src="<?= base_url('assets/front/') ?>assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
                       </a>
@@ -74,14 +74,14 @@
                     </li>
                     <li class="nav-item">
                       <a href="<?= base_url('galeri') ?>" class="nav-link ps-2 d-flex cursor-pointer align-items-center" aria-expanded="false">
-                        <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
+                        <i class="material-icons opacity-6 me-2 text-md">image</i>
                         Galeri
                       </a>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2">
                       <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
-                        Pages
+                        <i class="material-icons opacity-6 me-2 text-md">login</i>
+                        About
                         <img src="<?= base_url('assets/front/') ?>assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
                       </a>
                       <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">

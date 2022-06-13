@@ -55,13 +55,16 @@
                             </form>
                           <?php elseif ($b['keterangan'] == "Diterima" & $b['status'] == "2") : ?>
                             <a href="<?= base_url('admin/pendaftaran/print_baptis/' . $b['baptis_id']); ?>" target="_blank" class="btn btn-info btn-sm">
-                              <i class="fas fa-upload"></i>
+                              <i class="fas fa-upload"> </i> Print
                             </a>
-                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editBaptisModal<?php echo $b['baptis_id']; ?>"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editBaptisModal<?php echo $b['baptis_id']; ?>"><i class="fas fa-pencil-alt"> </i> Edit</a>
+                            <a href="<?= base_url('admin/pendaftaran/delete_baptis/' . $b['baptis_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
+                              <i class="fa fa-trash"></i> Hapus
+                            </a>
                           <?php else : ?>
                             <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editStatusModal<?php echo $b['baptis_id']; ?>"><i class="fas fa-pencil-alt"></i> status</a>
                             <a href="<?= base_url('admin/pendaftaran/delete_baptis/' . $b['baptis_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
-                              <i class="fa fa-trash"></i>
+                              <i class="fa fa-trash"></i> Hapus
                             </a>
                           <?php endif; ?>
                         </td>
@@ -151,7 +154,7 @@
                 <input type="text" class="form-control" id="nama_ibuk" name="nama_ibuk" placeholder="" value="<?php echo $bs['nama_ibuk'] ?>" disabled>
               </div>
               <div class="form-group">
-                <label for="">No Surat</label>
+                <label for="">No Surat</label><a>*No terakhir :<?php echo $kode['kode'] ?></a>
                 <input type="text" class="form-control" id="kode" name="kode" placeholder="" value="<?php echo $bs['kode'] ?>">
               </div>
               <div class="form-group">

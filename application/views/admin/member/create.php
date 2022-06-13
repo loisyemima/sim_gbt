@@ -38,11 +38,11 @@
                <form role="form" action="<?= base_url('admin/member/create_member'); ?>" method="post" enctype="multipart/form-data">
                  <div class="card-body">
                    <div class="form-group">
-                     <label>Name</label>
-                     <input class="form-control" id="fullname" name="fullname">
+                     <label>Nama</label>
+                     <input class="form-control" id="nama" name="nama">
                    </div>
                    <div class="form-group">
-                     <label for="exampleInputFile">File input</label>
+                     <label for="exampleInputFile">Gambar :</label>
                      <div class="input-group">
                        <div class="custom-file">
                          <input type="file" class="custom-file-input" name="image" id="exampleInputFile">
@@ -51,23 +51,23 @@
                      </div>
                    </div>
                    <div class="form-group">
-                     <label>Place Of Birth</label>
-                     <input class="form-control" id="place" name="place">
+                     <label>Tempat Lahir</label>
+                     <input class="form-control" id="tempat" name="tempat">
                    </div>
                    <!-- Date -->
                    <div class="form-group">
-                     <label>Date Of Birth</label>
+                     <label>Tanggal Lahir</label>
                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                       <input type="text" id="birth" name="birth" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                       <input type="text" id="tgl_lahir" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" />
                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                        </div>
                      </div>
                    </div>
                    <div class="form-group">
-                     <label>Age Level</label>
-                     <select name="age" id="age" class="form-control">
-                       <option value="">Select Age</option>
+                     <label>Golongan</label>
+                     <select name="umur" id="umur" class="form-control">
+                       <option value="">Select</option>
                        <?php foreach ($age as $a) : ?>
                          <option value="<?= $a['age_id'] ?>"><?= $a['name'] ?></option>
                        <?php endforeach; ?>
@@ -80,41 +80,19 @@
                        <option value="Non Member">Non Member</option>
                      </select>
                    </div>
-                   <div class="form-group">
-                     <label>Username</label>
-                     <select class="select2bs4" id="username" name="username" data-placeholder="Select a Username" style="width: 100%;">
-                       <option selected="selected">Select Username</option>
-                       <?php foreach ($username as $u) { ?>
-                         <option value="<?php echo $u['id'] ?>"><?php echo $u['username'] ?></option>
-                       <?php } ?>
-                     </select>
+                   <div class="from-group">
+                     <label for="">Username</label>
+                     <input type="text" class="form-control" id="username" name="username" placeholder="Full name" value="<?= set_value('username'); ?>">
+                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                   </div>
+                   <div class="from-group">
+                     <label for="">Password</label>
+                     <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
+                     <?= form_error('password1', '<small class="text-danger pl-3">', '</small>') ?>
                    </div>
                    <div class="form-group">
-                     <label for="exampleInputFile">Sertifikat Penyerahan Anak</label>
-                     <div class="input-group">
-                       <div class="custom-file">
-                         <input type="file" class="custom-file-input" name="image1" id="exampleInputFile">
-                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                       </div>
-                     </div>
-                   </div>
-                   <div class="form-group">
-                     <label for="exampleInputFile">Sertifikat Baptis</label>
-                     <div class="input-group">
-                       <div class="custom-file">
-                         <input type="file" class="custom-file-input" name="image2" id="exampleInputFile">
-                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                       </div>
-                     </div>
-                   </div>
-                   <div class="form-group">
-                     <label for="exampleInputFile">Sertifikat Pernikahan</label>
-                     <div class="input-group">
-                       <div class="custom-file">
-                         <input type="file" class="custom-file-input" name="image3" id="exampleInputFile">
-                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                       </div>
-                     </div>
+                     <label for="">Ulang Password</label>
+                     <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat Password">
                    </div>
                  </div>
                  <button type="submit" class="btn btn-primary">Submit</button>

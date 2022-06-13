@@ -8,7 +8,7 @@ class Admin_model extends CI_Model
   {
     $id = $this->session->userdata('username');
     $this->db->select('*');
-    $this->db->from('user');
+    $this->db->from('member');
     $this->db->where('username', $id);
     $query = $this->db->get();
     return $query->row_array();
@@ -19,6 +19,27 @@ class Admin_model extends CI_Model
     $this->db->select('*');
     $this->db->from('user');
     $this->db->order_by('id', 'ASC');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function role()
+  {
+    $query = $this->db->get('user_role');
+    return $query->result_array();
+  }
+
+  public function getRoleaccess($role_id)
+  {
+    $query =  $this->db->get_where('user_role', ['id' => $role_id]);
+    return $query->row_array();
+  }
+
+  public function menu()
+  {
+    $this->db->select('*');
+    $this->db->from('user_menu');
+    $this->db->where('id !=', 1);
     $query = $this->db->get();
     return $query->result_array();
   }
@@ -35,7 +56,7 @@ class Admin_model extends CI_Model
     $this->db->select('*');
     $this->db->from('member');
     $this->db->where(array('status' => 'Member'));
-    $this->db->where(array('age' => '1'));
+    $this->db->where(array('umur' => '1'));
     return $this->db->get()->num_rows();
   }
 
@@ -44,7 +65,7 @@ class Admin_model extends CI_Model
     $this->db->select('*');
     $this->db->from('member');
     $this->db->where(array('status' => 'Member'));
-    $this->db->where(array('age' => '2'));
+    $this->db->where(array('umur' => '2'));
     return $this->db->get()->num_rows();
   }
 
@@ -53,7 +74,7 @@ class Admin_model extends CI_Model
     $this->db->select('*');
     $this->db->from('member');
     $this->db->where(array('status' => 'Member'));
-    $this->db->where(array('age' => '3'));
+    $this->db->where(array('umur' => '3'));
     return $this->db->get()->num_rows();
   }
 }

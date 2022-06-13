@@ -57,7 +57,7 @@
       </div>
       <div class="row mt-4">
         <?php foreach ($pengurus as $p) { ?>
-          <div class="card card-profile  mx-auto mt-4" style="width: 20rem;">
+          <div class="card card-profile  mx-auto mt-4" style="width: 15rem;">
             <img src="<?php echo base_url('assets/img/profile/member/' . $p['images']); ?>" class="card-img-top p-3 pe-md-3" alt="...">
             <div class="card-body">
               <h5 class="card-title"><?php echo $p['fullname']; ?></h5>

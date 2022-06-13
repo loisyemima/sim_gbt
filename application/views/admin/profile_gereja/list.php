@@ -26,13 +26,13 @@
             <div class="card">
               <div class="card-body">
                 <?= $this->session->flashdata('message'); ?>
-                <a href="<?= base_url('admin/profile_gereja/create_profile'); ?>" class="btn btn-primary mb-3">Add Data</a>
-                <table class="table table-bordered table-hover" id="example2">
+                <table class="table table-bordered table-hover" id="">
                   <thead>
                     <tr>
                       <th>#</th>
                       <th>Gambar</th>
                       <th>Keterangan</th>
+                      <th>Deskrips</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -45,6 +45,7 @@
                           <img src="<?php echo base_url('assets/img/upload/' . $p['gambar']); ?>" width="200px">
                         </td>
                         <td><?= $p['keterangan'] ?></td>
+                        <td><?= $p['deskripsi'] ?></td>
                         <td>
                           <a href="<?= base_url('admin/profile_gereja/edit_profile/' . $p['profile_id']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
                           <a href="<?= base_url('admin/profile_gereja/delete_profile/' . $p['profile_id']); ?>" class="btn btn-danger btn-primary btn-sm"><i class="fa fa-trash"></i></a>

@@ -33,8 +33,8 @@
                <form role="form" action="<?= base_url('admin/member/edit_member/' . $member['member_id']) ?>" method="post" enctype="multipart/form-data">
                  <div class="card-body">
                    <div class="form-group">
-                     <label>Name</label>
-                     <input class="form-control" id="fullname" name="fullname" value="<?php echo $member['fullname'] ?>">
+                     <label>nama</label>
+                     <input class="form-control" id="nama" name="nama" value="<?php echo $member['nama'] ?>">
                    </div>
                    <div class="form-group">
                      <label for="exampleInputFile">File input</label>
@@ -46,14 +46,14 @@
                      </div>
                    </div>
                    <div class="form-group">
-                     <label>Place Of Birth</label>
-                     <input class="form-control" id="place" name="place" value="<?php echo $member['place'] ?>">
+                     <label>Tempat Lahir</label>
+                     <input class="form-control" id="tempat" name="tempat" value="<?php echo $member['tempat'] ?>">
                    </div>
                    <!-- Date -->
                    <div class="form-group">
-                     <label>Date Of Birth</label>
+                     <label>Tanggal lahir</label>
                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                       <input type="text" id="birth" name="birth" class="form-control datetimepicker-input" data-target="#reservationdate" value="<?php echo $member['birth'] ?>" />
+                       <input type="text" id="tgl_lahir" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" value="<?php echo $member['tgl_lahir'] ?>" />
                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                        </div>
@@ -61,7 +61,7 @@
                    </div>
                    <div class="form-group">
                      <label>Age Level</label>
-                     <select name="age" id="age" class="form-control">
+                     <select name="umur" id="umur" class="form-control">
                        <option value="">Select Age</option>
                        <?php foreach ($age as $a) : ?>
                          <option value="<?= $a['age_id'] ?>" <?= $a['age_id'] == $member['age'] ? "selected" : null ?>><?= $a['name'] ?></option>
@@ -79,14 +79,19 @@
                                                   } ?>>Non Member</option>
                      </select>
                    </div>
-                   <div class="form-group">
-                     <label>Username</label>
-                     <select class="select2bs4" style="width: 100%;" name="username" id="username">
-                       <option selected="selected">Select</option>
-                       <?php foreach ($username as $u) { ?>
-                         <option value="<?php echo $u['id'] ?>" <?= $u['id'] == $member['username'] ? "selected" : null ?>><?php echo $u['username'] ?></option>
-                       <?php } ?>
-                     </select>
+                   <div class="from-group">
+                     <label for="">Username</label>
+                     <input type="text" class="form-control" id="username" name="username" placeholder="Full name" value="<?php echo $member['username'] ?>">
+                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                   </div>
+                   <div class="from-group">
+                     <label for="">Password</label>
+                     <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" value="<?php echo $member['password'] ?>>
+                     <?= form_error('password1', '<small class="text-danger pl-3">', '</small>') ?>
+                   </div>
+                   <div class=" form-group">
+                     <label for="">Ulang Password</label>
+                     <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat Password">
                    </div>
                  </div>
                  <!-- /.card-body -->

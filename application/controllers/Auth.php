@@ -30,7 +30,7 @@ class Auth extends CI_Controller
     $username = $this->input->post('username');
     $password = $this->input->post('password');
 
-    $user = $this->db->get_where('user', ['username' => $username])->row_array();
+    $user = $this->db->get_where('member', ['username' => $username])->row_array();
 
     // jika ada user
     if ($user) {
@@ -39,9 +39,7 @@ class Auth extends CI_Controller
         // cek password
         if (password_verify($password, $user['password'])) {
           $data = [
-            'id' => $user['id'],
             'username' => $user['username'],
-            'email' => $user['email'],
             'role_id' => $user['role_id']
           ];
           $this->session->set_userdata($data);
@@ -69,10 +67,7 @@ class Auth extends CI_Controller
 
   public function registration()
   {
-    $this->form_validation->set_rules('name', 'Name', 'trim|required');
-    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]', [
-      'is_unique' => 'this email has already registered'
-    ]);
+    $this->form_validation->set_rules('username', 'Name', 'trim|required');
     $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[4]|matches[password2]', [
       'matches' => 'password dant match!',
       'min_length' => 'password too short!'
@@ -87,19 +82,17 @@ class Auth extends CI_Controller
       $this->load->view('templates/auth_footer');
     } else {
       $data = [
-        'name' => htmlspecialchars($this->input->post('name', true)),
-        'email' => htmlspecialchars($this->input->post('email', true)),
-        'image' => 'default.jpg',
+        'username' => htmlspecialchars($this->input->post('username', true)),
         'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
         'role_id' => 2,
         'is_active' => 1,
-        'date_created' => time()
+        'date' => time()
       ];
 
-      $this->db->insert('user', $data);
+      $this->db->insert('member', $data);
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Congratulation! your account has been created. Please Login...</div>');
-      redirect('auth');
+      redirect('auth/registration');
     }
   }
 

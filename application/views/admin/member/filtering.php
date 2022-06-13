@@ -27,22 +27,23 @@
               <div class="card-body">
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('admin/member/create_member'); ?>" class="btn btn-primary mb-3">Add New Member</a>
-                <div class="col-md-4">
-                  <table class="table">
-                    <tr>
-                      <td>
-                        <label for="">Status :</label>
-                        <select name="" id="" class="form-control status">
-                          <option>Semua</option>
-                          <option value="Member">Member</option>
-                          <option value="Non Member">Non Member</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </table>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Custom Filter : </h3>
+                  </div>
+                  <div class="panel-body">
+                    <form id="form-filter" class="form-horizontal">
+                      <div class="form-group">
+                        <label for="country" class="col-sm-2 control-label">Country</label>
+                        <div class="col-sm-4">
+                          <?php echo $form_country; ?>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-bordered table-hover" id="example1">
+                  <table class="table table-bordered table-hover" id="table">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -55,32 +56,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php $i = 1; ?>
-                      <?php foreach ($member as $m) : ?>
-                        <tr>
-                          <th scope="row"><?= $i; ?></th>
-                          <td><?= $m['nama'] ?></td>
-                          <td><?= $m['tempat'] ?></td>
-                          <td><?= $m['tgl_lahir'] ?></td>
-                          <td><?= $m['name'] ?></td>
-                          <td><?= $m['status'] ?></td>
-                          <td>
-                            <a href="<?= base_url('admin/member/detail_member/' . $m['member_id']); ?>" class="btn btn-success btn-sm">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="<?= base_url('admin/member/edit_member/' . $m['member_id']); ?>" class="btn btn-primary btn-sm">
-                              <i class="fas fa-pencil-alt"></i>
-                            </a>
-                            <a href="<?= base_url('admin/member/delete_member/' . $m['member_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
-                              <i class="fa fa-trash"></i>
-                            </a>
-                            <a href="<?= base_url('admin/member/create_img/' . $m['member_id']); ?>" class="btn btn-info btn-sm">
-                              <i class="fas fa-upload"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <?php $i++; ?>
-                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
@@ -188,3 +163,43 @@
       });
     }
   </script>-->
+
+  <script type="text/javascript">
+    var table;
+
+    $(document).ready(function() {
+
+      //datatables
+      table = $('#table').DataTable({
+
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "order": [], //Initial no order.
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+          "url": "<?php echo site_url('member/ajax_list') ?>",
+          "type": "POST",
+          "data": function(data) {
+            data.status = $('#status').val();
+          }
+        },
+
+        //Set column definition initialisation properties.
+        "columnDefs": [{
+          "targets": [0], //first column / numbering column
+          "orderable": false, //set not orderable
+        }, ],
+
+      });
+
+      $('#btn-filter').click(function() { //button filter event click
+        table.ajax.reload(); //just reload table
+      });
+      $('#btn-reset').click(function() { //button reset event click
+        $('#form-filter')[0].reset();
+        table.ajax.reload(); //just reload table
+      });
+
+    });
+  </script>

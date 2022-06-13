@@ -26,8 +26,7 @@
             <div class="card">
               <div class="card-body">
                 <?= $this->session->flashdata('message'); ?>
-                <a href="<?= base_url('admin/warta/create_warta'); ?>" class="btn btn-primary mb-3">Add Data</a>
-                <table class="table table-bordered table-hover" id="example2">
+                <table class="table table-bordered table-hover" id="">
                   <thead>
                     <tr>
                       <th>#</th>

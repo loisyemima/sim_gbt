@@ -39,34 +39,32 @@ class Dashboard extends CI_Controller
   public function role()
   {
     $data['title'] = 'Role';
-    $data['user'] = $this->db->get_where('user', ['email' =>
-    $this->session->userdata('email')])->row_array();
+    $user = $this->mAdmin->getData();
+    $role = $this->mAdmin->role();
 
-    $data['role'] = $this->db->get('user_role')->result_array();
-
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar', $data);
-    $this->load->view('templates/topbar', $data);
-    $this->load->view('admin/role', $data);
-    $this->load->view('templates/footer');
+    $data = array(
+      'title'    => 'Role',
+      'user'  => $user,
+      'role'  => $role,
+      'isi'    => 'admin/role'
+    );
+    $this->load->view('templates/wrapper', $data);
   }
 
   public function roleAccess($role_id)
   {
-    $data['title'] = 'Role Access';
-    $data['user'] = $this->db->get_where('user', ['email' =>
-    $this->session->userdata('email')])->row_array();
+    $user = $this->mAdmin->getData();
+    $role = $this->mAdmin->getRoleaccess($role_id);
+    $menu = $this->mAdmin->menu();
 
-    $data['role'] = $this->db->get_where('user_role', ['id' => $role_id])->row_array();
-
-    $this->db->where('id !=', 1);
-    $data['menu'] = $this->db->get('user_menu')->result_array();
-
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar', $data);
-    $this->load->view('templates/topbar', $data);
-    $this->load->view('admin/role-access', $data);
-    $this->load->view('templates/footer');
+    $data = array(
+      'title'    => 'Role Access',
+      'user'  => $user,
+      'role'  => $role,
+      'menu'  => $menu,
+      'isi'    => 'admin/role-access'
+    );
+    $this->load->view('templates/wrapper', $data);
   }
 
 

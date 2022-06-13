@@ -143,5 +143,6 @@ $autoload['model'] = array(
   'Warta_model' => 'mWarta',
   'Gallery_model' => 'mGallery',
   'Pelayan_model' => 'mPelayan',
+  'Kegiatan_model' => 'mKegiatan',
   'Config_model' => 'mConfig'
 );

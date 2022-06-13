@@ -57,7 +57,7 @@
                       <span class="info-box-icon bg-info"><i class="fas fa-user-friends"></i></span>
                       <div class="info-box-content">
                         <span class="info-box-text">Jemaat Pemuda</span>
-                        <span class="info-box-number"><?= $dewasa ?></span>
+                        <span class="info-box-number"><?= $pemuda ?></span>
                       </div>
                     </div>
                   </div>

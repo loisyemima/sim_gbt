@@ -35,12 +35,21 @@ class Pendaftaran_model extends CI_Model
     return $query->result_array();
   }
 
+  public function kode()
+  {
+    $this->db->select('*');
+    $this->db->from('baptis');
+    $this->db->order_by('kode', 'DESC');
+    $query = $this->db->get();
+    return $query->row_array();
+  }
+
   public function detailBaptis($id)
   {
     $this->db->select('*');
     $this->db->from('baptis');
     $this->db->where('baptis_id', $id);
-    $this->db->order_by('baptis_id', 'DESC');
+    $this->db->order_by('date', 'DESC');
     $query = $this->db->get();
     return $query->row_array();
   }

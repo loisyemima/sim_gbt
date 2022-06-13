@@ -30,12 +30,13 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Nama Wali</th>
-                      <th>Nama anak</th>
-                      <th>Tepat Lahir</th>
-                      <th>Tanggal Lahir</th>
+                      <th>Nama Anak</th>
+                      <th>Nama Ayah</th>
+                      <th>Nama Ibuk</th>
+                      <th>Tempat & Tanggal Lahir</th>
                       <th>No. Telp</th>
-                      <th>Tanggal</th>
+                      <th>Tanggal Pengajuan</th>
+                      <th>Keterangan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -44,25 +45,31 @@
                     <?php foreach ($anak as $a) : ?>
                       <tr>
                         <th scope="row"><?= $i; ?></th>
-                        <td><?= $a['nama_wali'] ?></td>
                         <td><?= $a['nama_anak'] ?></td>
-                        <td><?= $a['place'] ?></td>
-                        <td><?= $a['birth'] ?></td>
-                        <td><?= $a['number'] ?></td>
+                        <td><?= $a['nama_ayah'] ?></td>
+                        <td><?= $a['nama_ibu'] ?></td>
+                        <td><?= $a['tempattgl_lahir'] ?></td>
+                        <td><?= $a['nomor'] ?></td>
                         <td><?= $a['date'] ?></td>
+                        <td><?= $a['keterangan'] ?></td>
                         <td>
                           <?php if ($a['status'] == "1") : ?>
                             <form method="POST" action="<?= base_url('admin/pendaftaran/edit_anak/' . $a['anak_id']) ?>">
                               <input type="hidden" value="2" name="status">
                               <button type="submit" class="btn btn-warning">Verifikasi</button>
                             </form>
-                          <?php else : ?>
-                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editAnakModal<?php echo $a['anak_id']; ?>"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="<?= base_url('admin/pendaftaran/delete_anak/' . $a['anak_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
-                              <i class="fa fa-trash"></i>
+                          <?php elseif ($a['keterangan'] == "Diterima" & $a['status'] == "2") : ?>
+                            <a href="<?= base_url('admin/pendaftaran/print_anak/' . $a['anak_id']); ?>" target="_blank" class="btn btn-info btn-sm">
+                              <i class="fas fa-upload"></i> Print
                             </a>
-                            <a href="<?= base_url('admin/pendaftaran/print_anak/' . $a['anak_id']); ?>" class="btn btn-info btn-sm" data-target="_blank">
-                              <i class="fas fa-upload"></i>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editanakModal<?php echo $a['anak_id']; ?>"><i class="fas fa-pencil-alt"></i> Edit</a> <br>
+                            <a href="<?= base_url('admin/pendaftaran/delete_anak/' . $a['anak_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
+                              <i class="fa fa-trash"></i> Hapus
+                            </a>
+                          <?php else : ?>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editStatusModal<?php echo $a['anak_id']; ?>"><i class="fas fa-pencil-alt"></i> status</a>
+                            <a href="<?= base_url('admin/pendaftaran/delete_anak/' . $a['anak_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
+                              <i class="fa fa-trash"></i> Hapus
                             </a>
                           <?php endif; ?>
                         </td>

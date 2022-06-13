@@ -30,7 +30,7 @@
 
                 <?= $this->session->flashdata('messevent'); ?>
 
-                <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#neweventModal">Add New event</a>
+                <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#neweventModal">Tambah Data</a>
 
                 <table class="table table-bordered table-hover" id="example2">
                   <thead>

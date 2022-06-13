@@ -38,22 +38,6 @@
       </div>
 
 
-
-      <div class="col-md-2 col-sm-6 col-6 mb-4">
-        <div>
-          <h6 class="text-sm">Company</h6>
-          <ul class="flex-column ms-n3 nav">
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.creative-tim.com/presentation" target="_blank">
-                About Us
-              </a>
-            </li>
-
-
-          </ul>
-        </div>
-      </div>
-
       <div class="col-md-2 col-sm-6 col-6 mb-4">
         <div>
           <h6 class="text-sm">Profile</h6>
@@ -67,46 +51,6 @@
             <li class="nav-item">
               <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
                 profile
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-2 col-sm-6 col-6 mb-4">
-        <div>
-          <h6 class="text-sm">Help & Support</h6>
-          <ul class="flex-column ms-n3 nav">
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.creative-tim.com/contact-us" target="_blank">
-                Contact Us
-              </a>
-            </li>
-
-
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-2 col-sm-6 col-6 mb-4 me-auto">
-        <div>
-          <h6 class="text-sm">Legal</h6>
-          <ul class="flex-column ms-n3 nav">
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.creative-tim.com/knowledge-center/terms-of-service" target="_blank">
-                Terms & Conditions
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.creative-tim.com/knowledge-center/privacy-policy" target="_blank">
-                Privacy Policy
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.creative-tim.com/license" target="_blank">
-                Licenses (EULA)
               </a>
             </li>
           </ul>

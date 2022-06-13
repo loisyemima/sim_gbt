@@ -66,96 +66,98 @@
         </td>
       </tr>
     </table>
-    <table>
-      <tr>
-        <td>
-          <center>
-            <font class="uu"><i>No. _________________</i></font>
-          </center>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="400">
-          <hr>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="375">
-          <p class="text"><i>Biarkan anak-anak itu datang kepada-Ku, jangan
-              menghalang-halangi mereka, sebab orang-orang yang seperti itulah
-              yang punya Kerajaan Allah. Markus 10:14b</i>
-          </p>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="400">
-          <hr>
-        </td>
-      </tr>
-    </table>
-    <br>
-    <table>
-      <tr>
-        <td>Nama</td>
-        <td width="350">:......................................................................................</td>
-      </tr>
-      <tr>
-        <td>Kelamin</td>
-        <td>:......................................................................................</td>
-      </tr>
-      <tr>
-        <td>Tempat & Tanggal lahir</td>
-        <td>:......................................................................................</td>
-      </tr>
-      <tr>
-        <td>Nama Ayah</td>
-        <td>:......................................................................................</td>
-      </tr>
-      <tr>
-        <td>Nama Ibu</td>
-        <td>:......................................................................................</td>
-      </tr>
-    </table><br>
-    <table>
-      <tr>
-        <td>
-          <center>
-            <font><b>Telah diserahkan kepada Tuhan</b></font>
-          </center>
-        </td>
-      </tr>
-    </table><br>
-    <table>
-      <tr>
-        <td>Dalam Ibadah</td>
-      </tr>
-      <tr>
-        <td width="150">Hari & Tanggal</td>
-        <td width="400">:................................................................................................</td>
-      </tr>
-      <tr>
-        <td width="">Tempat</td>
-        <td width="">:................................................................................................</td>
-      </tr>
-      <tr>
-        <td width="">Dilayani Oleh</td>
-        <td width="">:................................................................................................</td>
-      </tr>
-    </table><br>
-    <table>
-      <tr>
-        <td width="400">
-          <img src="kiri" alt="">
-        </td>
-        <td class="kanan">...............................<br>Gembala Sidang<br><br><br>(...........................)<br>NIK </td>
-      </tr>
-    </table>
+    <?php foreach ($anak as $a) : ?>
+      <table>
+        <tr>
+          <td>
+            <center>
+              <font class="uu"><i>No. <?= $a['kode'] ?></i></font>
+            </center>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td width="400">
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td width="375">
+            <p class="text"><i>Biarkan anak-anak itu datang kepada-Ku, jangan
+                menghalang-halangi mereka, sebab orang-orang yang seperti itulah
+                yang punya Kerajaan Allah. Markus 10:14b</i>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td width="400">
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <table>
+        <tr>
+          <td>Nama</td>
+          <td width="350">: <?= $a['nama_anak'] ?></td>
+        </tr>
+        <tr>
+          <td>Kelamin</td>
+          <td>: <?= $a['jenis_kelamin'] ?></td>
+        </tr>
+        <tr>
+          <td>Tempat & Tanggal lahir</td>
+          <td>: <?= $a['tempattgl_lahir'] ?></td>
+        </tr>
+        <tr>
+          <td>Nama Ayah</td>
+          <td>: <?= $a['nama_ayah'] ?></td>
+        </tr>
+        <tr>
+          <td>Nama Ibu</td>
+          <td>: <?= $a['nama_ibu'] ?></td>
+        </tr>
+      </table><br>
+      <table>
+        <tr>
+          <td>
+            <center>
+              <font><b>Telah diserahkan kepada Tuhan</b></font>
+            </center>
+          </td>
+        </tr>
+      </table><br>
+      <table>
+        <tr>
+          <td>Dalam Ibadah</td>
+        </tr>
+        <tr>
+          <td width="150">Hari & Tanggal</td>
+          <td width="400">: <?= $a['tgl_penyerahan'] ?></td>
+        </tr>
+        <tr>
+          <td width="">Tempat</td>
+          <td width="">: <?= $a['tempat'] ?></td>
+        </tr>
+        <tr>
+          <td width="">Dilayani Oleh</td>
+          <td width="">: <?= $a['dilayani'] ?></td>
+        </tr>
+      </table><br>
+      <table>
+        <tr>
+          <td width="400">
+            <img src="kiri" alt="">
+          </td>
+          <td class="kanan"><?= $a['tempattgl_ttd'] ?> <br>Gembala Sidang<br><br><br>( <?= $a['nama_ttd'] ?> )<br>NIK. <?= $a['nik'] ?></td>
+        </tr>
+      </table>
+    <?php endforeach; ?>
   </center>
 </body>
 

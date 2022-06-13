@@ -1,9 +1,14 @@
-<!-- jQuery -->
-<script src="<?= base_url('assets/admin/') ?>plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?= base_url('assets/admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?= base_url('assets/admin/') ?>dist/js/adminlte.min.js"></script>
+<!--   Core JS Files   -->
+<script src="<?= base_url('assets/front/') ?>assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/front/') ?>assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/front/') ?>assets/js/plugins/perfect-scrollbar.min.js"></script>
+<!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
+<script src="<?= base_url('assets/front/') ?>assets/js/plugins/parallax.min.js"></script>
+<!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+<script src="<?= base_url('assets/front/') ?>assets/js/material-kit.min.js?v=3.0.2" type="text/javascript"></script>
+
 </body>
 
 </html>

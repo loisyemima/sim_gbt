@@ -14,7 +14,7 @@ class Profile extends CI_Controller
     $user = $this->mAdmin->getData();
 
     $data = array(
-      'title'    => 'Daftar Anggota Jemaat',
+      'title'    => 'My Profile',
       'user'  => $user,
       'isi'    => 'user/index'
     );

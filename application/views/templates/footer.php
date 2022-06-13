@@ -347,6 +347,14 @@
     });
   });
 </script>
+
+<script>
+  // $('[data-widget="pushmenu"]').PushMenu("collapse");
+  // $('[data-widget="pushmenu"]').PushMenu("expand");
+  // $('[data-widget="pushmenu"]').PushMenu("toggle");
+  // if (screen.width < 920)
+  //   $('[data-widget="pushmenu"]').PushMenu("collapse");
+</script>
 </body>
 
 </html>

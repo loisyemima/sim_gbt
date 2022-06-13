@@ -32,10 +32,10 @@
                       <th>#</th>
                       <th>Laki-laki</th>
                       <th>Perempuan</th>
-                      <th>Domisili</th>
                       <th>No. Telp</th>
                       <th>Baptis</th>
-                      <th>Tanggal</th>
+                      <th>Tanggal Pengajuan</th>
+                      <th>Keterangan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -44,25 +44,30 @@
                     <?php foreach ($pernikahan as $p) : ?>
                       <tr>
                         <th scope="row"><?= $i; ?></th>
-                        <td><?= $p['name_male'] ?></td>
-                        <td><?= $p['name_female'] ?></td>
-                        <td><?= $p['domisili'] ?></td>
-                        <td><?= $p['number'] ?></td>
+                        <td><?= $p['nama_laki'] ?></td>
+                        <td><?= $p['nama_perempuan'] ?></td>
+                        <td><?= $p['nomor'] ?></td>
                         <td><?= $p['baptis'] ?></td>
                         <td><?= $p['date'] ?></td>
+                        <td><?= $p['keterangan'] ?></td>
                         <td>
                           <?php if ($p['status'] == "1") : ?>
                             <form method="POST" action="<?= base_url('admin/pendaftaran/edit_pernikahan/' . $p['pernikahan_id']) ?>">
                               <input type="hidden" value="2" name="status">
                               <button type="submit" class="btn btn-warning">Verifikasi</button>
                             </form>
-                          <?php else : ?>
-                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editPernikahanModal<?php echo $p['pernikahan_id']; ?>"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="<?= base_url('admin/pendaftaran/delete_pernikahan/' . $p['pernikahan_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
-                              <i class="fa fa-trash"></i>
+                          <?php elseif ($p['keterangan'] == "Diterima" & $p['status'] == "2") : ?>
+                            <a href="<?= base_url('admin/pendaftaran/print_pernikahan/' . $p['pernikahan_id']); ?>" target="_blank" class="btn btn-info btn-sm">
+                              <i class="fas fa-upload"></i> Print
                             </a>
-                            <a href="<?= base_url('admin/pendaftaran/print_pernikahan/' . $p['pernikahan_id']); ?>" class="btn btn-info btn-sm" data-target="_blank">
-                              <i class="fas fa-upload"></i>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editPernikahanModal<?php echo $p['pernikahan_id']; ?>"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            <a href="<?= base_url('admin/pendaftaran/delete_pernikahan/' . $p['pernikahan_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
+                              <i class="fa fa-trash"></i> Hapus
+                            </a>
+                          <?php else : ?>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editStatusModal<?php echo $p['pernikahan_id']; ?>"><i class="fas fa-pencil-alt"></i> status</a>
+                            <a href="<?= base_url('admin/pendaftaran/delete_pernikahan/' . $p['pernikahan_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
+                              <i class="fa fa-trash"></i> Hapus
                             </a>
                           <?php endif; ?>
                         </td>
