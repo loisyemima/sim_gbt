@@ -99,7 +99,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Paste Google Maps Frame Here</label>
-                                        <textarea name="google_maps" placeholder="Google Maps Frame" class="form-control" value="about" id="about"><?php echo $site['lokasi']; ?></textarea>
+                                        <textarea name="lokasi" placeholder="Google Maps Frame" class="form-control" value="about" id="about"><?php echo $site['lokasi']; ?></textarea>
                                     </div>
                                 </div>
 

@@ -21,7 +21,7 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
-  <link id="pagestyle" href="<?= base_url('assets/front/') ?>assets/css/material-kit.css?v=3.0.2" rel="stylesheet" />
+  <link id="pagestyle" href="<?= base_url('assets/front/') ?>assets/css/material-kit.css" rel="stylesheet" />
 
   <!-- Template Main CSS File -->
 

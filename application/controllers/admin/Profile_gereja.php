@@ -34,7 +34,7 @@ class Profile_gereja extends CI_Controller
     if ($v->run()) {
 
       $config['upload_path']     = './assets/img/upload/';
-      $config['allowed_types']   = 'gif|jpg|png';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg';
       $config['max_size']      = '1000'; // KB			
       $this->load->library('upload', $config);
       if (!$this->upload->do_upload('image')) {
@@ -92,7 +92,7 @@ class Profile_gereja extends CI_Controller
       if (!empty($_FILES['image']['name'])) {
 
         $config['upload_path']     = './assets/img/upload/';
-        $config['allowed_types']   = 'gif|jpg|png';
+        $config['allowed_types']   = 'gif|jpg|png|jpeg';
         $config['max_size']      = '1000'; // KB			
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('image')) {

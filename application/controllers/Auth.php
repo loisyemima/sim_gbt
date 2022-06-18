@@ -34,28 +34,22 @@ class Auth extends CI_Controller
 
     // jika ada user
     if ($user) {
-      // jika user actived
-      if ($user['is_active'] == 1) {
-        // cek password
-        if (password_verify($password, $user['password'])) {
-          $data = [
-            'username' => $user['username'],
-            'role_id' => $user['role_id']
-          ];
-          $this->session->set_userdata($data);
-          if ($user['role_id'] == 1) {
-            redirect('admin/dashboard');
-          } else {
-            redirect('user/profile');
-          }
+
+      // cek password
+      if (password_verify($password, $user['password'])) {
+        $data = [
+          'username' => $user['username'],
+          'role_id' => $user['role_id']
+        ];
+        $this->session->set_userdata($data);
+        if ($user['role_id'] == 1) {
+          redirect('admin/dashboard');
         } else {
-          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-          Wrong password!</div>');
-          redirect('auth');
+          redirect('user/profile');
         }
       } else {
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-        This username has not been actived!</div>');
+          Wrong password!</div>');
         redirect('auth');
       }
     } else {

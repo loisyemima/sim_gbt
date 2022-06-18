@@ -129,7 +129,7 @@
         </tr>
         <tr>
           <td>Tempat & Tanggal lahir</td>
-          <td>: <?= $b['tempattgl_lahir'] ?> </td>
+          <td>: <?= $b['tempattgl_lahir'] ?>, <?= $b['tgl_lahir'] ?></td>
         </tr>
         <tr>
           <td>Nama Ayah</td>
@@ -137,13 +137,13 @@
         </tr>
         <tr>
           <td>Nama Ibu</td>
-          <td>: <?= $b['nama_ibuk'] ?> </td>
+          <td>: <?= $b['nama_ibu'] ?> </td>
         </tr>
       </table><br>
       <table>
         <tr>
           <td width="150">Hari & Tanggal</td>
-          <td width="400">: <?= $b['hari_tanggal'] ?> </td>
+          <td width="400">: <?= $b['hari_tanggal'] ?>, <?= $b['tgl_baptis'] ?></td>
         </tr>
         <tr>
           <td width="">Tempat</td>
@@ -162,7 +162,7 @@
           <td width="180">
             <img src="kiri" alt="">
           </td>
-          <td class="kanan"> <?= $b['tgl_ttd'] ?> <br>Gembala Sidang<br><br><br><br>( <?= $b['nama_gembala'] ?> )<br>NIK. <?= $b['nik'] ?></td>
+          <td class="kanan"> <?= $b['tempat_ttd'] ?>, <?= $b['tgl_ttd'] ?> <br>Gembala Sidang<br><br><br><br>( <?= $b['nama_gembala'] ?> )<br>NIK. <?= $b['nik'] ?></td>
         </tr>
       </table>
     <?php endforeach; ?>

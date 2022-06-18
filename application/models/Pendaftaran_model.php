@@ -44,12 +44,20 @@ class Pendaftaran_model extends CI_Model
     return $query->row_array();
   }
 
+  public function kode2()
+  {
+    $this->db->select('*');
+    $this->db->from('baptis');
+    $this->db->order_by('kode');
+    $query = $this->db->get();
+    return $query->row_array();
+  }
+
   public function detailBaptis($id)
   {
     $this->db->select('*');
     $this->db->from('baptis');
     $this->db->where('baptis_id', $id);
-    $this->db->order_by('date', 'DESC');
     $query = $this->db->get();
     return $query->row_array();
   }
@@ -89,6 +97,15 @@ class Pendaftaran_model extends CI_Model
     $this->db->order_by('pernikahan_id', 'ASC');
     $query = $this->db->get();
     return $query->result_array();
+  }
+
+  public function kodePer()
+  {
+    $this->db->select('*');
+    $this->db->from('pernikahan');
+    $this->db->order_by('kode', 'DESC');
+    $query = $this->db->get();
+    return $query->row_array();
   }
 
   public function detailPer($id)
@@ -134,9 +151,37 @@ class Pendaftaran_model extends CI_Model
     $this->db->update('anak', $data);
   }
 
+  public function detailAnak($id)
+  {
+    $this->db->select('*');
+    $this->db->from('anak');
+    $this->db->where('anak_id', $id);
+    $query = $this->db->get();
+    return $query->row_array();
+  }
+
   public function deleteAnak($data)
   {
     $this->db->where('anak_id', $data['anak_id']);
     $this->db->delete('anak', $data);
+  }
+
+  public function statusAnak()
+  {
+    $this->db->select('*');
+    $this->db->from('anak');
+    $this->db->where(array('status' => '1'));
+    $this->db->order_by('anak_id', 'ASC');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function kodeAnak()
+  {
+    $this->db->select('*');
+    $this->db->from('anak');
+    $this->db->order_by('kode', 'DESC');
+    $query = $this->db->get();
+    return $query->row_array();
   }
 }

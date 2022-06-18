@@ -9,12 +9,14 @@ class Galeri extends CI_Controller
     $gallery = $this->mGallery->getGallery1();
     $gallery2 = $this->mGallery->getGallery2();
     $gallery3 = $this->mGallery->getGallery3();
+    $config = $this->mConfig->list_config();
 
     $data = array(
       'title'    => 'gallery Gereja',
       'gallery'    => $gallery,
       'gallery2'    => $gallery2,
       'gallery3'    => $gallery3,
+      'config'    => $config,
       'isi'    => 'front/galeri'
     );
     $this->load->view('front/templates/wrapper', $data);

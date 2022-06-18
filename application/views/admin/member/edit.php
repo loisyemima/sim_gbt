@@ -60,23 +60,29 @@
                      </div>
                    </div>
                    <div class="form-group">
-                     <label>Age Level</label>
+                     <label>Golongan Umur</label>
                      <select name="umur" id="umur" class="form-control">
-                       <option value="">Select Age</option>
-                       <?php foreach ($age as $a) : ?>
-                         <option value="<?= $a['age_id'] ?>" <?= $a['age_id'] == $member['age'] ? "selected" : null ?>><?= $a['name'] ?></option>
-                       <?php endforeach; ?>
+                       <option value="">Pilih Umur</option>
+                       <option value="Anak-anak" <?php if ($member['umur'] == "Anak-anak") {
+                                                    echo "selected";
+                                                  } ?>>Anak-anak</option>
+                       <option value="Pemuda" <?php if ($member['umur'] == "Pemuda") {
+                                                echo "selected";
+                                              } ?>>Pemuda</option>
+                       <option value="Dewasa" <?php if ($member['umur'] == "Dewasa") {
+                                                echo "selected";
+                                              } ?>>Dewasa</option>
                      </select>
                    </div>
                    <div class="form-group">
                      <label>Status</label>
                      <select name="status" class="form-control">
-                       <option value="Member" <?php if ($member['status'] == "Member") {
+                       <option value="Anggota" <?php if ($member['status'] == "Anggota") {
+                                                  echo "selected";
+                                                } ?>>Anggota</option>
+                       <option value="Jemaat" <?php if ($member['status'] == "Jemaat") {
                                                 echo "selected";
-                                              } ?>>Member</option>
-                       <option value="Non Member" <?php if ($member['status'] == "Non Member") {
-                                                    echo "selected";
-                                                  } ?>>Non Member</option>
+                                              } ?>>Jemaat</option>
                      </select>
                    </div>
                    <div class="from-group">
@@ -86,12 +92,12 @@
                    </div>
                    <div class="from-group">
                      <label for="">Password</label>
-                     <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" value="<?php echo $member['password'] ?>>
+                     <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" value="<?php echo $member['password'] ?>">
                      <?= form_error('password1', '<small class="text-danger pl-3">', '</small>') ?>
                    </div>
-                   <div class=" form-group">
+                   <div class="form-group">
                      <label for="">Ulang Password</label>
-                     <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat Password">
+                     <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat Password" value="<?php echo $member['password'] ?>">
                    </div>
                  </div>
                  <!-- /.card-body -->

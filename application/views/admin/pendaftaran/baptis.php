@@ -31,7 +31,7 @@
                     <tr>
                       <th>#</th>
                       <th>Nama</th>
-                      <th>Tempat Lahir</th>
+                      <th>Tanggal Lahir</th>
                       <th>No. Telp</th>
                       <th>Status</th>
                       <th>Action</th>
@@ -43,7 +43,7 @@
                       <tr>
                         <th scope="row"><?= $i; ?></th>
                         <td><?= $b['nama'] ?></td>
-                        <td><?= $b['tempattgl_lahir'] ?></td>
+                        <td><?= $b['tgl_lahir'] ?></td>
                         <td><?= $b['nomor'] ?></td>
                         <td><?= $b['keterangan'] ?></td>
                         <?php $i++; ?>
@@ -57,7 +57,11 @@
                             <a href="<?= base_url('admin/pendaftaran/print_baptis/' . $b['baptis_id']); ?>" target="_blank" class="btn btn-info btn-sm">
                               <i class="fas fa-upload"> </i> Print
                             </a>
-                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editBaptisModal<?php echo $b['baptis_id']; ?>"><i class="fas fa-pencil-alt"> </i> Edit</a>
+                            <?php if ($b['keterangan'] == "Diterima" & $b['status'] == "2" & $b['edit'] == "0") : ?>
+                              <a href="<?= base_url('admin/pendaftaran/edit_baptiskod/' . $b['baptis_id']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"> </i> Edit</a>
+                            <?php else : ?>
+                              <a href="<?= base_url('admin/pendaftaran/edit_baptis2/' . $b['baptis_id']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"> </i> Edit</a>
+                            <?php endif; ?>
                             <a href="<?= base_url('admin/pendaftaran/delete_baptis/' . $b['baptis_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
                               <i class="fa fa-trash"></i> Hapus
                             </a>
@@ -82,7 +86,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Modal Edit-->
+  <!-- Modal Status-->
   <?php foreach ($baptis as $bps) : ?>
     <div class="modal fade" id="editStatusModal<?php echo $bps['baptis_id']; ?>" tabindex="-1" aria-labelledby="editStatusModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -120,7 +124,7 @@
     </div>
   <?php endforeach; ?>
 
-  <!-- Modal Edit-->
+  <!-- Modal Edit
   <?php foreach ($baptis as $bs) : ?>
     <div class="modal fade" id="editBaptisModal<?php echo $bs['baptis_id']; ?>" tabindex="-1" aria-labelledby="editBaptisModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -131,31 +135,32 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="<?= base_url('admin/pendaftaran/edit_baptis2/' . $bs['baptis_id']); ?>" method="post">
+          <form action="<?= base_url('admin/pendaftaran/edit_baptis2/' . $bs['baptis_id']); ?>" method="post" id="newModalForm">
             <div class="modal-body">
               <div class="form-group">
                 <label for="">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="<?php echo $bs['nama'] ?>" disabled>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="<?php echo $bs['nama'] ?>">
               </div>
               <div class="form-group">
                 <label for="">Jenis Kelamin</label>
-                <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="" value="<?php echo $bs['jenis_kelamin'] ?>" disabled>
+                <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="" value="<?php echo $bs['jenis_kelamin'] ?>">
               </div>
               <div class="form-group">
                 <label for="">Tempat & Tanggal Lahir</label>
-                <input type="text" class="form-control" id="tempattgl_lahir" name="tempattgl_lahir" placeholder="" value="<?php echo $bs['tempattgl_lahir'] ?>" disabled>
+                <input type="text" class="form-control" id="tempattgl_lahir" name="tempattgl_lahir" placeholder="" value="<?php echo $bs['tempattgl_lahir'] ?>">
               </div>
               <div class="form-group">
                 <label for="">Nama Ayah</label>
-                <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="" value="<?php echo $bs['nama_ayah'] ?>" disabled>
+                <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="" value="<?php echo $bs['nama_ayah'] ?>">
               </div>
               <div class="form-group">
                 <label for="">Nama Ibuk</label>
-                <input type="text" class="form-control" id="nama_ibuk" name="nama_ibuk" placeholder="" value="<?php echo $bs['nama_ibuk'] ?>" disabled>
+                <input type="text" class="form-control" id="nama_ibuk" name="nama_ibuk" placeholder="" value="<?php echo $bs['nama_ibuk'] ?>">
               </div>
               <div class="form-group">
-                <label for="">No Surat</label><a>*No terakhir :<?php echo $kode['kode'] ?></a>
+                <label for="">No Surat </label><a>*No terakhir :<?php echo $kode['kode'] ?></a>
                 <input type="text" class="form-control" id="kode" name="kode" placeholder="" value="<?php echo $bs['kode'] ?>">
+
               </div>
               <div class="form-group">
                 <label for="">Hari dan Tanggal Baptis</label>
@@ -190,4 +195,4 @@
         </div>
       </div>
     </div>
-  <?php endforeach; ?>
+  <?php endforeach; ?> -->

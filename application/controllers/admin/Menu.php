@@ -119,6 +119,6 @@ class Menu extends CI_Controller
     $this->mMenu->deleteSub($data);
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
     Delete Menu success!</div>');
-    redirect('admin/menu');
+    redirect('admin/menu/submenu');
   }
 }

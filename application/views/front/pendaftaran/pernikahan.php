@@ -23,31 +23,68 @@
                   <div class="card-body p-0 my-3">
                     <div class="row">
                       <div class="col-6">
+                        <label for="" class="">
+                          <h5>Nama Pria</h5>
+                        </label>
+                        <i> *Contoh : Hadi Subroto </i>
                         <div class="input-group input-group-static mb-4">
-                          <label>Nama Pria</label>
-                          <input type="text" id="name_male" name="name_male" class="form-control">
+                          <input type="text" id="nama_laki" name="nama_laki" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
+                        <label>
+                          <h5>Nama Wanita</h5>
+                        </label>
+                        <i> *Contoh : Ruth Vilance </i>
                         <div class="input-group input-group-static mb-4">
-                          <label>Nama Wanita</label>
-                          <input type="text" id="name_female" name="name_female" class="form-control">
+                          <input type="text" id="nama_perempuan" name="nama_perempuan" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
+                        <label>
+                          <h5>Tempat Lahir Pria</h5>
+                        </label><br><i> * Contoh : Banyuwangi, 3 Juni 1999</i>
                         <div class="input-group input-group-static mb-4">
-                          <label>Domisili</label>
-                          <input type="text" id="domisili" name="domisili" class="form-control">
+                          <input type="text" id="tempat_laki" name="tempat_laki" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="col-6">
+                        <label>
+                          <h5>Tempat Lahir wanita</h5>
+                        </label><br><i> * Contoh : Banyuwangi, 3 Juni 1999</i>
+                        <div class="input-group input-group-static mb-4">
+                          <input type="text" id="tempat_perempuan" name="tempat_perempuan" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
+                        <label>
+                          <h5>Tanggal Lahir Laki</h5>
+                        </label>
                         <div class="input-group input-group-static mb-4">
-                          <label>No Telp</label>
-                          <input type="text" id="number" name="number" class="form-control">
+                          <input type="date" id="lahir_laki" name="lahir_laki" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
-                        <label>Apakah Sudah Melakukan Baptis ?</label>
+                        <label>
+                          <h5>Tanggal Lahir Wanita</h5>
+                        </label>
+                        <div class="input-group input-group-static mb-4">
+                          <input type="date" id="lahir_perempuan" name="lahir_perempuan" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <label>
+                          <h5>No Telp</h5>
+                        </label>
+                        <div class="input-group input-group-static mb-4">
+                          <input type="text" id="nomor" name="nomor" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <label>
+                          <h5>Apakah Sudah Melakukan Baptis ?</h5>
+                        </label>
                         <div class="row">
                           <div class="col-6 text-start">
                             <div class="form-check">

@@ -30,16 +30,14 @@
                     <tr>
                       <th>Nama</th>
                       <th>Tempat Lahir</th>
-                      <th>Tanggal Lahir</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($data as $d) : ?>
                       <tr>
-                        <td><?= $d['fullname'] ?></td>
-                        <td><?= $d['place'] ?></td>
-                        <td><?= $d['birth'] ?></td>
+                        <td><?= $d['nama'] ?></td>
+                        <td><?= $d['tempat'] ?></td>
                         <td>
                           <a href="<?= base_url('user/profile/detail_data/' . $d['member_id']); ?>" class="btn btn-success btn-sm">
                             <i class="fa fa-eye"></i>

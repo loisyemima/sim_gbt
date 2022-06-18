@@ -6,55 +6,83 @@
           <a href="https://www.creative-tim.com/product/material-kit">
             <img src="<?= base_url('assets/img/') ?>logo/Logogbt.png" class="mb-3 footer-logo" alt="main_logo">
           </a>
-          <h6 class="font-weight-bolder mb-4">GBT Kristus Ajiab</h6>
+          <h6 class="font-weight-bolder mb-4">GEREJA BETHEL TABERNAKEL SILIRAGUNG</h6>
         </div>
+        <div>
+          <a class="nav-item" href="">
+            <i class="fas fa-phone text-lg"> 085172063237</i>
+          </a>
+        </div>
+        <br>
         <div>
           <ul class="d-flex flex-row ms-n3 nav">
             <li class="nav-item">
-              <a class="nav-link pe-1" href="" target="_blank">
+              <a class="nav-link pe-1" href="<?php echo $config['facebook']; ?>" target="_blank">
                 <i class="fab fa-facebook text-lg opacity-8"></i>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link pe-1" href="" target="_blank">
-                <i class="fab fa-twitter text-lg opacity-8"></i>
+              <a class="nav-link pe-1" href="<?php echo $config['whatsapp']; ?>" target="_blank">
+                <i class="fab fa-whatsapp text-lg opacity-8"></i>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link pe-1" href="" target="_blank">
-                <i class="fab fa-dribbble text-lg opacity-8"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link pe-1" href="https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w" target="_blank">
-                <i class="fab fa-youtube text-lg opacity-8"></i>
+              <a class="nav-link pe-1" href="<?php echo $config['instagram']; ?>" target="_blank">
+                <i class="fab fa-instagram text-lg opacity-8"></i>
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-
       <div class="col-md-2 col-sm-6 col-6 mb-4">
         <div>
-          <h6 class="text-sm">Profile</h6>
+          <h6 class="text-sm">Pengumuman</h6>
           <ul class="flex-column ms-n3 nav">
             <li class="nav-item">
-              <a class="nav-link" href="https://iradesign.io/" target="_blank">
-                sejarah
+              <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
+                Warta
               </a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
-                profile
+                Surat Edaran
               </a>
             </li>
           </ul>
         </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-6 mb-4">
+        <div>
+          <h6 class="text-sm">Pendaftaran</h6>
+          <ul class="flex-column ms-n3 nav">
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
+                Pendaftaran Baptis
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
+                Pendaftaran Penyerahan Anak
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
+                Pendaftaran Pernikahan
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-6 footer-links">
+
+        <h5>Lokasi Kami</h5>
+
+        <iframe width="250" height="150" frameborder="0" style="border:0" src="<?php echo $config['lokasi']; ?>" allowfullscreen></iframe>
+
       </div>
 
       <div class="col-12">
@@ -85,11 +113,33 @@
 <script src="<?= base_url('assets/front/') ?>assets/js/plugins/parallax.min.js"></script>
 <!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
-<script src="<?= base_url('assets/front/') ?>assets/js/material-kit.min.js?v=3.0.2" type="text/javascript"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+<script src="<?= base_url('assets/front/') ?>assets/js/material-kit.min.js?v=3.0.2" type="text/javascript"></script> -->
+<!-- Vendor JS Files -->
+
+<script src="<?php echo base_url('assets/vendor/purecounter/purecounter.js') ?>"></script>
+
+<script src="<?php echo base_url('assets/vendor/aos/aos.js') ?>"></script>
+
+<script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+
+<script src="<?php echo base_url('assets/vendor/glightbox/js/glightbox.min.js') ?>"></script>
+
+<script src="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.js') ?>"></script>
+
+<script src="<?php echo base_url('assets/vendor/php-email-form/validate.js') ?>"></script>
 
 
-<script type="text/javascript">
+
+
+
+
+
+<!-- Template Main JS File -->
+
+<script src="<?php echo base_url('assets/js/main.js') ?>"></script>
+
+<!-- <script type="text/javascript">
   if (document.getElementById('state1')) {
     const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
     if (!countUp.error) {
@@ -114,7 +164,7 @@
       console.error(countUp2.error);
     };
   }
-</script>
+</script> -->
 
 </body>
 

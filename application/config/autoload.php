@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'file', 'security', 'sim');
+$autoload['helper'] = array('form', 'url', 'file', 'security', 'sim');
 
 /*
 | -------------------------------------------------------------------
@@ -138,7 +138,6 @@ $autoload['model'] = array(
   'Member_model' => 'mMember',
   'Admin_model' => 'mAdmin',
   'Profile_model' => 'mProfile',
-  'Age_model' => 'mAge',
   'Pendaftaran_model' => 'mPendaftaran',
   'Warta_model' => 'mWarta',
   'Gallery_model' => 'mGallery',

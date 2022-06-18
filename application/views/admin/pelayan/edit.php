@@ -33,10 +33,10 @@
                <form role="form" action="<?= base_url('admin/pelayan/edit_Pelayan/' . $pelayan['pelayan_id']) ?>" method="post" enctype="multipart/form-data">
                  <div class="card-body">
                    <div class="form-group">
-                     <label>Name</label>
+                     <label>Nama</label>
                      <select class="select2bs4" style="width: 100%;" name="name" id="name">
                        <?php foreach ($member as $m) { ?>
-                         <option value="<?php echo $m['member_id'] ?>" <?= $m['member_id'] == $pelayan['name'] ? "selected" : null ?>><?php echo $m['fullname'] ?></option>
+                         <option value="<?php echo $m['member_id'] ?>" <?= $m['member_id'] == $pelayan['name'] ? "selected" : null ?>><?php echo $m['nama'] ?></option>
                        <?php } ?>
                      </select>
                    </div>
@@ -52,7 +52,7 @@
                      </select>
                    </div>
                    <div class="form-group">
-                     <label>Description</label>
+                     <label>Deskripsi</label>
                      <input class="form-control" id="description" name="description" value="<?php echo $pelayan['description'] ?>">
                    </div>
                  </div>

@@ -15,6 +15,7 @@ class Pelayan_model extends CI_Model
     $this->db->select('*');
     $this->db->from('pelayan');
     $this->db->join('member', 'member.member_id = pelayan.name', 'LEFT');
+    $this->db->where('role_id !=', 1);
     $this->db->order_by('pelayan_id', 'ASC');
     $query = $this->db->get();
     return $query->result_array();
@@ -30,6 +31,7 @@ class Pelayan_model extends CI_Model
     $this->db->select('*');
     $this->db->from('member');
     $this->db->order_by('member_id', 'ASC');
+    $this->db->where('role_id !=', 1);
     $query = $this->db->get();
     return $query->result_array();
   }

@@ -6,8 +6,8 @@
   }
 
   .barcode img {
-    height: 1247px;
-    width: 793px;
+    height: 1175px;
+    width: 820px;
     text-align: center;
     margin: 5px;
   }
@@ -15,8 +15,6 @@
   .barcode {
     text-align: center;
     position: absolute;
-    top: 50px;
-    left: 50px;
   }
 </style>
 

@@ -31,11 +31,11 @@
                   <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/img/profile/member/') . $user['images']; ?>" alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center"><?= $user['fullname']; ?></h3>
+                <h3 class="profile-username text-center"><?= $user['nama']; ?></h3>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Member Since</b> <a class="float-right"><?= date('d F Y', $user['date_created']); ?></a>
+                    <b>Member Since</b> <a class="float-right"><?= $user['date']; ?></a>
                   </li>
 
                 </ul>

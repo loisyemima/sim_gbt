@@ -27,20 +27,6 @@
               <div class="card-body">
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('admin/member/create_member'); ?>" class="btn btn-primary mb-3">Add New Member</a>
-                <div class="col-md-4">
-                  <table class="table">
-                    <tr>
-                      <td>
-                        <label for="">Status :</label>
-                        <select name="" id="" class="form-control status">
-                          <option>Semua</option>
-                          <option value="Member">Member</option>
-                          <option value="Non Member">Non Member</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
                 <div class="table-responsive">
                   <table class="table table-bordered table-hover" id="example1">
                     <thead>
@@ -62,19 +48,19 @@
                           <td><?= $m['nama'] ?></td>
                           <td><?= $m['tempat'] ?></td>
                           <td><?= $m['tgl_lahir'] ?></td>
-                          <td><?= $m['name'] ?></td>
+                          <td><?= $m['umur'] ?></td>
                           <td><?= $m['status'] ?></td>
                           <td>
-                            <a href="<?= base_url('admin/member/detail_member/' . $m['member_id']); ?>" class="btn btn-success btn-sm">
+                            <a href="<?= base_url('admin/member/detail_member/' . $m['member_id']); ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail">
                               <i class="fa fa-eye"></i>
                             </a>
-                            <a href="<?= base_url('admin/member/edit_member/' . $m['member_id']); ?>" class="btn btn-primary btn-sm">
+                            <a href="<?= base_url('admin/member/edit_member/' . $m['member_id']); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit">
                               <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a href="<?= base_url('admin/member/delete_member/' . $m['member_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm">
+                            <a href="<?= base_url('admin/member/delete_member/' . $m['member_id']); ?>" onclick="return confirm('Yakin ingin menghapus data??')" class="btn btn-danger btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus">
                               <i class="fa fa-trash"></i>
                             </a>
-                            <a href="<?= base_url('admin/member/create_img/' . $m['member_id']); ?>" class="btn btn-info btn-sm">
+                            <a href="<?= base_url('admin/member/create_img/' . $m['member_id']); ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Upload Dokumen">
                               <i class="fas fa-upload"></i>
                             </a>
                           </td>

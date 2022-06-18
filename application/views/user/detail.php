@@ -37,17 +37,17 @@
                    </div>
                    <div class="form-group">
                      <label>Name</label>
-                     <input class="form-control" id="fullname" name="fullname" value="<?php echo $member1['fullname'] ?>" disabled>
+                     <input class="form-control" id="nama" name="nama" value="<?php echo $member1['nama'] ?>" disabled>
                    </div>
                    <div class="form-group">
                      <label>Place Of Birth</label>
-                     <input class="form-control" id="place" name="place" value="<?php echo $member1['place'] ?>" disabled>
+                     <input class="form-control" id="tempat" name="tempat" value="<?php echo $member1['tempat'] ?>" disabled>
                    </div>
                    <!-- Date -->
                    <div class="form-group">
                      <label>Date Of Birth</label>
                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                       <input type="text" id="birth" name="birth" class="form-control datetimepicker-input" data-target="#reservationdate" value="<?php echo $member1['birth'] ?>" disabled />
+                       <input type="text" id="tgl_lahir" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" value="<?php echo $member1['tgl_lahir'] ?>" disabled />
                      </div>
                    </div>
                    <div class="form-group">
@@ -71,7 +71,10 @@
                      </select>
                    </div>
                  </div>
-
+                 <div class="card-footer">
+                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="reset" class="btn btn-secondary">Reset</button>
+                 </div>
                </form>
              </div>
              <!-- /.card -->

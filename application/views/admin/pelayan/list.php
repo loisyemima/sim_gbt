@@ -42,7 +42,7 @@
                     <?php foreach ($pelayan as $p) : ?>
                       <tr>
                         <th scope="row" width="25px"><?= $i; ?></th>
-                        <td><?= $p['fullname'] ?></td>
+                        <td><?= $p['nama'] ?></td>
                         <td><?= $p['level'] ?></td>
                         <td><?= $p['description'] ?></td>
                         <td>

@@ -33,11 +33,12 @@ class User_model extends CI_Model
 
   public function getData()
   {
-    $id = $this->session->userdata('member_id');
+    $id = $this->session->userdata('username');
     $this->db->select('*');
     $this->db->from('member');
-    $this->db->where('member_id', $id);
-    $this->db->order_by('member_id', 'ASC');
+    $this->db->where('username', $id);
+
+    $this->db->order_by('member_id', 'DESC');
     $query = $this->db->get();
     return $query->result_array();
   }

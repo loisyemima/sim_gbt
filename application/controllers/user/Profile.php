@@ -77,8 +77,6 @@ class Profile extends CI_Controller
     $data = $this->mUser->getData();
     $member = $this->mMember->getMember();
     $member1 = $this->mMember->detailMember($id);
-    $username = $this->mMember->username();
-    $age = $this->mAge->getAge();
     $img = $this->mMember->detailImg($id);
 
     $data = array(
@@ -87,8 +85,6 @@ class Profile extends CI_Controller
       'data' => $data,
       'member1'    => $member1,
       'member'    => $member,
-      'username'    => $username,
-      'age'    => $age,
       'img'    => $img,
       'isi'    => 'user/detail'
     );

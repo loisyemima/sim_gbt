@@ -27,7 +27,7 @@
               <div class="card-body">
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('admin/kegiatan/create_kegiatan'); ?>" class="btn btn-primary mb-3">Add Data</a>
-                <table class="table table-bordered table-hover" id="example1">
+                <table class="table table-bordered table-hover" id="example2">
                   <thead>
                     <tr>
                       <th>#</th>

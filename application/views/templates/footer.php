@@ -1,5 +1,5 @@
 <footer class="main-footer">
-  <strong>Copyright &copy; SIM GBT KRISTUS AJAIB SILIRAGUNG <?= date('Y') ?></strong>
+  <strong>Copyright &copy; SIM GEREJA BETHEL TABERNAKEL SILIRAGUNG <?= date('Y') ?></strong>
 </footer>
 
 </div>
@@ -136,7 +136,22 @@
 
     //Date picker
     $('#reservationdate').datetimepicker({
-      format: 'L'
+      format: 'DD-MM-YY'
+    });
+
+    //Date picker
+    $('#reservationdate2').datetimepicker({
+      format: 'DD-MM-YY'
+    });
+
+    //Date picker
+    $('#reservationdate3').datetimepicker({
+      format: 'DD-MM-YY'
+    });
+
+    //Date picker
+    $('#reservationdate4').datetimepicker({
+      format: 'DD-MM-YY'
     });
 
     //Date and time picker
@@ -153,7 +168,7 @@
       timePicker: true,
       timePickerIncrement: 30,
       locale: {
-        format: 'MM/DD/YYYY hh:mm A'
+        format: 'MM-DD-YYYY hh:mm A'
       }
     })
     //Date range as a button
@@ -264,7 +279,7 @@
       "responsive": true,
       "lengthChange": true,
       "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": ["copy", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
     $('#example2').DataTable({

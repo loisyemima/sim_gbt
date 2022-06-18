@@ -65,19 +65,20 @@
                      </div>
                    </div>
                    <div class="form-group">
-                     <label>Golongan</label>
+                     <label>Golongan Umur</label>
                      <select name="umur" id="umur" class="form-control">
-                       <option value="">Select</option>
-                       <?php foreach ($age as $a) : ?>
-                         <option value="<?= $a['age_id'] ?>"><?= $a['name'] ?></option>
-                       <?php endforeach; ?>
+                       <option value="">Pilih Golongan</option>
+                       <option value="Anak-anak">Anak-anak</option>
+                       <option value="Pemuda">Pemuda</option>
+                       <option value="Dewasa">Dewasa</option>
                      </select>
                    </div>
                    <div class="form-group">
                      <label>Status</label>
                      <select name="status" class="form-control">
-                       <option value="Member">Member</option>
-                       <option value="Non Member">Non Member</option>
+                       <option value="">Pilih Status</option>
+                       <option value="Anggota">Anggota</option>
+                       <option value="Jemaat">Jemaat</option>
                      </select>
                    </div>
                    <div class="from-group">

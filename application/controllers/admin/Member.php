@@ -9,31 +9,31 @@ class Member extends CI_Controller
     is_logged_in();
   }
 
+  //list anggota
   public function index()
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->getMember();
-    $img = $this->mMember->get_all_data();
 
     $data = array(
       'title'    => 'Daftar Anggota Jemaat',
       'user'  => $user,
       'member'    => $member,
-      'img'    => $img,
       'isi'    => 'admin/member/list'
     );
     $this->load->view('templates/wrapper', $data);
   }
 
+  //create anggota
   public function create_member()
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->getMember();
     $username = $this->mMember->username();
-    $age = $this->mAge->getAge();
 
     $v = $this->form_validation;
     $v->set_rules('nama', 'Full Name', 'required');
+    $v->set_rules('images', 'Image', 'required');
     $v->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
     $v->set_rules('username', 'Name', 'trim|required');
@@ -56,7 +56,6 @@ class Member extends CI_Controller
           'user'  => $user,
           'member' => $member,
           'username' => $username,
-          'age' => $age,
           'isi'    => 'admin/member/create'
         );
         $this->load->view('templates/wrapper', $data);
@@ -102,29 +101,27 @@ class Member extends CI_Controller
       'user'  => $user,
       'member' => $member,
       'username' => $username,
-      'age' => $age,
       'isi'    => 'admin/member/create'
     );
     $this->load->view('templates/wrapper', $data);
   }
 
+  //edit anggota
   public function edit_member($id)
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->detailMember($id);
-    $username = $this->mMember->username();
-    $age = $this->mAge->getAge();
 
     $v = $this->form_validation;
     $v->set_rules('nama', 'Nama', 'required');
     $v->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
-    $v->set_rules('username', 'Username', 'trim|required');
-    $v->set_rules('password1', 'Password', 'trim|required|min_length[6]|matches[password2]', [
+    $v->set_rules('username', 'Username', 'trim');
+    $v->set_rules('password1', 'Password', 'trim|min_length[6]|matches[password2]', [
       'matches' => 'password dant match!',
       'min_length' => 'password too short!'
     ]);
-    $v->set_rules('password2', 'Password', 'trim|required|matches[password1]');
+    $v->set_rules('password2', 'Password', 'trim|matches[password1]');
 
 
     if ($v->run()) {
@@ -140,8 +137,6 @@ class Member extends CI_Controller
             'title'    => 'Edit Anggota',
             'user'  => $user,
             'member'  => $member,
-            'username'  => $username,
-            'age'  => $age,
             'isi'    => 'admin/member/edit'
           );
           $this->load->view('templates/wrapper', $data);
@@ -204,8 +199,6 @@ class Member extends CI_Controller
       'title'    => 'Edit Anggota',
       'user'  => $user,
       'member'  => $member,
-      'username'  => $username,
-      'age'  => $age,
       'isi'    => 'admin/member/edit'
     );
     $this->load->view('templates/wrapper', $data);
@@ -221,120 +214,7 @@ class Member extends CI_Controller
     redirect(base_url('admin/member'));
   }
 
-  public function nonMember()
-  {
-    $user = $this->mAdmin->getData();
-    $member = $this->mMember->getNonMember();
-
-    $data = array(
-      'title'    => 'Daftar Non Anggota',
-      'user'  => $user,
-      'member'    => $member,
-      'isi'    => 'admin/nonmember/list'
-    );
-    $this->load->view('templates/wrapper', $data);
-  }
-
-  public function edit_nonmember($id)
-  {
-    $user = $this->mAdmin->getData();
-    $member = $this->mMember->detailMember($id);
-    $username = $this->mMember->username();
-    $age = $this->mAge->getAge();
-
-    $v = $this->form_validation;
-    $v->set_rules('nama', 'Full Name', 'required');
-    $v->set_rules('tgl_lahir', 'tgl_lahir', 'required');
-    $v->set_rules('status', 'Status', 'required');
-
-    if ($v->run()) {
-      if (!empty($_FILES['image']['name'])) {
-
-        $config['upload_path']     = './assets/img/profile/member/';
-        $config['allowed_types']   = 'gif|jpg|png|pdf';
-        $config['max_size']      = '1000'; // KB			
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('image')) {
-
-          $data = array(
-            'title'    => 'Edit Non Anggota',
-            'user'  => $user,
-            'member'  => $member,
-            'username'  => $username,
-            'age'  => $age,
-            'isi'    => 'admin/nonmember/edit'
-          );
-          $this->load->view('templates/wrapper', $data);
-        } else {
-          //hapus foto lama
-          if ($member['image'] != "") {
-            unlink('./assets/img/profile/member/' . $member['image']);
-          }
-          $upload_data        = array('uploads' => $this->upload->data());
-          $config['image_library']  = 'gd2';
-          $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
-          $config['quality']       = "100%";
-          $config['maintain_ratio']   = FALSE;
-          $config['width']       = 360; // Pixel
-          $config['height']       = 200; // Pixel
-          $config['x_axis']       = 0;
-          $config['y_axis']       = 0;
-          $config['thumb_marker']   = '';
-          $this->load->library('image_lib', $config);
-          $this->image_lib->resize();
-
-          $data = [
-            'member_id' => $member['member_id'],
-            'nama' => $this->input->post('nama'),
-            'images' => $upload_data['uploads']['file_name'],
-            'tempat' => $this->input->post('tempat'),
-            'tgl_lahir' => $this->input->post('tgl_lahir'),
-            'age' => $this->input->post('age'),
-            'status' => $this->input->post('status'),
-            'username' => $this->input->post('username'),
-          ];
-          $this->mMember->editMember($data);
-          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Edit Non Member Added!</div>');
-          redirect('admin/member');
-        }
-      } else {
-        $data = [
-          'member_id' => $member['member_id'],
-          'nama' => $this->input->post('nama'),
-          'tempat' => $this->input->post('tempat'),
-          'tgl_lahir' => $this->input->post('tgl_lahir'),
-          'age' => $this->input->post('age'),
-          'status' => $this->input->post('status'),
-          'username' => $this->input->post('username'),
-        ];
-        $this->mMember->editMember($data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Edit Non Member Added!</div>');
-        redirect('admin/member');
-      }
-    }
-    $data = array(
-      'title'    => 'Edit Anggota',
-      'user'  => $user,
-      'member'  => $member,
-      'username'  => $username,
-      'age'  => $age,
-      'isi'    => 'admin/nonmember/edit'
-    );
-    $this->load->view('templates/wrapper', $data);
-  }
-
-  // Delete non member
-  public function delete_nonmember($id)
-  {
-    $data = array('member_id' => $id);
-    $this->mMember->deleteMember($data);
-    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Delete Member Succsess!</div>');
-    redirect(base_url('admin/member'));
-  }
-
+  // create image baptis
   public function create_img($id)
   {
     $user = $this->mAdmin->getData();
@@ -391,6 +271,7 @@ class Member extends CI_Controller
     $this->load->view('templates/wrapper', $data);
   }
 
+  // create image anak
   public function create_anak($id)
   {
     $user = $this->mAdmin->getData();
@@ -452,6 +333,7 @@ class Member extends CI_Controller
     $this->load->view('templates/wrapper', $data);
   }
 
+  //create image pernikahan
   public function create_per($id)
   {
     $user = $this->mAdmin->getData();
@@ -513,13 +395,12 @@ class Member extends CI_Controller
     $this->load->view('templates/wrapper', $data);
   }
 
+  //detail anggota
   public function detail_member($id)
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->getMember();
     $member1 = $this->mMember->detailMember($id);
-    $username = $this->mMember->username();
-    $age = $this->mAge->getAge();
     $img = $this->mMember->detailImg($id);
 
     $data = array(
@@ -527,8 +408,6 @@ class Member extends CI_Controller
       'user'  => $user,
       'member1'    => $member1,
       'member'    => $member,
-      'username'    => $username,
-      'age'    => $age,
       'img'    => $img,
       'isi'    => 'admin/member/detail'
     );
@@ -583,50 +462,50 @@ class Member extends CI_Controller
                           }
                         }*/
 
-  public function filtering()
-  {
-    $user = $this->mAdmin->getData();
-    $countries = $this->mMember->get_list_countries();
+  // public function filtering()
+  // {
+  //   $user = $this->mAdmin->getData();
+  //   $countries = $this->mMember->get_list_countries();
 
-    $opt = array('' => 'All Country');
-    foreach ($countries as $country) {
-      $opt[$country] = $country;
-    }
+  //   $opt = array('' => 'All Country');
+  //   foreach ($countries as $country) {
+  //     $opt[$country] = $country;
+  //   }
 
-    $data = array(
-      'title' => 'Member',
-      'user' => $user,
-      'form_country' => form_dropdown('', $opt, '', 'id="status" class="form-control"'),
-      'isi' => 'admin/member/filtering'
-    );
-    $this->load->view('templates/wrapper', $data);
-  }
+  //   $data = array(
+  //     'title' => 'Member',
+  //     'user' => $user,
+  //     'form_country' => form_dropdown('', $opt, '', 'id="status" class="form-control"'),
+  //     'isi' => 'admin/member/filtering'
+  //   );
+  //   $this->load->view('templates/wrapper', $data);
+  // }
 
-  public function ajax_list()
-  {
-    $list = $this->mMember->get_datatables();
-    $data = array();
-    $no = $_POST['start'];
-    foreach ($list as $member) {
-      $no++;
-      $row = array();
-      $row[] = $no;
-      $row[] = $member->nama;
-      $row[] = $member->tempat;
-      $row[] = $member->tgl_lahir;
-      $row[] = $member->age;
-      $row[] = $member->status;
+  // public function ajax_list()
+  // {
+  //   $list = $this->mMember->get_datatables();
+  //   $data = array();
+  //   $no = $_POST['start'];
+  //   foreach ($list as $member) {
+  //     $no++;
+  //     $row = array();
+  //     $row[] = $no;
+  //     $row[] = $member->nama;
+  //     $row[] = $member->tempat;
+  //     $row[] = $member->tgl_lahir;
+  //     $row[] = $member->age;
+  //     $row[] = $member->status;
 
-      $data[] = $row;
-    }
+  //     $data[] = $row;
+  //   }
 
-    $output = array(
-      "draw" => $_POST['draw'],
-      "recordsTotal" => $this->mMember->count_all(),
-      "recordsFiltered" => $this->mMember->count_filtered(),
-      "data" => $data,
-    );
-    //output to json format
-    echo json_encode($output);
-  }
+  //   $output = array(
+  //     "draw" => $_POST['draw'],
+  //     "recordsTotal" => $this->mMember->count_all(),
+  //     "recordsFiltered" => $this->mMember->count_filtered(),
+  //     "data" => $data,
+  //   );
+  //   //output to json format
+  //   echo json_encode($output);
+  // }
 }

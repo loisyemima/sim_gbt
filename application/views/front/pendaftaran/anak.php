@@ -23,33 +23,75 @@
                   <div class="card-body p-0 my-3">
                     <div class="row">
                       <div class="col-6">
+                        <label for="" class="">
+                          <h5>Nama Anak </h5>
+                        </label>
+                        <i> * Contoh : Abigail Yemima Sari </i>
                         <div class="input-group input-group-static mb-4">
-                          <label>Nama Wali</label>
-                          <input type="text" id="nama_wali" name="nama_wali" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="input-group input-group-static mb-4">
-                          <label>Nama Anak</label>
                           <input type="text" id="nama_anak" name="nama_anak" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
-                        <div class="input-group input-group-static mb-4">
-                          <label>Tempat Lahir</label>
-                          <input type="text" id="place" name="place" class="form-control">
+                        <label>
+                          <h5>Jenis Kelamin </h5>
+                        </label>
+                        <div class="row">
+                          <div class="col-6 text-start">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault1" value="perempuan" checked>
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                Perempuan
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="jenis_kelamin" value="laki-laki" id="flexRadioDefault2">
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                Laki-laki
+                              </label>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="col-6">
+                        <label>
+                          <h5>Tempat Lahir </h5>
+                        </label><i> * Contoh : Banyuwangi, 3 Juni 1999</i>
                         <div class="input-group input-group-static mb-4">
-                          <label>Tanggal Lahir</label>
-                          <input type="date" id="birth" name="birth" class="form-control">
+                          <input type="text" id="tempattgl_lahir" name="tempattgl_lahir" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
+                        <label>
+                          <h5>Tanggal Lahir</h5>
+                        </label>
                         <div class="input-group input-group-static mb-4">
-                          <label>No Telp</label>
-                          <input type="text" id="number" name="number" class="form-control">
+                          <input type="date" id="tgl" name="tgl" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <label for="" class="">
+                          <h5>Nama Ayah</h5>
+                        </label>
+                        <i> * Contoh : Hadi Subroto </i>
+                        <div class="input-group input-group-static mb-4">
+                          <input type="text" id="nama_ayah" name="nama_ayah" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <label for="" class="">
+                          <h5>Nama Ibu</h5>
+                        </label>
+                        <i> * Contoh : Ruth Vilance </i>
+                        <div class="input-group input-group-static mb-4">
+                          <input type="text" id="nama_ibu" name="nama_ibu" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <label>
+                          <h5>No Telp </h5>
+                        </label>
+                        <div class="input-group input-group-static mb-4">
+                          <input type="text" id="nomor" name="nomor" class="form-control">
                         </div>
                       </div>
                       <div class="row">

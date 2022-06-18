@@ -48,15 +48,15 @@ class Admin_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('member');
-    $this->db->where(array('status' => 'Member'));
+    $this->db->where(array('status' => 'Anggota'));
     return $this->db->get()->num_rows();
   }
   public function totalAnak()
   {
     $this->db->select('*');
     $this->db->from('member');
-    $this->db->where(array('status' => 'Member'));
-    $this->db->where(array('umur' => '1'));
+    $this->db->where(array('status' => 'Anggota'));
+    $this->db->where(array('umur' => 'Anak-anak'));
     return $this->db->get()->num_rows();
   }
 
@@ -64,8 +64,8 @@ class Admin_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('member');
-    $this->db->where(array('status' => 'Member'));
-    $this->db->where(array('umur' => '2'));
+    $this->db->where(array('status' => 'Anggota'));
+    $this->db->where(array('umur' => 'Pemuda'));
     return $this->db->get()->num_rows();
   }
 
@@ -73,8 +73,8 @@ class Admin_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('member');
-    $this->db->where(array('status' => 'Member'));
-    $this->db->where(array('umur' => '3'));
+    $this->db->where(array('status' => 'Anggota'));
+    $this->db->where(array('umur' => 'Dewasa'));
     return $this->db->get()->num_rows();
   }
 }

@@ -46,7 +46,7 @@
 
 	text-align: center;
 	padding-bottom: 30px;
-  padding-top: 7%;
+	padding-top: 7%;
 
 }
 
@@ -105,7 +105,8 @@
 
 	overflow: visible;
 
-	padding-top: 90%; /* 16:9 Aspect Ratio */
+	padding-top: 90%;
+	/* 16:9 Aspect Ratio */
 
 }
 
@@ -117,7 +118,8 @@
 
 	overflow: visible;
 
-	padding-top: 80%; /* 16:9 Aspect Ratio */
+	padding-top: 80%;
+	/* 16:9 Aspect Ratio */
 
 }
 

@@ -38,10 +38,10 @@
                <form role="form" action="<?= base_url('admin/pelayan/create_pelayan'); ?>" method="post" enctype="multipart/form-data">
                  <div class="card-body">
                    <div class="form-group">
-                     <label>Name</label>
-                     <select class="select2bs4" id="name" name="name" data-placeholder="Select a Name" style="width: 100%;">
+                     <label>Nama</label>
+                     <select class="select2bs4" id="name" name="name" data-placeholder="Pilih Nama" style="width: 100%;">
                        <?php foreach ($member as $m) { ?>
-                         <option value="<?php echo $m['member_id'] ?>"><?php echo $m['fullname'] ?></option>
+                         <option value="<?php echo $m['member_id'] ?>"><?php echo $m['nama'] ?></option>
                        <?php } ?>
                      </select>
                    </div>
@@ -53,7 +53,7 @@
                      </select>
                    </div>
                    <div class="form-group">
-                     <label>Description</label>
+                     <label>Deskripsi</label>
                      <input class="form-control" id="description" name="description">
                    </div>
                  </div>
