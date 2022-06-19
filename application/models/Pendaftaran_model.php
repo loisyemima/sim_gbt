@@ -14,7 +14,7 @@ class Pendaftaran_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('baptis');
-    $this->db->order_by('Baptis_id', 'ASC');
+    $this->db->order_by('Baptis_id', 'DESC');
     $query = $this->db->get();
     return $query->result_array();
   }
@@ -79,7 +79,7 @@ class Pendaftaran_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('pernikahan');
-    $this->db->order_by('pernikahan_id', 'ASC');
+    $this->db->order_by('pernikahan_id', 'DESC');
     $query = $this->db->get();
     return $query->result_array();
   }
@@ -135,7 +135,7 @@ class Pendaftaran_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('anak');
-    $this->db->order_by('anak_id', 'ASC');
+    $this->db->order_by('anak_id', 'DESC');
     $query = $this->db->get();
     return $query->result_array();
   }

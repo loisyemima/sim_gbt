@@ -20,14 +20,14 @@
             <div class="col-md-4 position-relative">
               <div class="p-3 text-center">
                 <i class="material-icons text-info" style="font-size:100px;">campaign</i>
-                <h6 class="text-lg"><a class="">Jadwal Ibadah</a></h6>
+                <h6 class="text-lg"><a class="" href="<?= base_url('warta') ?>">Jadwal Ibadah</a></h6>
               </div>
               <hr class="vertical dark">
             </div>
             <div class="col-md-4 position-relative">
               <div class="p-3 text-center">
                 <i class="material-icons text-info" style="font-size:100px;">photo_library</i>
-                <h6 class="text-lg"><a href="">Gallery</a></h6>
+                <h6 class="text-lg"><a href="<?= base_url('Galeri') ?>">Gallery</a></h6>
               </div>
               <hr class="vertical dark">
             </div>

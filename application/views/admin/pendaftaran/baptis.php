@@ -33,6 +33,7 @@
                       <th>Nama</th>
                       <th>Tanggal Lahir</th>
                       <th>No. Telp</th>
+                      <th>Tanggal Pengajuan</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -45,6 +46,7 @@
                         <td><?= $b['nama'] ?></td>
                         <td><?= $b['tgl_lahir'] ?></td>
                         <td><?= $b['nomor'] ?></td>
+                        <td><?= $b['tgl_pengajuan'] ?></td>
                         <td><?= $b['keterangan'] ?></td>
                         <?php $i++; ?>
                         <td>

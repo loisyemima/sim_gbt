@@ -47,9 +47,10 @@
                         <th scope="row"><?= $i; ?></th>
                         <td><?= $m['menu'] ?></td>
                         <td>
-                          <a href="" class="badge badge-pill badge-success" data-toggle="modal" data-target="#editMenuModal<?php echo $m['id']; ?>">edit</a>
-                          <a href="" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#deleteMenuModal<?php echo $m['id']; ?>">delete</a>
+                          <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editMenuModal<?php echo $m['id']; ?>"><i class="fas fa-pencil-alt"></i> edit</a>
+                          <a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteMenuModal<?php echo $m['id']; ?>"><i class="fa fa-trash"></i> delete</a>
                         </td>
+
                       </tr>
                       <?php $i++; ?>
                     <?php endforeach; ?>

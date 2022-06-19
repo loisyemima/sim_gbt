@@ -22,7 +22,7 @@
 
 
 
-          <iframe class="responsive-iframe" src="<?php echo $site['penanganan']; ?>" allowfullscreen></iframe>
+          <iframe class="responsive-iframe" src="<?php echo $site['surat_edaran']; ?>" allowfullscreen></iframe>
 
         </div>
 

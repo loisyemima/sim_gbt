@@ -19,7 +19,7 @@
              <!-- general form elements -->
              <div class="card card-primary">
                <div class="card-header">
-                 <h3 class="card-title">Edit Pendaftaran Baptis</h3>
+                 <h3 class="card-title">Isi Semua Data!!</h3>
                </div>
                <?php if (validation_errors()) : ?>
                  <div class="alert alert-danger" role="alert">
@@ -78,8 +78,13 @@
                      <input type="text" class="form-control" id="hari_tanggal" name="hari_tanggal" placeholder="" value="<?php echo $baptis['hari_tanggal'] ?>">
                    </div>
                    <div class="form-group">
-                     <label for="tgl1">Tanggal Baptis</label>
-                     <input type="date" id="tgl1" name="tgl_baptis" class="form-control" value="<?php echo $baptis['tgl_baptis'] ?>">
+                     <label>Tanggal Baptis</label>
+                     <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                       <input type="text" id="tgl_baptis" name="tgl_baptis" class="form-control datetimepicker-input" data-target="#reservationdate2" value="<?php echo $baptis['tgl_baptis'] ?>" />
+                       <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                       </div>
+                     </div>
                    </div>
                    <div class=" form-group">
                      <label for="">Tempat</label>
@@ -94,8 +99,13 @@
                      <input type="text" class="form-control" id="tempat_ttd" name="tempat_ttd" placeholder="" value="<?php echo $baptis['tempat_ttd'] ?>">
                    </div>
                    <div class="form-group">
-                     <label for="tgl2">Tanggal TTD</label>
-                     <input type="date" id="tgl2" name="tgl_ttd" class="form-control" value="<?php echo $baptis['tgl_ttd'] ?>">
+                     <label>Tanggal TTD</label>
+                     <div class="input-group date" id="reservationdate3" data-target-input="nearest">
+                       <input type="text" id="tgl_ttd" name="tgl_ttd" class="form-control datetimepicker-input" data-target="#reservationdate3" value="<?php echo $baptis['tgl_ttd'] ?>" />
+                       <div class="input-group-append" data-target="#reservationdate3" data-toggle="datetimepicker">
+                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                       </div>
+                     </div>
                    </div>
                    <div class=" form-group">
                      <label for="">Nama Gembala</label>

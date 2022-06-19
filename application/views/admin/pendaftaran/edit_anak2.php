@@ -19,7 +19,7 @@
              <!-- general form elements -->
              <div class="card card-primary">
                <div class="card-header">
-                 <h3 class="card-title">Edit Pendaftaran Anak</h3>
+                 <h3 class="card-title">Isi Semua Data!!!</h3>
                </div>
                <?php if (validation_errors()) : ?>
                  <div class="alert alert-danger" role="alert">
@@ -101,7 +101,7 @@
                    </div>
                    <div class=" form-group">
                      <label for="">Nama Gembala</label>
-                     <input type="text" class="form-control" id="nama_gembala" name="nama_gembala" placeholder="" value="<?php echo $anak['nama_gembala'] ?>">
+                     <input type="text" class="form-control" id="nama_ttd" name="nama_ttd" placeholder="" value="<?php echo $anak['nama_ttd'] ?>">
                    </div>
                    <div class="form-group">
                      <label for="">NIK</label>

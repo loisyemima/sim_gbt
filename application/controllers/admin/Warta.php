@@ -195,7 +195,7 @@ class Warta extends CI_Controller
       $i = $this->input;
       $data = array(
         'config_id'  => $i->post('config_id'),
-        'penanganan' => $i->post('penanganan'),
+        'surat_edaran' => $i->post('surat_edaran'),
       );
       $this->mConfig->edit_config($data);
       $this->session->set_flashdata('sukses', 'Configuration has updated');

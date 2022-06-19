@@ -29,11 +29,9 @@ class Member extends CI_Controller
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->getMember();
-    $username = $this->mMember->username();
 
     $v = $this->form_validation;
     $v->set_rules('nama', 'Full Name', 'required');
-    $v->set_rules('images', 'Image', 'required');
     $v->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
     $v->set_rules('username', 'Name', 'trim|required');
@@ -46,7 +44,7 @@ class Member extends CI_Controller
 
     if ($v->run()) {
       $config['upload_path']     = './assets/img/profile/member/';
-      $config['allowed_types']   = 'gif|jpg|png|pdf';
+      $config['allowed_types']   = 'gif|jpg|png|pdf|jpeg';
       $config['max_size']      = '1000'; // KB			
       $this->load->library('upload', $config);
       if (!$this->upload->do_upload('image')) {
@@ -55,7 +53,6 @@ class Member extends CI_Controller
           'title'    => 'Create Anggota',
           'user'  => $user,
           'member' => $member,
-          'username' => $username,
           'isi'    => 'admin/member/create'
         );
         $this->load->view('templates/wrapper', $data);
@@ -100,7 +97,6 @@ class Member extends CI_Controller
       'title'    => 'Create Anggota',
       'user'  => $user,
       'member' => $member,
-      'username' => $username,
       'isi'    => 'admin/member/create'
     );
     $this->load->view('templates/wrapper', $data);
@@ -128,7 +124,7 @@ class Member extends CI_Controller
       if (!empty($_FILES['image']['name'])) {
 
         $config['upload_path']     = './assets/img/profile/member/';
-        $config['allowed_types']   = 'gif|jpg|png';
+        $config['allowed_types']   = 'gif|jpg|png|jpeg';
         $config['max_size']      = '1000'; // KB			
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('image')) {
@@ -220,22 +216,27 @@ class Member extends CI_Controller
     $user = $this->mAdmin->getData();
     $member = $this->mMember->detailMember($id);
     $img = $this->mMember->detailImg($id);
+    $img2 = $this->mMember->detailPer($id);
+    $img3 = $this->mMember->detailAnak($id);
+
 
     $v = $this->form_validation;
     $v->set_rules('image_name', 'Image Name', 'required');
 
     if ($v->run()) {
       $config['upload_path']     = './assets/img/profile/member/';
-      $config['allowed_types']   = 'gif|jpg|png|jpeg';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg|pdf';
       $config['max_size']      = '1000'; // KB			
       $this->load->library('upload', $config);
       if (!$this->upload->do_upload('image')) {
 
         $data = array(
-          'title'    => 'Create Anggota',
+          'title'    => 'Create Image Anggota',
           'user'  => $user,
           'member' => $member,
           'img' => $img,
+          'img2' => $img2,
+          'img3' => $img3,
           'isi'    => 'admin/member/img_bap'
         );
         $this->load->view('templates/wrapper', $data);
@@ -257,7 +258,7 @@ class Member extends CI_Controller
         $this->mMember->createImg($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             New Member Added!</div>');
-        redirect('admin/member');
+        redirect('admin/member/');
       }
     }
 
@@ -266,6 +267,71 @@ class Member extends CI_Controller
       'user'  => $user,
       'member' => $member,
       'img' => $img,
+      'img2' => $img2,
+      'img3' => $img3,
+      'isi'    => 'admin/member/img_bap'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+  // create image baptis
+  public function edit_img($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img = $this->mMember->detailImg($id);
+    $img2 = $this->mMember->detailPer($id);
+    $img3 = $this->mMember->detailAnak($id);
+
+
+    $v = $this->form_validation;
+    $v->set_rules('image_name', 'Image Name', 'required');
+
+    if ($v->run()) {
+      $config['upload_path']     = './assets/img/profile/member/';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg';
+      $config['max_size']      = '1000'; // KB			
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('image')) {
+
+        $data = array(
+          'title'    => 'Create Image Anggota',
+          'user'  => $user,
+          'member' => $member,
+          'img' => $img,
+          'img2' => $img2,
+          'img3' => $img3,
+          'isi'    => 'admin/member/img_bap'
+        );
+        $this->load->view('templates/wrapper', $data);
+      } else {
+        $upload_data        = array('uploads' => $this->upload->data());
+        $config['image_library']  = 'gd2';
+        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $config['quality']       = "100%";
+        $config['maintain_ratio']   = FALSE;
+        $config['x_axis']       = 0;
+        $config['y_axis']       = 0;
+        $config['thumb_marker']   = '';
+
+        $data = array(
+          'member' => $id,
+          'image_name' => $this->input->post('image_name'),
+          'image1'      => $upload_data['uploads']['file_name'],
+        );
+        $this->mMember->editImg($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New Member Added!</div>');
+        redirect('admin/member/');
+      }
+    }
+
+    $data = array(
+      'title'    => 'Create Anggota',
+      'user'  => $user,
+      'member' => $member,
+      'img' => $img,
+      'img2' => $img2,
+      'img3' => $img3,
       'isi'    => 'admin/member/img_bap'
     );
     $this->load->view('templates/wrapper', $data);
@@ -276,14 +342,14 @@ class Member extends CI_Controller
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->detailMember($id);
-    $img = $this->mMember->detailAnak($id);
+    $img3 = $this->mMember->detailAnak($id);
 
     $v = $this->form_validation;
     $v->set_rules('nama_image', 'nama_image', 'required');
 
     if ($v->run()) {
       $config['upload_path']     = './assets/img/profile/member/';
-      $config['allowed_types']   = 'gif|jpg|png|pdf';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg';
       $config['max_size']      = '1000'; // KB			
       $this->load->library('upload', $config);
       if (!$this->upload->do_upload('image')) {
@@ -292,7 +358,7 @@ class Member extends CI_Controller
           'title'    => 'Create Anggota',
           'user'  => $user,
           'member' => $member,
-          'img' => $img,
+          'img3' => $img3,
           'isi'    => 'admin/member/img_bap'
         );
         $this->load->view('templates/wrapper', $data);
@@ -319,7 +385,7 @@ class Member extends CI_Controller
         $this->mMember->createAnak($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             New Member Added!</div>');
-        redirect('admin/member');
+        redirect('admin/member/' . $id);
       }
     }
 
@@ -327,7 +393,69 @@ class Member extends CI_Controller
       'title'    => 'Create Anggota',
       'user'  => $user,
       'member' => $member,
-      'img' => $img,
+      'img3' => $img3,
+      'isi'    => 'admin/member/img_bap'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  // create image anak
+  public function edit_anak($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img3 = $this->mMember->detailAnak($id);
+
+    $v = $this->form_validation;
+    $v->set_rules('nama_image', 'nama_image', 'required');
+
+    if ($v->run()) {
+      $config['upload_path']     = './assets/img/profile/member/';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg';
+      $config['max_size']      = '1000'; // KB			
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('image')) {
+
+        $data = array(
+          'title'    => 'Create Anggota',
+          'user'  => $user,
+          'member' => $member,
+          'img3' => $img3,
+          'isi'    => 'admin/member/img_bap'
+        );
+        $this->load->view('templates/wrapper', $data);
+      } else {
+        $upload_data        = array('uploads' => $this->upload->data());
+        $config['image_library']  = 'gd2';
+        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $config['create_thumb']   = TRUE;
+        $config['quality']       = "100%";
+        $config['maintain_ratio']   = FALSE;
+        $config['width']       = 360; // Pixel
+        $config['height']       = 200; // Pixel
+        $config['x_axis']       = 0;
+        $config['y_axis']       = 0;
+        $config['thumb_marker']   = '';
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+
+        $data = array(
+          'member2' => $id,
+          'nama_image' => $this->input->post('nama_image'),
+          'image2'      => $upload_data['uploads']['file_name'],
+        );
+        $this->mMember->editAnak($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New Member Added!</div>');
+        redirect('admin/member/' . $id);
+      }
+    }
+
+    $data = array(
+      'title'    => 'Create Anggota',
+      'user'  => $user,
+      'member' => $member,
+      'img3' => $img3,
       'isi'    => 'admin/member/img_bap'
     );
     $this->load->view('templates/wrapper', $data);
@@ -338,14 +466,14 @@ class Member extends CI_Controller
   {
     $user = $this->mAdmin->getData();
     $member = $this->mMember->detailMember($id);
-    $img = $this->mMember->detailPer($id);
+    $img2 = $this->mMember->detailPer($id);
 
     $v = $this->form_validation;
     $v->set_rules('nama_image3', 'nama_image', 'required');
 
     if ($v->run()) {
       $config['upload_path']     = './assets/img/profile/member/';
-      $config['allowed_types']   = 'gif|jpg|png|pdf';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg';
       $config['max_size']      = '1000'; // KB			
       $this->load->library('upload', $config);
       if (!$this->upload->do_upload('image')) {
@@ -354,7 +482,7 @@ class Member extends CI_Controller
           'title'    => 'Create Anggota',
           'user'  => $user,
           'member' => $member,
-          'img' => $img,
+          'img2' => $img2,
           'isi'    => 'admin/member/img_bap'
         );
         $this->load->view('templates/wrapper', $data);
@@ -381,7 +509,7 @@ class Member extends CI_Controller
         $this->mMember->createPer($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             New Member Added!</div>');
-        redirect('admin/member');
+        redirect('admin/member/' . $id);
       }
     }
 
@@ -389,7 +517,68 @@ class Member extends CI_Controller
       'title'    => 'Create Anggota',
       'user'  => $user,
       'member' => $member,
-      'img' => $img,
+      'img2' => $img2,
+      'isi'    => 'admin/member/img_bap'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function edit_per($id)
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img2 = $this->mMember->detailPer($id);
+
+    $v = $this->form_validation;
+    $v->set_rules('nama_image3', 'nama_image', 'required');
+
+    if ($v->run()) {
+      $config['upload_path']     = './assets/img/profile/member/';
+      $config['allowed_types']   = 'gif|jpg|png|jpeg';
+      $config['max_size']      = '1000'; // KB			
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('image')) {
+
+        $data = array(
+          'title'    => 'Create Anggota',
+          'user'  => $user,
+          'member' => $member,
+          'img2' => $img2,
+          'isi'    => 'admin/member/img_bap'
+        );
+        $this->load->view('templates/wrapper', $data);
+      } else {
+        $upload_data        = array('uploads' => $this->upload->data());
+        $config['image_library']  = 'gd2';
+        $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+        $config['create_thumb']   = TRUE;
+        $config['quality']       = "100%";
+        $config['maintain_ratio']   = FALSE;
+        $config['width']       = 360; // Pixel
+        $config['height']       = 200; // Pixel
+        $config['x_axis']       = 0;
+        $config['y_axis']       = 0;
+        $config['thumb_marker']   = '';
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+
+        $data = array(
+          'member3' => $id,
+          'nama_image3' => $this->input->post('nama_image3'),
+          'image3'      => $upload_data['uploads']['file_name'],
+        );
+        $this->mMember->editPer($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New Member Added!</div>');
+        redirect('admin/member/' . $id);
+      }
+    }
+
+    $data = array(
+      'title'    => 'Create Anggota',
+      'user'  => $user,
+      'member' => $member,
+      'img2' => $img2,
       'isi'    => 'admin/member/img_bap'
     );
     $this->load->view('templates/wrapper', $data);
@@ -402,6 +591,8 @@ class Member extends CI_Controller
     $member = $this->mMember->getMember();
     $member1 = $this->mMember->detailMember($id);
     $img = $this->mMember->detailImg($id);
+    $img2 = $this->mMember->detailPer($id);
+    $img3 = $this->mMember->detailAnak($id);
 
     $data = array(
       'title'    => 'Daftar Anggota Jemaat',
@@ -409,6 +600,8 @@ class Member extends CI_Controller
       'member1'    => $member1,
       'member'    => $member,
       'img'    => $img,
+      'img2'    => $img2,
+      'img3'    => $img3,
       'isi'    => 'admin/member/detail'
     );
     $this->load->view('templates/wrapper', $data);
@@ -428,84 +621,70 @@ class Member extends CI_Controller
     $this->load->view('admin/member/print', $data, false);
   }
 
-  /*public function filter()
+  public function print_image2($id)
   {
-    $data['data'] = $this->db->get('member')->result();
-    $this->load->view("admin/member/filter", $data, false); // ini view menampilkan hasil pencarian
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img = $this->mMember->detailPer($id);
+
+    $data = array(
+      'user'  => $user,
+      'member'    => $member,
+      'img'    => $img,
+    );
+    $this->load->view('admin/member/print2', $data, false);
   }
 
-  public function load_member()
+  public function print_image3($id)
   {
-    $status = $_GET['status'];
-    if ($status == 0) {
-      $data = $this->db->get('member')->result();
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->detailMember($id);
+    $img = $this->mMember->detailAnak($id);
+
+    $data = array(
+      'user'  => $user,
+      'member'    => $member,
+      'img'    => $img,
+    );
+    $this->load->view('admin/member/print3', $data, false);
+  }
+
+
+  public function editadmin()
+  {
+    $user = $this->mAdmin->getData();
+    $member = $this->mMember->admin();
+
+    $v = $this->form_validation;
+    $v->set_rules('username', 'Username', 'trim');
+    $v->set_rules('password1', 'Password', 'trim|min_length[6]|matches[password2]', [
+      'matches' => 'password dant match!',
+      'min_length' => 'password too short!'
+    ]);
+    $v->set_rules('password2', 'Password', 'trim|matches[password1]');
+
+
+    if ($v->run() == false) {
+
+      $data = array(
+        'title'    => 'Edit Anggota',
+        'user'  => $user,
+        'member'  => $member,
+        'isi'    => 'admin/member/admin'
+      );
+      $this->load->view('templates/wrapper', $data);
     } else {
-      $data = $this->db->get_where('member', ['status' => $status])->result();
+
+      $data = array(
+        'member_id' => 1,
+        'username' => htmlspecialchars($this->input->post('username', true)),
+        'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+        'date' => time()
+      );
+      $this->mMember->editMember($data);
+      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Edit Member Added!</div>');
+      redirect('admin/member');
     }
-    if (!empty($data)) {
-      $i = 1;
-      foreach ($data as $m) : ?>
-        <tr>
-          <td><?= $i++ ?></td>
-          <td><?= $m->nama ?></td>
-          <td><?= $m->tempat ?></td>
-          <td><?= $m->tgl_lahir ?></td>
-          <td><?= $m->status ?></td>
-        </tr>
-      <?php endforeach; ?> <?php
-                          } else {
-                            ?>
-      <tr>
-        <td align="center">Tidak Ada Data</td>
-      </tr>
-<?php
-                          }
-                        }*/
-
-  // public function filtering()
-  // {
-  //   $user = $this->mAdmin->getData();
-  //   $countries = $this->mMember->get_list_countries();
-
-  //   $opt = array('' => 'All Country');
-  //   foreach ($countries as $country) {
-  //     $opt[$country] = $country;
-  //   }
-
-  //   $data = array(
-  //     'title' => 'Member',
-  //     'user' => $user,
-  //     'form_country' => form_dropdown('', $opt, '', 'id="status" class="form-control"'),
-  //     'isi' => 'admin/member/filtering'
-  //   );
-  //   $this->load->view('templates/wrapper', $data);
-  // }
-
-  // public function ajax_list()
-  // {
-  //   $list = $this->mMember->get_datatables();
-  //   $data = array();
-  //   $no = $_POST['start'];
-  //   foreach ($list as $member) {
-  //     $no++;
-  //     $row = array();
-  //     $row[] = $no;
-  //     $row[] = $member->nama;
-  //     $row[] = $member->tempat;
-  //     $row[] = $member->tgl_lahir;
-  //     $row[] = $member->age;
-  //     $row[] = $member->status;
-
-  //     $data[] = $row;
-  //   }
-
-  //   $output = array(
-  //     "draw" => $_POST['draw'],
-  //     "recordsTotal" => $this->mMember->count_all(),
-  //     "recordsFiltered" => $this->mMember->count_filtered(),
-  //     "data" => $data,
-  //   );
-  //   //output to json format
-  //   echo json_encode($output);
-  // }
+  }
 }

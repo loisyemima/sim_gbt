@@ -8,7 +8,7 @@
     <div class="card card-body shadow-xl mx-3 mx-md-4 mt-0">
       <div class="container">
         <div class="section text-center">
-          <h2 class="title">- Jadwal Ibadah GBT Kristus Ajaib Siliragung -</h2>
+          <h2 class="title">- Jadwal Ibadah Gereja Bethel Tabernakel Siliragung -</h2>
         </div>
       </div>
     </div>
@@ -24,11 +24,6 @@
                     <div class="p-5 ps-sm-8 position-relative text-start my-auto z-index-2">
                       <h3 class="text-white">Informasi</h3>
                       <p class="text-white opacity-8 mb-4">Untuk Ibadah Raya Minggu Selain Offline Juga Terdapat Live diFacebook GBT Kristus Ajaib</p>
-                      <div class="mt-4">
-                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Facebook">
-                          <i class="fab fa-facebook"></i>
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>

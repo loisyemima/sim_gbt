@@ -43,7 +43,7 @@
                       <div class="col-6">
                         <label>
                           <h5>Tempat Lahir Pria</h5>
-                        </label><br><i> * Contoh : Banyuwangi, 3 Juni 1999</i>
+                        </label><br><i> * Contoh : Banyuwangi</i>
                         <div class="input-group input-group-static mb-4">
                           <input type="text" id="tempat_laki" name="tempat_laki" class="form-control">
                         </div>
@@ -52,7 +52,7 @@
                       <div class="col-6">
                         <label>
                           <h5>Tempat Lahir wanita</h5>
-                        </label><br><i> * Contoh : Banyuwangi, 3 Juni 1999</i>
+                        </label><br><i> * Contoh : Banyuwangi</i>
                         <div class="input-group input-group-static mb-4">
                           <input type="text" id="tempat_perempuan" name="tempat_perempuan" class="form-control">
                         </div>

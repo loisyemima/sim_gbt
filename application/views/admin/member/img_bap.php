@@ -47,9 +47,15 @@
                    </div>
                  </div>
                  <!-- /.card-body -->
-
+                 <?php foreach ($img as $key => $value) { ?>
+                   <div class="col-lg-6">
+                     <div class="form-group">
+                       <img src="<?= base_url('assets/img/profile/member/' . $value->image1) ?>" id="foto_load" width="250px" height="300px">
+                     </div>
+                   </div>
+                 <?php } ?>
                  <div class="card-footer">
-                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="submit" class="btn btn-primary">Simpan</button>
                    <button type="reset" class="btn btn-secondary">Reset</button>
                  </div>
                </form>
@@ -88,9 +94,15 @@
                    </div>
                  </div>
                  <!-- /.card-body -->
-
+                 <?php foreach ($img3 as $key => $value) { ?>
+                   <div class="col-lg-6">
+                     <div class="form-group">
+                       <img src="<?= base_url('assets/img/profile/member/' . $value->image2) ?>" id="foto_load" width="250px" height="300px">
+                     </div>
+                   </div>
+                 <?php } ?>
                  <div class="card-footer">
-                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="submit" class="btn btn-primary">Simpan</button>
                    <button type="reset" class="btn btn-secondary">Reset</button>
                  </div>
                </form>
@@ -115,7 +127,7 @@
                  <div class="card-body">
                    <div class="form-group">
                      <label>Name</label>
-                     <input class="form-control" id="nama_image3" name="nama_image3" value="<?= set_value('image_name') ?>">
+                     <input class="form-control" id="nama_image3" name="nama_image3" value="<?= set_value('image_name3') ?>">
                    </div>
                    <div class="form-group">
                      <label for="exampleInputFile">File input</label>
@@ -128,9 +140,15 @@
                    </div>
                  </div>
                  <!-- /.card-body -->
-
+                 <?php foreach ($img2 as $key => $value) { ?>
+                   <div class="col-lg-6">
+                     <div class="form-group">
+                       <img src="<?= base_url('assets/img/profile/member/' . $value->image3) ?>" id="foto_load" width="250px" height="300px">
+                     </div>
+                   </div>
+                 <?php } ?>
                  <div class="card-footer">
-                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="submit" class="btn btn-primary">Simpan</button>
                    <button type="reset" class="btn btn-secondary">Reset</button>
                  </div>
                </form>

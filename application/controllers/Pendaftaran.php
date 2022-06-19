@@ -6,9 +6,10 @@ class Pendaftaran extends CI_Controller
 
   public function index()
   {
-
+    $config = $this->mConfig->list_config();
     $data = array(
       'title'    => 'Pendaftaran Baptis',
+      'config' => $config,
       'isi'    => 'front/pendaftaran/list'
     );
     $this->load->view('front/templates/wrapper', $data);
@@ -39,7 +40,7 @@ class Pendaftaran extends CI_Controller
         'tgl_lahir' => $this->input->post('tgl_lahir'),
         'nomor' => $this->input->post('nomor'),
         'nama_ayah' => $this->input->post('nama_ayah'),
-        'nama_ibuk' => $this->input->post('nama_ibuk'),
+        'nama_ibu' => $this->input->post('nama_ibu'),
         'status' => 1,
         'tgl_pengajuan' => date('Y-m-d'),
       ];
@@ -92,7 +93,7 @@ class Pendaftaran extends CI_Controller
   public function anak()
   {
     $config = $this->mConfig->list_config();
-    $this->form_validation->set_rules('nama', 'Nama', 'required');
+    $this->form_validation->set_rules('nama_anak', 'Nama', 'required');
     $this->form_validation->set_rules('tempattgl_lahir', 'Tempat Lahir', 'required');
     $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $this->form_validation->set_rules('nomor', 'Telepon', 'required');
@@ -114,7 +115,7 @@ class Pendaftaran extends CI_Controller
         'tgl_lahir' => $this->input->post('tgl_lahir'),
         'nomor' => $this->input->post('nomor'),
         'nama_ayah' => $this->input->post('nama_ayah'),
-        'nama_ibuk' => $this->input->post('nama_ibuk'),
+        'nama_ibu' => $this->input->post('nama_ibu'),
         'date' => date('Y-m-d'),
         'status' => 1
       ];

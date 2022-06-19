@@ -42,7 +42,7 @@
                      <input class="form-control" id="nama_kegiatan" name="nama_kegiatan">
                    </div>
                    <div class="form-group">
-                     <label>Tanggal Lahir</label>
+                     <label>Tanggal Kegiatan</label>
                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
                        <input type="text" id="tgl_kegiatan" name="tgl_kegiatan" class="form-control datetimepicker-input" data-target="#reservationdate" />
                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">

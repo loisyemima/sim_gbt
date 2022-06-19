@@ -33,7 +33,7 @@ class Kegiatan extends CI_Controller
 
     if ($this->form_validation->run() == false) {
       $data = array(
-        'title'    => 'Create Anggota',
+        'title'    => 'Create Kegiatan',
         'user'  => $user,
         'kegiatan'  => $kegiatan,
         'isi'    => 'admin/kegiatan/create'

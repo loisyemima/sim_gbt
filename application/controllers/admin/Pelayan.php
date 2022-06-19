@@ -35,7 +35,7 @@ class Pelayan extends CI_Controller
 
     if ($this->form_validation->run() == false) {
       $data = array(
-        'title'    => 'Create Anggota',
+        'title'    => 'Create Pelayan',
         'user'  => $user,
         'pelayan'  => $pelayan,
         'member'  => $this->mPelayan->name(),

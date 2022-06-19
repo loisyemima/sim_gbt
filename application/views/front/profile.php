@@ -4,7 +4,7 @@
    <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
      <div class="card-header p-0 position-relative mt-4 mx-3 z-index-2 bg-transparent col-8 mx-auto">
        <div class="bg-gradient-secondary shadow-secondary border-radius-lg p-3">
-         <h3 class="text-white text-primary mb-0 text-center">Profil GBT Kristus Ajaib Siliragung</h3>
+         <h3 class="text-white text-primary mb-0 text-center">Profil Gereja Bethel Tabernakel Siliragung</h3>
        </div>
      </div>
      <section class="py-sm-7 py-5 position-relative">

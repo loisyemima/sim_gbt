@@ -19,7 +19,7 @@
              <!-- general form elements -->
              <div class="card card-primary">
                <div class="card-header">
-                 <h3 class="card-title">Edit Pendaftaran Anak</h3>
+                 <h3 class="card-title">Isi Semua Data!!!</h3>
                </div>
                <?php if (validation_errors()) : ?>
                  <div class="alert alert-danger" role="alert">
@@ -70,7 +70,7 @@
                      <input type="text" class="form-control" id="hari_penyerahan" name="hari_penyerahan" placeholder="" value="<?php echo $anak['hari_penyerahan'] ?>">
                    </div>
                    <div class="form-group">
-                     <label for="tgl1">Tanggal Baptis</label>
+                     <label for="tgl1">Tanggal Penyerahan</label>
                      <input type="date" id="tgl1" name="tgl_penyerahan" class="form-control" value="<?php echo $anak['tgl_penyerahan'] ?>">
                    </div>
                    <div class=" form-group">

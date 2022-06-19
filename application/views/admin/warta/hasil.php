@@ -74,11 +74,11 @@
               <div class="card-body">
                 <input type="hidden" name="config_id" value="<?php echo $site['config_id'] ?>">
                 <div class="form-group">
-                  <label>Hasil Penanganan Pengaduan</label>
-                  <textarea name="penanganan" placeholder="Google Maps Frame" class="form-control" value="about" id="about"><?php echo $site['penanganan']; ?></textarea>
+                  <label>Surat Edaran</label>
+                  <textarea name="surat_edaran" placeholder="Google Maps Frame" class="form-control" value="about" id="about"><?php echo $site['surat_edaran']; ?></textarea>
                 </div>
                 <div class="col-md-12">
-                  <iframe type="application/pdf" src="<?php echo $site['penanganan']; ?>" width="600" height="450"></iframe>
+                  <iframe type="application/pdf" src="<?php echo $site['surat_edaran']; ?>" width="600" height="450"></iframe>
                 </div>
               </div>
               <!-- /.card-body -->

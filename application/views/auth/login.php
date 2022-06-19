@@ -26,7 +26,7 @@
               </div>
               <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
               <div class="text-center">
-                <button type="submit" class="btn bg-gradient-secondary w-100 my-4 mb-2">Sign in</button>
+                <button type="submit" class="btn bg-gradient-secondary shadow-secondary w-100 my-4 mb-2">Sign in</button>
               </div>
             </form>
           </div>

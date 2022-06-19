@@ -119,7 +119,7 @@
         </tr>
         <tr>
           <td>Tempat & Tanggal lahir</td>
-          <td>: <?= $p['lahir_laki'] ?> </td>
+          <td>: <?= $p['tempat_laki'] ?>, <?= $p['lahir_laki'] ?> </td>
         </tr>
       </table>
       <table>
@@ -138,7 +138,7 @@
         </tr>
         <tr>
           <td>Tempat & Tanggal lahir</td>
-          <td>: <?= $p['lahir_perempuan'] ?> </td>
+          <td>: <?= $p['tempat_perempuan'] ?>, <?= $p['lahir_perempuan'] ?> </td>
         </tr>
       </table>
 
@@ -149,7 +149,7 @@
         </tr>
         <tr>
           <td width="150">Hari & Tanggal</td>
-          <td width="400">: <?= $p['tgl_pernikahan'] ?> </td>
+          <td width="400">: <?= $p['hari_pernikahan'] ?>, <?= $p['tgl_pernikahan'] ?> </td>
         </tr>
         <tr>
           <td width="">Tempat</td>
@@ -162,10 +162,16 @@
       </table>
       <table>
         <tr>
-          <td width="400">
+          <td>
+            <img src="<?= base_url('assets/img/logo/pasfoto.png') ?>" width="60px" alt="">
+          </td>
+          <td>
+            <img src="<?= base_url('assets/img/logo/pasfoto.png') ?>" width="60px" alt="">
+          </td>
+          <td width="200">
             <img src="kiri" alt="">
           </td>
-          <td class="kanan"><?= $p['tempattgl_ttd'] ?> <br>Gembala Sidang<br><br><br>( <?= $p['nama_ttd'] ?> )<br>NIK. <?= $p['nik'] ?></td>
+          <td class="kanan"><?= $p['tempattgl_ttd'] ?>, <?= $p['tgl_ttd'] ?> <br>Gembala Sidang<br><br><br>( <?= $p['nama_ttd'] ?> )<br>NIK. <?= $p['nik'] ?></td>
         </tr>
       </table>
     <?php endforeach; ?>

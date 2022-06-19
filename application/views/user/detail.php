@@ -61,15 +61,6 @@
                                                   } ?>>Non Member</option>
                      </select>
                    </div>
-                   <div class="form-group">
-                     <label>Username</label>
-                     <select class="select2bs4" style="width: 100%;" name="username" id="username" disabled>
-                       <option selected="selected">Select</option>
-                       <?php foreach ($username as $u) { ?>
-                         <option value="<?php echo $u['id'] ?>" <?= $u['id'] == $member1['username'] ? "selected" : null ?>><?php echo $u['username'] ?></option>
-                       <?php } ?>
-                     </select>
-                   </div>
                  </div>
                  <div class="card-footer">
                    <button type="submit" class="btn btn-primary">Submit</button>
@@ -103,7 +94,35 @@
                          <label for="">Sertifikat Baptis</label>
                          <img src="<?= base_url('assets/img/profile/member/' . $value->image1) ?>" id="foto_load" width="250px" height="300px">
                        </div>
-                       <a href="<?= base_url('admin/member/print_image/' . $value->member) ?>" class="btn btn-info btn-xs btn-block">
+                       <a href="<?= base_url('user/profile/print_image/' . $value->member) ?>" class="btn btn-info btn-xs btn-block" target="_blank">
+                         <i class="fas fa-print"></i> Print </a>
+                     </div>
+                   <?php } ?>
+                 </div>
+               </form>
+               <form role="form" method="post" enctype="multipart/form-data">
+                 <div class="card-body">
+                   <?php foreach ($img2 as $key => $value) { ?>
+                     <div class="col-lg-6">
+                       <div class="form-group">
+                         <label for="">Sertifikat Pernikahan</label>
+                         <img src="<?= base_url('assets/img/profile/member/' . $value->image3) ?>" id="foto_load" width="250px" height="300px">
+                       </div>
+                       <a href="<?= base_url('user/profile/print_image2/' . $value->member3) ?>" class="btn btn-info btn-xs btn-block" target="_blank">
+                         <i class="fas fa-print"></i> Print </a>
+                     </div>
+                   <?php } ?>
+                 </div>
+               </form>
+               <form role="form" method="post" enctype="multipart/form-data">
+                 <div class="card-body">
+                   <?php foreach ($img3 as $key => $value) { ?>
+                     <div class="col-lg-6">
+                       <div class="form-group">
+                         <label for="">Sertifikat Penyerahan Anak</label>
+                         <img src="<?= base_url('assets/img/profile/member/' . $value->image2) ?>" id="foto_load" width="250px" height="300px">
+                       </div>
+                       <a href="<?= base_url('user/profile/print_image3/' . $value->member2) ?>" class="btn btn-info btn-xs btn-block" target="_blank">
                          <i class="fas fa-print"></i> Print </a>
                      </div>
                    <?php } ?>

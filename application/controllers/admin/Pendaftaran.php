@@ -267,12 +267,12 @@ class Pendaftaran extends CI_Controller
     $this->form_validation->set_rules('nama_perempuan', 'Nama Perempuan', 'required');
     $this->form_validation->set_rules('tempat_perempuan', 'Tempat Lahir Perempuan', 'required');
     $this->form_validation->set_rules('lahir_perempuan', 'Tanggal Lahir Perempuan', 'required');
-    $this->form_validation->set_rules('kode', 'No Surat', 'required|is_unique[baptis.kode]', [
+    $this->form_validation->set_rules('kode', 'No Surat', 'required|is_unique[pernikahan.kode]', [
       'is_unique' => 'No Surat Sudah Pernah Dipakai!!!!'
     ]);
-    $this->form_validation->set_rules('hari_penyerahan', 'Hari Pernyerahan', 'required');
-    $this->form_validation->set_rules('tgl_pernyerahan', 'Tanggal Pernyerahan', 'required');
-    $this->form_validation->set_rules('tempat', 'Tempat pernyerahan', 'required');
+    $this->form_validation->set_rules('hari_pernikahan', 'Hari Perrnikahan', 'required');
+    $this->form_validation->set_rules('tgl_pernikahan', 'Tanggal Pernikahan', 'required');
+    $this->form_validation->set_rules('tempat', 'Tempat pernikahan', 'required');
     $this->form_validation->set_rules('dilayani', 'Dilayani', 'required');
     $this->form_validation->set_rules('tempattgl_ttd', 'Tempat TTD', 'required');
     $this->form_validation->set_rules('tgl_ttd', 'Tanggal TTD', 'required');
@@ -330,8 +330,8 @@ class Pendaftaran extends CI_Controller
     $this->form_validation->set_rules('nama_perempuan', 'Nama Perempuan', 'required');
     $this->form_validation->set_rules('tempat_perempuan', 'Tempat Lahir Perempuan', 'required');
     $this->form_validation->set_rules('lahir_perempuan', 'Tanggal Lahir Perempuan', 'required');
-    $this->form_validation->set_rules('hari_penyerahan', 'Hari Pernyerahan', 'required');
-    $this->form_validation->set_rules('tgl_pernyerahan', 'Tanggal Pernyerahan', 'required');
+    $this->form_validation->set_rules('hari_pernikahan', 'Hari Pernikahan', 'required');
+    $this->form_validation->set_rules('tgl_pernikahan', 'Tanggal Pernikahan', 'required');
     $this->form_validation->set_rules('tempat', 'Tempat pernyerahan', 'required');
     $this->form_validation->set_rules('dilayani', 'Dilayani', 'required');
     $this->form_validation->set_rules('tempattgl_ttd', 'Tempat TTD', 'required');
@@ -451,7 +451,7 @@ class Pendaftaran extends CI_Controller
     $user = $this->mAdmin->getData();
     $anak = $this->mPendaftaran->detailAnak($id);
     $status = $this->mPendaftaran->statusPer();
-    $kode = $this->mPendaftaran->kodePer();
+    $kode = $this->mPendaftaran->kodeAnak();
 
     $this->form_validation->set_rules('nama_anak', 'Nama', 'required');
     $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
@@ -459,11 +459,11 @@ class Pendaftaran extends CI_Controller
     $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $this->form_validation->set_rules('nama_ayah', 'Nama Ayah', 'required');
     $this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'required');
-    $this->form_validation->set_rules('kode', 'No Surat', 'required|is_unique[baptis.kode]', [
+    $this->form_validation->set_rules('kode', 'No Surat', 'required|is_unique[anak.kode]', [
       'is_unique' => 'No Surat Sudah Pernah Dipakai!!!!'
     ]);
     $this->form_validation->set_rules('hari_penyerahan', 'Hari Pernyerahan', 'required');
-    $this->form_validation->set_rules('tgl_pernyerahan', 'Tanggal Pernyerahan', 'required');
+    $this->form_validation->set_rules('tgl_penyerahan', 'Tanggal Pernyerahan', 'required');
     $this->form_validation->set_rules('tempat', 'Tempat pernyerahan', 'required');
     $this->form_validation->set_rules('dilayani', 'Dilayani', 'required');
     $this->form_validation->set_rules('tempattgl_ttd', 'Tempat TTD', 'required');
@@ -524,7 +524,7 @@ class Pendaftaran extends CI_Controller
     $this->form_validation->set_rules('nama_ayah', 'Nama Ayah', 'required');
     $this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'required');
     $this->form_validation->set_rules('hari_penyerahan', 'Hari Pernyerahan', 'required');
-    $this->form_validation->set_rules('tgl_pernyerahan', 'Tanggal Pernyerahan', 'required');
+    $this->form_validation->set_rules('tgl_penyerahan', 'Tanggal Pernyerahan', 'required');
     $this->form_validation->set_rules('tempat', 'Tempat pernyerahan', 'required');
     $this->form_validation->set_rules('dilayani', 'Dilayani', 'required');
     $this->form_validation->set_rules('tempattgl_ttd', 'Tempat TTD', 'required');

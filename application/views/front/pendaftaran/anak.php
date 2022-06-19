@@ -55,7 +55,7 @@
                       <div class="col-6">
                         <label>
                           <h5>Tempat Lahir </h5>
-                        </label><i> * Contoh : Banyuwangi, 3 Juni 1999</i>
+                        </label><i> * Contoh : Banyuwangi</i>
                         <div class="input-group input-group-static mb-4">
                           <input type="text" id="tempattgl_lahir" name="tempattgl_lahir" class="form-control">
                         </div>
@@ -65,7 +65,7 @@
                           <h5>Tanggal Lahir</h5>
                         </label>
                         <div class="input-group input-group-static mb-4">
-                          <input type="date" id="tgl" name="tgl" class="form-control">
+                          <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">

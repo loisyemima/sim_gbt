@@ -33,10 +33,10 @@
                       </div>
                       <div class="col-6">
                         <label>
-                          <h5>Tempat, Tanggal Lahir </h5>
+                          <h5>Tempat Lahir </h5>
                         </label><i> * Contoh : Banyuwangi</i>
                         <div class="input-group input-group-static mb-4">
-                          <input type="text" id="tempat" name="tempat" class="form-control">
+                          <input type="text" id="tempattgl_lahir" name="tempattgl_lahir" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
@@ -44,7 +44,7 @@
                           <h5>Tanggal Lahir</h5>
                         </label>
                         <div class="input-group input-group-static mb-4">
-                          <input type="date" id="tgl" name="tgl" class="form-control">
+                          <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">
@@ -60,7 +60,7 @@
                           <h5>Nama Ibu</h5>
                         </label><i> *contoh : Ruth Vilance</i>
                         <div class="input-group input-group-static mb-4">
-                          <input type="text" id="nama_ibuk" name="nama_ibuk" class="form-control">
+                          <input type="text" id="nama_ibu" name="nama_ibu" class="form-control">
                         </div>
                       </div>
                       <div class="col-6">

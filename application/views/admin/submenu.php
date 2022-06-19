@@ -59,9 +59,10 @@
                          <td><?= $sm['is_active'] ?></td>
                          <td><?= $sm['menu_order'] ?></td>
                          <td>
-                           <a href="" class="badge badge-pill badge-success" data-toggle="modal" data-target="#editSubMenuModal<?php echo $sm['id']; ?>">edit</a>
-                           <a href="" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#deleteSubMenuModal<?php echo $sm['id']; ?>">delete</a>
+                           <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editSubMenuModal<?php echo $sm['id']; ?>"><i class="fas fa-pencil-alt"></i> edit</a>
+                           <a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteSubMenuModal<?php echo $sm['id']; ?>"><i class="fa fa-trash"></i> delete</a>
                          </td>
+
                        </tr>
                        <?php $i++; ?>
                      <?php endforeach; ?>

@@ -19,7 +19,7 @@
              <!-- general form elements -->
              <div class="card card-primary">
                <div class="card-header">
-                 <h3 class="card-title">Edit Pendaftaran Baptis</h3>
+                 <h3 class="card-title">Isi Semua Data!!!</h3>
                </div>
                <?php if (validation_errors()) : ?>
                  <div class="alert alert-danger" role="alert">
