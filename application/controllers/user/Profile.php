@@ -24,36 +24,110 @@ class Profile extends CI_Controller
   public function edit_profile()
   {
     $user = $this->mAdmin->getData();
-    $user2 = $this->mUser->detailUser();
 
-    $this->form_validation->set_rules('name', 'Name', 'trim|required');
-    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]', [
-      'is_unique' => 'this email has already registered'
-    ]);
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[password1]');
+    $v = $this->form_validation;
+    $v->set_rules('nama', 'Nama', 'required');
+
+    if ($v->run()) {
+      if (!empty($_FILES['image']['name'])) {
+
+        $config['upload_path']     = './assets/img/profile/member/';
+        $config['allowed_types']   = 'gif|jpg|png|jpeg';
+        $config['max_size']      = '1000'; // KB			
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('image')) {
+          $data = array(
+            'title'    => 'Edit Profile',
+            'user'  => $user,
+            'isi'    => 'user/edit'
+          );
+          $this->load->view('templates/wrapper', $data);
+        } else {
+          //hapus foto lama
+          if ($user['image'] != "") {
+            unlink('./assets/img/profile/member/' . $user['image']);
+          }
+          $upload_data        = array('uploads' => $this->upload->data());
+          $config['image_library']  = 'gd2';
+          $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
+          $config['quality']       = "100%";
+          $config['maintain_ratio']   = FALSE;
+          $config['width']       = 360; // Pixel
+          $config['height']       = 200; // Pixel
+          $config['x_axis']       = 0;
+          $config['y_axis']       = 0;
+          $config['thumb_marker']   = '';
+
+          $data = [
+            'member_id' => $user['member_id'],
+            'images' => $upload_data['uploads']['file_name'],
+            'nama' => $this->input->post('nama'),
+          ];
+          $this->mUser->editUser($data);
+          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Edit User Added!</div>');
+          redirect('user/profile/edit_profile');
+        }
+      } else {
+        $data = [
+          'member_id' => $user['member_id'],
+          'nama' => $this->input->post('nama'),
+        ];
+        $this->mUser->editUser($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Edit User Added!</div>');
+        redirect('user/profile/edit_profile');
+      }
+    }
+    $data = array(
+      'title'    => 'Edit Profile',
+      'user'  => $user,
+      'isi'    => 'user/edit'
+    );
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function ubah_password()
+  {
+    $user = $this->mAdmin->getData();
+
+    $this->form_validation->set_rules('current_password', 'Password Lama', 'required|trim');
+    $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[6]|matches[new_password2]');
+    $this->form_validation->set_rules('new_password2', 'Ulangi Password Baru', 'required|trim|min_length[6]|matches[new_password1]');
 
 
     if ($this->form_validation->run() == false) {
       $data = array(
-        'title'    => 'Create Anggota',
+        'title'    => 'Ubah Password',
         'user'  => $user,
-        'user2'  => $user2,
-        'isi'    => 'user/edit'
+        'isi'    => 'user/ubah_password'
       );
       $this->load->view('templates/wrapper', $data);
     } else {
+      $current_password = $this->input->post('current_password');
+      $new_password = $this->input->post('new_password1');
+      if (!password_verify($current_password, $user['password'])) {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        Password Lama Salah!!!</div>');
+        redirect('user/profile/ubah_password');
+      } else {
+        if ($current_password == $new_password) {
+          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        Password Lama dan Password Baru Tidak Boleh Sama!</div>');
+          redirect('user/profile/ubah_password');
+        } else {
+          //pass sudah ok
+          $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
-      $data = [
-        'id' => $user['id'],
-        'name' => $this->input->post('name'),
-        'email' => $this->input->post('email'),
-        'image' => $this->input->post('image'),
-        'password' => $this->input->post('password'),
-      ];
-      $this->mUser->editUser($data);
-      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Edit User Added!</div>');
-      redirect('admin/user/profile');
+          $this->db->set('password', $password_hash);
+          $this->db->where('username', $this->session->userdata('username'));
+          $this->db->update('member');
+
+          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        password changed!</div>');
+          redirect('user/profile/ubah_password');
+        }
+      }
     }
   }
 

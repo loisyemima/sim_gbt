@@ -37,7 +37,6 @@ class User_model extends CI_Model
     $this->db->select('*');
     $this->db->from('member');
     $this->db->where('username', $id);
-
     $this->db->order_by('member_id', 'DESC');
     $query = $this->db->get();
     return $query->result_array();

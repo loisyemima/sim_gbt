@@ -14,22 +14,17 @@
           </div>
           <div class="card-body">
             <?= $this->session->flashdata('message'); ?>
-            <form role="form" action="<?= base_url('auth'); ?>" method="POST" class="text-start">
+            <form role="form" action="<?= base_url('auth/forgetPassword'); ?>" method="POST" class="text-start">
               <div class="input-group input-group-outline my-3">
-                <label class="form-label">username</label>
-                <input type="text" id="username" name="username" value="<?= set_value('username'); ?>" class="form-control">
+                <label class="form-label">Email</label>
+                <input type="text" id="email" name="email" value="<?= set_value('email'); ?>" class="form-control">
               </div>
-              <?= form_error('username', '<small class="text-danger pl-3">', '</small>') ?>
-              <div class="input-group input-group-outline mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control">
-              </div>
-              <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
+              <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
               <div class="text-center">
-                <button type="submit" class="btn bg-gradient-secondary shadow-secondary w-100 my-4 mb-2">Sign in</button>
+                <button type="submit" class="btn bg-gradient-secondary shadow-secondary w-100 my-4 mb-2">Reset Password</button>
               </div>
               <p class="mt-4 text-sm text-center">
-                <a href="<?= base_url('auth/forgetPassword') ?>">Lupa Password?</a>
+                <a href="<?= base_url('auth') ?>">Kembali Ke Login</a>
               </p>
             </form>
           </div>

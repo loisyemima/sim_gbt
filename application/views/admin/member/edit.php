@@ -90,15 +90,7 @@
                      <input type="text" class="form-control" id="username" name="username" placeholder="Full name" value="<?php echo $member['username'] ?>">
                      <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                    </div>
-                   <div class="from-group">
-                     <label for="">Password</label>
-                     <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" value="<?php echo $member['password'] ?>">
-                     <?= form_error('password1', '<small class="text-danger pl-3">', '</small>') ?>
-                   </div>
-                   <div class="form-group">
-                     <label for="">Ulang Password</label>
-                     <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat Password" value="<?php echo $member['password'] ?>">
-                   </div>
+
                  </div>
                  <!-- /.card-body -->
 

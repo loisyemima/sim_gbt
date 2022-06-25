@@ -8,7 +8,15 @@
 
       <form action="<?= base_url('auth/registration'); ?> " method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" id="username" name="username" placeholder="Full name" value="<?= set_value('name'); ?>">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?= set_value('email'); ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

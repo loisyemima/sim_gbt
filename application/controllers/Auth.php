@@ -12,6 +12,9 @@ class Auth extends CI_Controller
 
   public function index()
   {
+    if ($this->session->userdata('username')) {
+      redirect('user/profile');
+    }
     $this->form_validation->set_rules('username', 'Username', 'trim|required');
     $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -34,7 +37,6 @@ class Auth extends CI_Controller
 
     // jika ada user
     if ($user) {
-
       // cek password
       if (password_verify($password, $user['password'])) {
         $data = [
@@ -44,6 +46,8 @@ class Auth extends CI_Controller
         $this->session->set_userdata($data);
         if ($user['role_id'] == 1) {
           redirect('admin/dashboard');
+        } elseif ($user['role_id'] == 3) {
+          redirect('pendeta/dashboard');
         } else {
           redirect('user/profile');
         }
@@ -76,14 +80,18 @@ class Auth extends CI_Controller
       $this->load->view('templates/auth_footer');
     } else {
       $data = [
-        'username' => htmlspecialchars($this->input->post('username', true)),
+        'username' => $this->input->post('username'),
+        'email' => htmlspecialchars($this->input->post('email', true)),
         'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
         'role_id' => 2,
-        'is_active' => 1,
+        'is_active' => 0,
         'date' => time()
       ];
 
-      $this->db->insert('member', $data);
+      // $this->db->insert('member', $data);
+
+      $this->_sendEmail();
+
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Congratulation! your account has been created. Please Login...</div>');
       redirect('auth/registration');
@@ -92,7 +100,7 @@ class Auth extends CI_Controller
 
   public function logout()
   {
-    $this->session->unset_userdata('email');
+    $this->session->unset_userdata('username');
     $this->session->unset_userdata('role_id');
 
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -104,5 +112,68 @@ class Auth extends CI_Controller
   public function blocked()
   {
     $this->load->view('auth/blocked');
+  }
+
+  private function _sendEmail()
+  {
+    $config = [
+      'protocol' => 'smtp',
+      'smtp_host' => 'ssl://smtp.googlemail.com',
+      'smtp_user' => 'loisyemima123@gmail.com',
+      'smtp_pass' => 'lois.1234',
+      'smtp_port' => 465,
+      'mailtype' => 'html',
+      'charset' => 'utf-8',
+      'newline' => "\r\n"
+
+    ];
+
+    $this->load->library('email', $config);
+    $this->email->initialize($config);
+
+    $this->email->from('loisyemima123@gmail.com', 'GBT Siliragung');
+    $this->email->to('loisyemima73@gmail.com');
+    $this->email->subject('Testing');
+    $this->email->message('Hello World!!');
+
+    if ($this->email->send()) {
+      return true;
+    } else {
+      echo $this->email->print_debugger();
+      die;
+    }
+  }
+
+  public function forgetPassword()
+  {
+
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+
+    if ($this->form_validation->run() == false) {
+
+      $data['title'] = 'Lupa Password';
+      $this->load->view('templates/auth_header', $data);
+      $this->load->view('auth/forget_pass');
+      $this->load->view('templates/auth_footer');
+    } else {
+      $email = $this->input->post('enail');
+      $user = $this->db->get_where('member', ['email' => $email])->row_array();
+
+      if ($user) {
+        $token = base64_encode(random_bytes(32));
+        $user_token = [
+          'email' => $email,
+          'token' => $token,
+
+        ];
+
+        $this->db->insert('user_token', $user_token);
+        $this->_sendEmail($token, 'forgot');
+      } else {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+      Email Tidak Terdaftar!</div>');
+        redirect('auth/forgetPassword');
+      }
+    }
   }
 }

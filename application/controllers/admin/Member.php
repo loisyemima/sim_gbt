@@ -35,11 +35,6 @@ class Member extends CI_Controller
     $v->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
     $v->set_rules('username', 'Name', 'trim|required');
-    $v->set_rules('password1', 'Password', 'trim|required|min_length[6]|matches[password2]', [
-      'matches' => 'password dant match!',
-      'min_length' => 'password too short!'
-    ]);
-    $v->set_rules('password2', 'Password', 'trim|required|matches[password1]');
 
 
     if ($v->run()) {
@@ -62,7 +57,7 @@ class Member extends CI_Controller
         );
         $config['image_library']  = 'gd2';
         $config['source_image']   = './assets/img/profile/member/' . $upload_data['uploads']['file_name'];
-        $config['create_thumb']   = TRUE;
+
         $config['quality']       = "100%";
         $config['maintain_ratio']   = FALSE;
         $config['width']       = 360; // Pixel
@@ -70,8 +65,7 @@ class Member extends CI_Controller
         $config['x_axis']       = 0;
         $config['y_axis']       = 0;
         $config['thumb_marker']   = '';
-        $this->load->library('image_lib', $config);
-        $this->image_lib->resize();
+
 
         $data = array(
           'nama' => $this->input->post('nama'),
@@ -81,9 +75,9 @@ class Member extends CI_Controller
           'umur' => $this->input->post('umur'),
           'status' => $this->input->post('status'),
           'username' => htmlspecialchars($this->input->post('username', true)),
-          'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+          'password' => '$2y$10$RIx0uaoSaBAonch4SiS7mOTxGnVnUYbqZ4t8.W8PvTetzBX2ACm5K',
           'role_id' => 2,
-          'date' => time()
+          'date' => date('Y-m-d')
         );
 
         $this->mMember->createMember($data);
@@ -113,11 +107,6 @@ class Member extends CI_Controller
     $v->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
     $v->set_rules('status', 'Status', 'required');
     $v->set_rules('username', 'Username', 'trim');
-    $v->set_rules('password1', 'Password', 'trim|min_length[6]|matches[password2]', [
-      'matches' => 'password dant match!',
-      'min_length' => 'password too short!'
-    ]);
-    $v->set_rules('password2', 'Password', 'trim|matches[password1]');
 
 
     if ($v->run()) {
@@ -151,8 +140,6 @@ class Member extends CI_Controller
           $config['x_axis']       = 0;
           $config['y_axis']       = 0;
           $config['thumb_marker']   = '';
-          $this->load->library('image_lib', $config);
-          $this->image_lib->resize();
 
           $data = [
             'member_id' => $member['member_id'],
@@ -163,9 +150,7 @@ class Member extends CI_Controller
             'umur' => $this->input->post('umur'),
             'status' => $this->input->post('status'),
             'username' => htmlspecialchars($this->input->post('username', true)),
-            'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
             'role_id' => 2,
-            'date' => time()
           ];
           $this->mMember->editMember($data);
           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -181,7 +166,6 @@ class Member extends CI_Controller
           'umur' => $this->input->post('umur'),
           'status' => $this->input->post('status'),
           'username' => htmlspecialchars($this->input->post('username', true)),
-          'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
           'role_id' => 2,
           'date' => time()
         ];
@@ -385,7 +369,7 @@ class Member extends CI_Controller
         $this->mMember->createAnak($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             New Member Added!</div>');
-        redirect('admin/member/' . $id);
+        redirect('admin/member');
       }
     }
 
@@ -447,7 +431,7 @@ class Member extends CI_Controller
         $this->mMember->editAnak($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             New Member Added!</div>');
-        redirect('admin/member/' . $id);
+        redirect('admin/member');
       }
     }
 
@@ -509,7 +493,7 @@ class Member extends CI_Controller
         $this->mMember->createPer($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             New Member Added!</div>');
-        redirect('admin/member/' . $id);
+        redirect('admin/member');
       }
     }
 
@@ -570,7 +554,7 @@ class Member extends CI_Controller
         $this->mMember->editPer($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             New Member Added!</div>');
-        redirect('admin/member/' . $id);
+        redirect('admin/member');
       }
     }
 

@@ -62,7 +62,7 @@
                 <div class="col-lg-4 col-md-6 col-12 mt-n5">
                   <a href="javascript:;">
                     <div class="p-3 pe-md-0">
-                      <img class="w-100 border-radius-md shadow-lg" src="<?php echo base_url('assets/img/profile/member/' . $p['images']); ?>" alt="image">
+                      <img class="w-100 border-radius-md shadow-lg" src="<?php echo base_url('assets/img/profile/member/' . $p['images']); ?>" height="150px" alt="image">
                     </div>
                   </a>
                 </div>

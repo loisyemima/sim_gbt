@@ -23,39 +23,31 @@
                <div class="card-header">
                  <h3 class="card-title"></h3>
                </div>
-               <?php if (validation_errors()) : ?>
-                 <div class="alert alert-danger" role="alert">
-                   <?= validation_errors(); ?>
-                 </div>
-               <?php endif; ?>
 
                <?= $this->session->flashdata('message'); ?>
                <!-- /.card-header -->
                <!-- form start -->
-               <form role="form" action="<?= base_url('user/profile/edit_profile/' . $user['member_id']) ?>" method="post" enctype="multipart/form-data">
+               <form role="form" action="<?= base_url('user/profile/ubah_password/' . $user['member_id']) ?>" method="post" enctype="multipart/form-data">
                  <div class="card-body">
                    <div class="form-group">
-                     <label for="exampleInputFile">Gambar :</label>
-                     <div class="input-group">
-                       <div class="custom-file">
-                         <input type="file" class="custom-file-input" name="image" id="exampleInputFile">
-                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                       </div>
-                     </div>
-                   </div>
-                   <div><img id="file" src="<?php echo base_url('assets/img/profile/member/' . $user['images']) ?>" width="150px" height="150px"></div>
-                   <div class="form-group">
-                     <label>Name</label>
-                     <input class="form-control" id="nama" name="nama" value="<?php echo $user['nama'] ?>">
+                     <label for="current_password">Password Lama</label>
+                     <input type="password" class="form-control" name="current_password" id="current_password">
+                     <?= form_error('current_password', '<small class="text-danger pl-3">', '</small>') ?>
                    </div>
                    <div class="form-group">
-                     <label>Username</label>
-                     <input class="form-control" id="username" name="username" value="<?php echo $user['username'] ?>" disabled>
+                     <label for="new_password1">Password Baru</label>
+                     <input type="password" class="form-control" name="new_password1" id="new_password1">
+                     <?= form_error('new_password1', '<small class="text-danger pl-3">', '</small>') ?>
+                   </div>
+                   <div class="form-group">
+                     <label for="new_password2">Ulangi Password Baru</label>
+                     <input type="password" class="form-control" name="new_password2" id="new_password2">
+
+                     <?= form_error('new_password2', '<small class="text-danger pl-3">', '</small>') ?>
                    </div>
                  </div>
                  <div class="card-footer">
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                   <button type="reset" class="btn btn-secondary">Reset</button>
+                   <button type="submit" class="btn btn-primary">Change Password</button>
                  </div>
                </form>
              </div>
