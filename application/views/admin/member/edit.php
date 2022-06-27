@@ -88,7 +88,11 @@
                    <div class="from-group">
                      <label for="">Username</label>
                      <input type="text" class="form-control" id="username" name="username" placeholder="Full name" value="<?php echo $member['username'] ?>">
-                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                   </div>
+                   <div class="from-group">
+                     <label for="">No Telp</label>
+                     <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Full name" value="<?php echo $member['no_telp'] ?>">
+
                    </div>
 
                  </div>

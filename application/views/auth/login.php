@@ -29,7 +29,7 @@
                 <button type="submit" class="btn bg-gradient-secondary shadow-secondary w-100 my-4 mb-2">Sign in</button>
               </div>
               <p class="mt-4 text-sm text-center">
-                <a href="<?= base_url('auth/forgetPassword') ?>">Lupa Password?</a>
+                <a href="<?= base_url('auth/lupaPassword') ?>">Lupa Password?</a>
               </p>
             </form>
           </div>

@@ -83,8 +83,14 @@
                    </div>
                    <div class="from-group">
                      <label for="">Username</label>
-                     <input type="text" class="form-control" id="username" name="username" placeholder="Full name" value="<?= set_value('username'); ?>">
-                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                     <input type="text" class="form-control" id="username" name="username" placeholder="" value="<?= set_value('username'); ?>">
+
+                   </div>
+
+                   <div class="from-group">
+                     <label for="">No Telp</label>
+                     <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="" value="<?= set_value('no_telp'); ?>">
+
                    </div>
                    <!-- <div class="from-group">
                      <label for="">Password</label>

@@ -14,18 +14,15 @@
           </div>
           <div class="card-body">
             <?= $this->session->flashdata('message'); ?>
-            <form role="form" action="<?= base_url('auth/forgetPassword'); ?>" method="POST" class="text-start">
+            <form role="form" action="" method="POST" class="text-start">
               <div class="input-group input-group-outline my-3">
-                <label class="form-label">Email</label>
-                <input type="text" id="email" name="email" value="<?= set_value('email'); ?>" class="form-control">
+                <label class="form-label">No Telp</label>
+                <input name="no_telp" id="no_telp" type="text" class="form-control" value="<?= set_value('no_telp'); ?>" required />
               </div>
-              <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
               <div class="text-center">
-                <button type="submit" class="btn bg-gradient-secondary shadow-secondary w-100 my-4 mb-2">Reset Password</button>
+                <button type="submit" class="btn bg-gradient-secondary shadow-secondary w-100 my-4 mb-2">kirim</button>
               </div>
-              <p class="mt-4 text-sm text-center">
-                <a href="<?= base_url('auth') ?>">Kembali Ke Login</a>
-              </p>
+
             </form>
           </div>
         </div>

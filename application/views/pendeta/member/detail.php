@@ -61,14 +61,6 @@
                                                   } ?>>Non Member</option>
                      </select>
                    </div>
-                   <div class="form-group">
-                     <label>Username</label>
-                     <input class="form-control" id="username" name="username" value="<?php echo $member1['username'] ?>" disabled>
-                   </div>
-                   <div class="form-group">
-                     <label>No Telp</label>
-                     <input class="form-control" id="no_telp" name="no_telp" value="<?php echo $member1['no_telp'] ?>" disabled>
-                   </div>
                  </div>
                  <div class="card-footer">
                    <button type="submit" class="btn btn-primary">Submit</button>

@@ -90,7 +90,7 @@ class Auth extends CI_Controller
 
       // $this->db->insert('member', $data);
 
-      $this->_sendEmail();
+      // $this->_sendEmail();
 
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Congratulation! your account has been created. Please Login...</div>');
@@ -114,66 +114,74 @@ class Auth extends CI_Controller
     $this->load->view('auth/blocked');
   }
 
-  private function _sendEmail()
-  {
-    $config = [
-      'protocol' => 'smtp',
-      'smtp_host' => 'ssl://smtp.googlemail.com',
-      'smtp_user' => 'loisyemima123@gmail.com',
-      'smtp_pass' => 'lois.1234',
-      'smtp_port' => 465,
-      'mailtype' => 'html',
-      'charset' => 'utf-8',
-      'newline' => "\r\n"
+  // private function _sendEmail()
+  // {
+  //   $config = [
+  //     'protocol' => 'smtp',
+  //     'smtp_host' => 'ssl://smtp.googlemail.com',
+  //     'smtp_user' => 'loisyemima123@gmail.com',
+  //     'smtp_pass' => 'lois.1234',
+  //     'smtp_port' => 465,
+  //     'mailtype' => 'html',
+  //     'charset' => 'utf-8',
+  //     'newline' => "\r\n"
 
-    ];
+  //   ];
 
-    $this->load->library('email', $config);
-    $this->email->initialize($config);
+  //   $this->load->library('email', $config);
+  //   $this->email->initialize($config);
 
-    $this->email->from('loisyemima123@gmail.com', 'GBT Siliragung');
-    $this->email->to('loisyemima73@gmail.com');
-    $this->email->subject('Testing');
-    $this->email->message('Hello World!!');
+  //   $this->email->from('loisyemima123@gmail.com', 'GBT Siliragung');
+  //   $this->email->to('loisyemima73@gmail.com');
+  //   $this->email->subject('Testing');
+  //   $this->email->message('Hello World!!');
 
-    if ($this->email->send()) {
-      return true;
-    } else {
-      echo $this->email->print_debugger();
-      die;
-    }
-  }
+  //   if ($this->email->send()) {
+  //     return true;
+  //   } else {
+  //     echo $this->email->print_debugger();
+  //     die;
+  //   }
+  // }
 
   public function forgetPassword()
   {
 
-    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+    // $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
-    if ($this->form_validation->run() == false) {
+    // if ($this->form_validation->run() == false) {
 
-      $data['title'] = 'Lupa Password';
-      $this->load->view('templates/auth_header', $data);
-      $this->load->view('auth/forget_pass');
-      $this->load->view('templates/auth_footer');
-    } else {
-      $email = $this->input->post('enail');
-      $user = $this->db->get_where('member', ['email' => $email])->row_array();
+    //   $data['title'] = 'Lupa Password';
+    //   $this->load->view('templates/auth_header', $data);
+    //   $this->load->view('auth/forget_pass');
+    //   $this->load->view('templates/auth_footer');
+    // } else {
+    //   $email = $this->input->post('enail');
+    //   $user = $this->db->get_where('member', ['email' => $email])->row_array();
 
-      if ($user) {
-        $token = base64_encode(random_bytes(32));
-        $user_token = [
-          'email' => $email,
-          'token' => $token,
+    //   if ($user) {
+    //     $token = base64_encode(random_bytes(32));
+    //     $user_token = [
+    //       'email' => $email,
+    //       'token' => $token,
 
-        ];
+    //     ];
 
-        $this->db->insert('user_token', $user_token);
-        $this->_sendEmail($token, 'forgot');
-      } else {
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-      Email Tidak Terdaftar!</div>');
-        redirect('auth/forgetPassword');
-      }
-    }
+    //     $this->db->insert('user_token', $user_token);
+    //     $this->_sendEmail($token, 'forgot');
+    //   } else {
+    //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+    //   Email Tidak Terdaftar!</div>');
+    //     redirect('auth/forgetPassword');
+    //   }
+    // }
+  }
+
+  public function lupaPassword()
+  {
+    $data['title'] = 'Login Page';
+    $this->load->view('templates/auth_header', $data);
+    $this->load->view('auth/forget_pass');
+    $this->load->view('templates/auth_footer');
   }
 }

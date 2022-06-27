@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2022 at 01:41 PM
+-- Generation Time: Jun 27, 2022 at 11:10 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -275,7 +275,7 @@ CREATE TABLE `member` (
   `status` varchar(250) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL,
+  `no_telp` varchar(250) NOT NULL,
   `role_id` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
   `date` date NOT NULL
@@ -285,24 +285,22 @@ CREATE TABLE `member` (
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`member_id`, `nama`, `images`, `tempat`, `tgl_lahir`, `umur`, `status`, `username`, `password`, `email`, `role_id`, `is_active`, `date`) VALUES
+INSERT INTO `member` (`member_id`, `nama`, `images`, `tempat`, `tgl_lahir`, `umur`, `status`, `username`, `password`, `no_telp`, `role_id`, `is_active`, `date`) VALUES
 (1, 'admin', 'default.jpg', '', '07/23/2001', '0', 'Member', 'admin', '$2y$10$uvBY4hpj4zTw184V8s20h.HMc2kZC1WbwLn/KKdcCVqz1MGOVbeXG', '', 1, 0, '2022-04-08'),
 (5, 'abisag', '', 'Malang', '03-01-20', 'Dewasa', 'Jemaat', 'abisag', '$2y$10$q5q9b2Jo8iENMBBO9szDUuHPJBHNOdqPr.9cYW1hFc6trE0O20m2O', '', 2, 0, '2022-05-19'),
 (11, 'cristian', 'AESTHETIC-USER-PFP_(5).jpg', 'Banyuwangi', '02-02-00', 'Pemuda', 'Anggota', 'cristian', '$2y$10$GkpueQOhZ66gRJwY7t8IJ.T/FaQXn4Q3OwAFaRkBEdNPPXOXynB52', '', 2, 0, '2022-06-01'),
 (13, 'Philipus', '2018-11-06t054310z-1334124005-rc1be15a8050-rtrmadp-3-people-sexiest-man2.jpg', 'Banyuwangi', '01-03-00', 'Anak-anak', 'Anggota', 'philipus', '$2y$10$d/uJEX6dDEl5uLo2Y1Gx4OYLMMhTWwVy4SoQDBRipyyqm8xwSpvwy', '', 2, 0, '0000-00-00'),
-(17, 'Suhardi', 'hardi.PNG', 'Banyuwangi', '08-03-73', 'Dewasa', 'Anggota', 'suhardi', '$2y$10$x5rb2Cpn.XOUnccIOMuq/.PfTdBiZYFOrjCCN.buGD1G.F04ahFeq', '', 2, 0, '2022-05-02'),
+(17, 'Suhardi', 'hardi.PNG', 'Banyuwangi', '08-03-73', 'Dewasa', 'Anggota', 'suhardi', '$2y$10$x5rb2Cpn.XOUnccIOMuq/.PfTdBiZYFOrjCCN.buGD1G.F04ahFeq', '082142200662', 2, 0, '0000-00-00'),
 (18, 'Yudi Hartoyo', 'yudi.PNG', 'Banyuwangi', '07-30-77', 'Dewasa', 'Anggota', '10', '$2y$10$chWraBpRGgmI1VhLvDPyHOIGtgR4V4A2wrSNOkDUq11Tq4g3N5NiK', '', 2, 0, '0000-00-00'),
 (19, 'Susiyati', 'susi.PNG', 'Banyuwangi', '08-31-82', 'Dewasa', 'Anggota', '3', '$2y$10$wOc8oXl9i5q/StuPeKowaef5FQaEy52idVoNeRT5e90sUz4dPBwtC', '', 2, 0, '0000-00-00'),
-(21, 'Lois Yemima Sari', 'WhatsApp_Image_2022-06-20_at_03_51_051.jpeg', 'Banyuwangi', '23-07-01', 'Pemuda', 'Anggota', 'loisyemima', '$2y$10$iisJtqAU0rQPOQThRaE8ZeE93RSePG0l9DdyXMfzZOrUjvmE1DsA2', '', 2, 0, '0000-00-00'),
+(21, 'Lois Yemima Sari', 'WhatsApp_Image_2022-06-20_at_03_51_051.jpeg', 'Banyuwangi', '23-07-01', 'Pemuda', 'Anggota', 'loisyemima', '$2y$10$iisJtqAU0rQPOQThRaE8ZeE93RSePG0l9DdyXMfzZOrUjvmE1DsA2', '082142200662', 2, 0, '0000-00-00'),
 (26, 'Adiel Stevanus', 'Capture1.PNG', 'Banyuwangi', '12-06-78', 'Dewasa', 'Anggota', 'adielstevanus', '$2y$10$qJRaqHJaMSVMmxR9e.Rtt.VIjT3qXtyOk1dhRgPToe05dQYrVUKsS', '', 3, 0, '0000-00-00'),
 (27, 'Aureola Dies Caroline', 'WhatsApp_Image_2022-06-20_at_03_51_05_(1).jpeg', 'Banyuwangi', '15-06-99', 'Dewasa', 'Anggota', 'aureoladies', '$2y$10$mjHwbVH8Y6JPmWedCI0TCeWcSHhq4UtuZig2ffY/LhweMMG.HqiAC', '', 2, 0, '0000-00-00'),
 (28, 'Yeshinta Aprillia Keren', 'AESTHETIC-USER-PFP_(5)2.jpg', 'Banyuwangi', '04-04-06', 'Pemuda', 'Anggota', 'yesintaaprillia', '$2y$10$cDCXKewmU0f0IYx9Czy/YOHhnLZhDvDQaz0/P48bP3fVx4vwmDR0e', '', 2, 0, '0000-00-00'),
 (29, 'Dani Yoga Saputra', 'WhatsApp_Image_2022-06-20_at_03_51_04.jpeg', 'Banyuwangi', '28-12-96', 'Dewasa', 'Anggota', 'daniyoga', '$2y$10$IyaEHgrTxVoCioMeWRBPzunuMRSGVRFA4gujVmNtJAWFfyxarndr.', '', 2, 0, '0000-00-00'),
 (30, 'Kezya Gracella', 'AESTHETIC-USER-PFP_(5)3.jpg', 'Banyuwangi', '31-05-07', 'Pemuda', 'Anggota', 'kezyagra', '$2y$10$UAVLIOsRqoER8xcoXa/nLOPufWlZMfdVFecDXDA01mZNLUwsApXdC', '', 2, 0, '2022-06-20'),
 (31, 'Alfiah', 'AESTHETIC-USER-PFP_(5)4.jpg', 'Banyuwangi', '12-07-75', 'Dewasa', 'Anggota', 'alfiah', '$2y$10$RZTDa1t8K.8EVHqyqoyz6O2Y8kjohqf0MVk0tcqfhK48HrjjG4Hsa', '', 2, 0, '2022-06-20'),
-(32, 'Denta', 'AESTHETIC-USER-PFP_(5)5.jpg', 'Banyuwangi', '09-06-22', 'Anak-anak', 'Anggota', 'denta', '$2y$10$RIx0uaoSaBAonch4SiS7mOTxGnVnUYbqZ4t8.W8PvTetzBX2ACm5K', '', 2, 0, '0000-00-00'),
-(33, 'lois', 'AESTHETIC-USER-PFP_(5)6.jpg', 'Banyuwangi', '17-06-22', 'Pemuda', 'Anggota', 'loisss', '$2y$10$RIx0uaoSaBAonch4SiS7mOTxGnVnUYbqZ4t8.W8PvTetzBX2ACm5K', '', 2, 0, '0000-00-00'),
-(34, 'christiann', 'paskah.jpg', 'Banyuwangi', '17-06-22', 'Anak-anak', 'Anggota', 'christian', '$2y$10$aa0C2T12ozNt6liBytp9f.224m9cBKPJ37eiJpz/PSUN5NHIjK39q', '', 2, 0, '2022-06-23');
+(32, 'Denta', 'AESTHETIC-USER-PFP_(5)5.jpg', 'Banyuwangi', '09-06-22', 'Anak-anak', 'Anggota', 'denta', '$2y$10$RIx0uaoSaBAonch4SiS7mOTxGnVnUYbqZ4t8.W8PvTetzBX2ACm5K', '', 2, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 

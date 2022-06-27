@@ -76,6 +76,7 @@ class Member extends CI_Controller
           'status' => $this->input->post('status'),
           'username' => htmlspecialchars($this->input->post('username', true)),
           'password' => '$2y$10$RIx0uaoSaBAonch4SiS7mOTxGnVnUYbqZ4t8.W8PvTetzBX2ACm5K',
+          'no_telp' => $this->input->post('no_telp'),
           'role_id' => 2,
           'date' => date('Y-m-d')
         );
@@ -127,8 +128,8 @@ class Member extends CI_Controller
           $this->load->view('templates/wrapper', $data);
         } else {
           //hapus foto lama
-          if ($member['image'] != "") {
-            unlink('./assets/img/profile/member/' . $member['image']);
+          if ($member['images'] != "") {
+            unlink('./assets/img/profile/member/' . $member['images']);
           }
           $upload_data        = array('uploads' => $this->upload->data());
           $config['image_library']  = 'gd2';
@@ -150,6 +151,7 @@ class Member extends CI_Controller
             'umur' => $this->input->post('umur'),
             'status' => $this->input->post('status'),
             'username' => htmlspecialchars($this->input->post('username', true)),
+            'no_telp' => $this->input->post('no_telp'),
             'role_id' => 2,
           ];
           $this->mMember->editMember($data);
@@ -166,6 +168,7 @@ class Member extends CI_Controller
           'umur' => $this->input->post('umur'),
           'status' => $this->input->post('status'),
           'username' => htmlspecialchars($this->input->post('username', true)),
+          'no_telp' => $this->input->post('no_telp'),
           'role_id' => 2,
           'date' => time()
         ];
