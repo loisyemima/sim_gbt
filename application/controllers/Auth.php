@@ -146,80 +146,42 @@ class Auth extends CI_Controller
 
   public function forgetPassword()
   {
-
-    // $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-
-    // if ($this->form_validation->run() == false) {
-
-    //   $data['title'] = 'Lupa Password';
-    //   $this->load->view('templates/auth_header', $data);
-    //   $this->load->view('auth/forget_pass');
-    //   $this->load->view('templates/auth_footer');
-    // } else {
-    //   $email = $this->input->post('enail');
-    //   $user = $this->db->get_where('member', ['email' => $email])->row_array();
-
-    //   if ($user) {
-    //     $token = base64_encode(random_bytes(32));
-    //     $user_token = [
-    //       'email' => $email,
-    //       'token' => $token,
-
-    //     ];
-
-    //     $this->db->insert('user_token', $user_token);
-    //     $this->_sendEmail($token, 'forgot');
-    //   } else {
-    //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-    //   Email Tidak Terdaftar!</div>');
-    //     redirect('auth/forgetPassword');
-    //   }
-    // }
-  //   $this->form_validation->set_rules('no_telp', 'no_telp', 'trim|required');
-
-  //   if ($this->form_validation->run() == false) {
-  //    $data['title'] = 'Lupa Password';
-  //   $this->load->view('templates/auth_header', $data);
-  //   $this->load->view('auth/forget_pass');
-  //   $this->load->view('templates/auth_footer');
-  // } else {
     $no_telp = $this->input->post('no_telp');
     $user = $this->db->get_where('member', ['no_telp' => $no_telp])->row_array();
     
       if ($user) { 
-             
+        $id = $user['member_id'];
         $nama = "apiproject";
-        $pesan = " Ini Nanti Untuk Link Reset Password";
-        
-        $data = [
-          'sender'  => $nama, //Nama Id Yang didaftarkan
-          'number'  => $no_telp, //Nomor Tujuan
-          'message' => $pesan //Isi Pesan
-        ];
-        
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-          CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
-          CURLOPT_CUSTOMREQUEST => "POST",
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_POSTFIELDS => http_build_query($data),
-          CURLOPT_URL => "http://20.247.104.168:8000/send-message", //Url Link Web
-          CURLOPT_SSL_VERIFYHOST => 0,
-          CURLOPT_SSL_VERIFYPEER => 0)
-        );
-        
-        $result = curl_exec($curl);
-        curl_close($curl);
-        $this->session->set_flashdata('message', '<div class="alert alert-info" role="alert">
-    Cek WhatsApp Untuk Reset Password!</div>');
-        redirect('Auth');
-        return json_decode($result, true);
+        $pesan = "https://sim-gbt.indanahgroup.my.id/Auth/ResetPassword/$id";
+
+    $data = [
+    'sender' => $nama, //Nama Id Yang didaftarkan
+    'number' => $no_telp, //Nomor Tujuan
+    'message' => $pesan //Isi Pesan
+    ];
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+    CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POSTFIELDS => http_build_query($data),
+    CURLOPT_URL => "http://20.247.104.168:8000/send-message", //Url Link Web
+    CURLOPT_SSL_VERIFYHOST => 0,
+    CURLOPT_SSL_VERIFYPEER => 0)
+    );
+
+    $result = curl_exec($curl);
+    curl_close($curl);
+    $this->session->set_flashdata('message', '<div class="alert alert-info" role="alert">
+        Cek WhatsApp Untuk Reset Password!</div>');
+    redirect('Auth');
+    return json_decode($result, true);
 
     } else {
     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
         No Telp Tidak Terdaftar!</div>');
     redirect('auth/lupaPassword');
-    // }
     }
 }
 
@@ -234,11 +196,29 @@ $this->load->view('templates/auth_footer');
 
 public function ResetPassword($id)
 {
+    $member = $this->mMember->detailMember($id);
+    $data['user'] = $this->mMember->detailMember($id);
+    $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[6]|matches[new_password2]');
+    $this->form_validation->set_rules('new_password2', 'Ulangi Password Baru', 'required|trim|min_length[6]|matches[new_password1]');
 
-$data['title'] = 'Lupa Password';
-$this->load->view('templates/auth_header', $data);
-$this->load->view('auth/forget_pass');
-$this->load->view('templates/auth_footer');
+    if ($this->form_validation->run() == false) {
+      $data['title'] = 'Ubah Password';
+      $this->load->view('templates/auth_header', $data);
+      $this->load->view('auth/ubah_pass');
+      $this->load->view('templates/auth_footer');
+    } else {
+          $new_password = $this->input->post('new_password1');
+          //pass sudah ok
+          $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+          $this->db->set('password', $password_hash);
+          $this->db->where('member_id', $member['member_id']);
+          $this->db->update('member');
+
+          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        password changed!</div>');
+          redirect('Auth');
+    }
 }
 
 }

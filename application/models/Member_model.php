@@ -33,6 +33,17 @@ class Member_model extends CI_Model
     return $query->row_array();
   }
 
+  // Detail Member no telp
+  public function detailMemberno($no_telp)
+  {
+    $this->db->select('*');
+    $this->db->from('member');
+    $this->db->where('no_telp', $no_telp);
+    $this->db->order_by('member_id', 'DESC');
+    $query = $this->db->get();
+    return $query->row_array();
+  }
+
   // Edit Member
   public function editMember($data)
   {
