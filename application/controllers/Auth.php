@@ -175,13 +175,70 @@ class Auth extends CI_Controller
     //     redirect('auth/forgetPassword');
     //   }
     // }
-  }
+  //   $this->form_validation->set_rules('no_telp', 'no_telp', 'trim|required');
 
-  public function lupaPassword()
-  {
-    $data['title'] = 'Login Page';
-    $this->load->view('templates/auth_header', $data);
-    $this->load->view('auth/forget_pass');
-    $this->load->view('templates/auth_footer');
-  }
+  //   if ($this->form_validation->run() == false) {
+  //    $data['title'] = 'Lupa Password';
+  //   $this->load->view('templates/auth_header', $data);
+  //   $this->load->view('auth/forget_pass');
+  //   $this->load->view('templates/auth_footer');
+  // } else {
+    $no_telp = $this->input->post('no_telp');
+    $user = $this->db->get_where('member', ['no_telp' => $no_telp])->row_array();
+    
+      if ($user) { 
+             
+        $nama = "apiproject";
+        $pesan = " Ini Nanti Untuk Link Reset Password";
+        
+        $data = [
+          'sender'  => $nama, //Nama Id Yang didaftarkan
+          'number'  => $no_telp, //Nomor Tujuan
+          'message' => $pesan //Isi Pesan
+        ];
+        
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_POSTFIELDS => http_build_query($data),
+          CURLOPT_URL => "http://20.247.104.168:8000/send-message", //Url Link Web
+          CURLOPT_SSL_VERIFYHOST => 0,
+          CURLOPT_SSL_VERIFYPEER => 0)
+        );
+        
+        $result = curl_exec($curl);
+        curl_close($curl);
+        $this->session->set_flashdata('message', '<div class="alert alert-info" role="alert">
+    Cek WhatsApp Untuk Reset Password!</div>');
+        redirect('Auth');
+        return json_decode($result, true);
+
+    } else {
+    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        No Telp Tidak Terdaftar!</div>');
+    redirect('auth/lupaPassword');
+    // }
+    }
+}
+
+public function lupaPassword()
+{
+
+$data['title'] = 'Lupa Password';
+$this->load->view('templates/auth_header', $data);
+$this->load->view('auth/forget_pass');
+$this->load->view('templates/auth_footer');
+}
+
+public function ResetPassword($id)
+{
+
+$data['title'] = 'Lupa Password';
+$this->load->view('templates/auth_header', $data);
+$this->load->view('auth/forget_pass');
+$this->load->view('templates/auth_footer');
+}
+
 }
