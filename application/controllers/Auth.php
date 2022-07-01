@@ -152,7 +152,9 @@ class Auth extends CI_Controller
       if ($user) { 
         $id = $user['member_id'];
         $nama = "apiproject";
-        $pesan = "https://sim-gbt.indanahgroup.my.id/Auth/ResetPassword/$id";
+        $pesan = "Kami menerima permintaan reset password SIM GBT Siliragung. Jika anda tidak melakukan permintaan reset password mohon abaikan pesan ini. 
+Untuk melanjutkan reset password, silahkan klik link dibawah ini:
+https://sim-gbt.indanahgroup.my.id/Auth/ResetPassword/$id";
 
     $data = [
     'sender' => $nama, //Nama Id Yang didaftarkan
